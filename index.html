@@ -4,41 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
-  <title>T.Tasks — مدير المهام الذكي</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <script src="https://js.puter.com/v2/"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <title>T.Tasks — مدير المهام الذكي بالذكاء الاصطناعي</title>
+
   <!-- ═══════════════════════════════════════════════
        SEO & Social Media Meta Tags
   ═══════════════════════════════════════════════ -->
-  <meta name="description"
-    content="T.Tasks — المنصة الأرقى لإدارة مهامك، صلواتك، وعاداتك بذكاء اصطناعي حقيقي. خطط لدنياك وآخرتك بأرقى أسلوب مع مساعد صوتي ذكي، نظام XP، وأدوات AI أسطورية.">
-  <meta name="keywords"
-    content="T.Tasks, مدير المهام, ذكاء اصطناعي, تخطيط, إنتاجية, عادات, صلاة, منظم, تطبيق مهام عربي">
+  <meta name="description" content="T.Tasks — المنصة الأرقى لإدارة مهامك، صلواتك، وعاداتك بذكاء اصطناعي حقيقي. خطط لدنياك وآخرتك بأرقى أسلوب مع مساعد صوتي ذكي، نظام XP، وأدوات AI أسطورية.">
+  <meta name="keywords" content="T.Tasks, مدير المهام, ذكاء اصطناعي, تخطيط, إنتاجية, عادات, صلاة, منظم, تطبيق مهام عربي">
   <meta name="author" content="محمد عبد المطلب">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#04060f">
+
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="T.Tasks — مدير المهام الذكي 🚀">
-  <meta property="og:description"
-    content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب — بذكاء اصطناعي حقيقي.">
+  <meta property="og:description" content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب — بذكاء اصطناعي حقيقي.">
   <meta property="og:image" content="logo.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:image:alt" content="شعار T.Tasks — مدير المهام الذكي">
   <meta property="og:locale" content="ar_AR">
   <meta property="og:site_name" content="T.Tasks">
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="T.Tasks — مدير المهام الذكي 🚀">
-  <meta name="twitter:description"
-    content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب.">
+  <meta name="twitter:description" content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب.">
   <meta name="twitter:image" content="logo.png">
   <meta name="twitter:image:alt" content="T.Tasks App">
+
   <!-- PWA / Mobile App feel -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -46,6 +40,12 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="apple-touch-icon" href="logo.png">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://js.puter.com/v2/"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -3963,6 +3963,85 @@
       border-radius: 2px;
     }
 
+    /* SLEEP TRACKER EXTENSIONS */
+    .sleep-factors-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .sleep-factor-chip {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--t2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .sleep-factor-chip:hover {
+      background: rgba(0, 180, 216, 0.1);
+      border-color: rgba(0, 180, 216, 0.3);
+    }
+    .sleep-factor-chip.selected {
+      background: rgba(124, 58, 237, 0.25);
+      border-color: rgba(124, 58, 237, 0.6);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+    }
+    .sleep-inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .sleep-summary-box {
+      background: rgba(124, 58, 237, 0.06);
+      border: 1px dashed rgba(124, 58, 237, 0.25);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sleep-duration-badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+    .sleep-duration-badge.good {
+      background: rgba(57, 211, 83, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(57, 211, 83, 0.25);
+    }
+    .sleep-duration-badge.bad {
+      background: rgba(244, 63, 94, 0.12);
+      color: var(--danger);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+    }
+    .sleep-detail-factors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+    .sleep-detail-factor-tag {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--t3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
     /* AI TOOLS PAGE */
     .ai-tool-card {
       background: var(--darkcard);
@@ -5074,8 +5153,13 @@
         <div class="card">
           <div class="card-title"><i class="ti ti-database"></i> البيانات &amp; الإشعارات</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <button class="btn btn-primary btn-sm" onclick="requestNotificationPermission()"><i class="ti ti-bell"></i>
-              تفعيل إشعارات المتصفح</button>
+            <button class="btn btn-primary btn-sm" onclick="requestNotificationPermission()" id="notifPermBtn" style="padding:10px 14px;">
+              <i class="ti ti-bell"></i> تفعيل الإشعارات الذكية
+            </button>
+            <div style="font-size:10.5px;color:var(--t3);background:rgba(0,180,216,.05);border:1px solid rgba(0,180,216,.1);border-radius:8px;padding:8px 10px;line-height:1.6;">
+              📌 يشمل: المهام المجدولة ⏰ | الصلوات 🕌 | العادات اليومية 💪<br>
+              يتحقق كل 20 ثانية لضمان دقة التذكير
+            </div>
             <button class="btn btn-ghost btn-sm" onclick="resetXP()">🔄 إعادة تعيين XP</button>
             <button class="btn btn-danger btn-sm" onclick="if(confirm('هل أنت متأكد؟'))clearAll()"><i
                 class="ti ti-trash"></i> حذف كل البيانات</button>
@@ -5216,21 +5300,60 @@
 
       <!-- SLEEP TRACKER -->
       <div class="card" style="margin-bottom:14px;">
-        <div class="card-title"><i class="ti ti-moon" style="color:#c4b5fd;"></i> مراقب النوم والإنتاجية</div>
-        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">سجّل جودة نومك اليومي وشاهد تأثيره على مهامك</p>
-        <div style="margin-bottom:14px;">
-          <div style="font-size:12px;color:var(--t2);margin-bottom:8px;">كيف نمت الليلة الماضية؟</div>
-          <div class="sleep-rating" id="sleepRating">
-            <button class="sleep-star" onclick="rateSleep(1)" data-val="1">😴</button>
-            <button class="sleep-star" onclick="rateSleep(2)" data-val="2">😑</button>
-            <button class="sleep-star" onclick="rateSleep(3)" data-val="3">😊</button>
-            <button class="sleep-star" onclick="rateSleep(4)" data-val="4">😄</button>
-            <button class="sleep-star" onclick="rateSleep(5)" data-val="5">🤩</button>
+        <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+          <span><i class="ti ti-moon" style="color:#c4b5fd;"></i> مراقب النوم والإنتاجية المطور</span>
+          <span style="font-size:10px;color:rgba(196,181,253,.8);background:rgba(196,181,253,.1);padding:3px 8px;border-radius:20px;border:1px solid rgba(196,181,253,.2);">تحليل العوامل</span>
+        </div>
+        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">سجّل أوقات نومك، جودته، والعوامل المؤثرة لتحصل على تحليل إنتاجية دقيق</p>
+
+        <!-- Sleep Times Inputs -->
+        <div class="sleep-inputs-row">
+          <div>
+            <label style="font-size:11px;color:var(--t3);display:block;margin-bottom:4px;">وقت النوم (تقريبي)</label>
+            <input class="task-input" type="time" id="sleepBedtimeInput" onchange="calculateSleepHours()" style="width:100%;padding:8px 10px;">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--t3);display:block;margin-bottom:4px;">وقت الاستيقاظ</label>
+            <input class="task-input" type="time" id="sleepWaketimeInput" onchange="calculateSleepHours()" style="width:100%;padding:8px 10px;">
           </div>
         </div>
+
+        <!-- Auto Hours Indicator Box -->
+        <div class="sleep-summary-box" id="sleepSummaryBox" style="display:none;">
+          <span style="font-size:12px;color:var(--t2);">مدة النوم المحسوبة:</span>
+          <span class="sleep-duration-badge" id="sleepDurationBadge">0 ساعة</span>
+        </div>
+
+        <!-- Sleep Factors Selection -->
+        <div style="margin-bottom:14px;">
+          <div style="font-size:12px;color:var(--t2);margin-bottom:6px;">عوامل ومؤثرات نومك:</div>
+          <div class="sleep-factors-grid" id="sleepFactorsGrid">
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'caffeine')">☕ كافيين متأخر</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'screens')">📱 شاشات قبل النوم</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'reading')">📚 استرخاء / قراءة</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'pray')">🕌 قيام الليل / قرآن</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'exercise')">🏃 رياضة قوية</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'food')">🍔 أكل ثقيل متأخر</button>
+          </div>
+        </div>
+
+        <!-- Rating Stars -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:12px;color:var(--t2);margin-bottom:8px;">كيف تقيم جودة نومك العام؟</div>
+          <div class="sleep-rating" id="sleepRating">
+            <button class="sleep-star" onclick="selectSleepRating(1)" data-val="1">😴</button>
+            <button class="sleep-star" onclick="selectSleepRating(2)" data-val="2">😑</button>
+            <button class="sleep-star" onclick="selectSleepRating(3)" data-val="3">😊</button>
+            <button class="sleep-star" onclick="selectSleepRating(4)" data-val="4">😄</button>
+            <button class="sleep-star" onclick="selectSleepRating(5)" data-val="5">🤩</button>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button class="btn btn-primary btn-sm" onclick="saveDetailedSleep()" style="width:100%;margin-bottom:14px;padding:8px 0;font-weight:700;"><i class="ti ti-device-floppy"></i> حفظ تقرير النوم اليومي</button>
+
         <div id="sleepCorrelationChart">
-          <div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته
-            بإنتاجيتك</div>
+          <div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته بإنتاجيتك</div>
         </div>
         <div id="sleepAIInsight" style="margin-top:10px;"></div>
       </div>
@@ -5526,20 +5649,75 @@
       PRAYER_KEYS.forEach(k => { const exists = tasks.find(t => t.isPrayer && t.prayerKey === k && t.taskDate === dateStr); if (!exists) tasks.push({ id: Date.now() + Math.random(), name: 'صلاة ' + PRAYER_NAMES[k], priority: 'high', category: 'personal', done: false, progress: 0, isPrayer: true, prayerKey: k, taskTime: prayerTimes[k]?.split(' ')[0] || '', taskDate: dateStr, createdAt: new Date().toISOString() }); });
       saveAll(); renderTasks(); updateStats(); renderDashboard(); showNotif('🕌 تم إضافة الصلوات!', 'الصلوات الخمس أُضيفت لمهام اليوم');
     }
-    function startPrayerCheck() { if (prayerCheckInterval) clearInterval(prayerCheckInterval); prayerCheckInterval = setInterval(() => { checkPrayerTime(); updateNavPrayerRing(); }, 60000); checkPrayerTime(); updateNavPrayerRing(); }
+    // ─── PRECISION NOTIFICATION TICKER (20s interval) ─────────────────────
+    function startPrayerCheck() {
+      if (prayerCheckInterval) clearInterval(prayerCheckInterval);
+      // Check every 20 seconds for better precision
+      prayerCheckInterval = setInterval(() => { checkPrayerTime(); checkHabitTimers(); updateNavPrayerRing(); }, 20000);
+      checkPrayerTime(); updateNavPrayerRing();
+    }
     function checkPrayerTime() {
       if (!settings.prayerEnabled || !prayerTimes) return;
       const now = new Date(), h = now.getHours(), m = now.getMinutes(), nowMins = h * 60 + m, today = now.toDateString();
       if (!prayerLogData[today]) prayerLogData[today] = {};
-      PRAYER_KEYS.forEach(k => { if (prayerLogData[today][k]) return; const t = prayerTimes[k]; if (!t) return; const [ph, pm] = t.split(':').map(Number), pMins = ph * 60 + pm; if (nowMins === pMins || nowMins === pMins + 1) { sendBrowserNotif(`🕌 أذان ${PRAYER_NAMES[k]}`, `حان وقت صلاة ${PRAYER_NAMES[k]}`); showNotif(`🕌 أذان ${PRAYER_NAMES[k]}`, `حان وقت صلاة ${PRAYER_NAMES[k]}`); } });
+      PRAYER_KEYS.forEach(k => {
+        if (prayerLogData[today][k]) return;
+        const t = prayerTimes[k]; if (!t) return;
+        const [ph, pm] = t.split(':').map(Number), pMins = ph * 60 + pm;
+        const slot = `${now.toDateString()}_${pMins}`;
+        if ((nowMins === pMins || nowMins === pMins + 1) && !_wasNotified('prayer', k, slot)) {
+          _markNotified('prayer', k, slot);
+          sendBrowserNotif(`🕌 أذان ${PRAYER_NAMES[k]}`, `حان وقت صلاة ${PRAYER_NAMES[k]}`);
+          showNotif(`🕌 أذان ${PRAYER_NAMES[k]}`, `حان وقت صلاة ${PRAYER_NAMES[k]}`);
+        }
+      });
     }
-    function startTaskTimerCheck() { setInterval(checkTaskTimers, 60000); checkTaskTimers(); }
+    function startTaskTimerCheck() { setInterval(checkTaskTimers, 20000); checkTaskTimers(); }
     function checkTaskTimers() {
       const now = new Date(), h = now.getHours(), m = now.getMinutes(), nowMins = h * 60 + m, todayStr = now.toISOString().split('T')[0];
-      tasks.forEach(t => { if (t.done || !t.taskTime || t.isPrayer) return; if (t.taskDate && t.taskDate !== todayStr) return; const [th, tm] = t.taskTime.split(':').map(Number), tMins = th * 60 + tm; if (nowMins === tMins || nowMins === tMins + 1) { sendBrowserNotif('⏰ مهمة الآن!', 'حان وقت: ' + t.name); showNotif('⏰ حان الوقت!', t.name); } });
+      tasks.forEach(t => {
+        if (t.done || !t.taskTime || t.isPrayer) return;
+        if (t.taskDate && t.taskDate !== todayStr) return;
+        const [th, tm] = t.taskTime.split(':').map(Number), tMins = th * 60 + tm;
+        const slot = `${todayStr}_${tMins}`;
+        if ((nowMins === tMins || nowMins === tMins + 1) && !_wasNotified('task', t.id, slot)) {
+          _markNotified('task', t.id, slot);
+          sendBrowserNotif('⏰ مهمة الآن!', 'حان وقت: ' + t.name);
+          showNotif('⏰ حان الوقت!', t.name);
+        }
+      });
     }
-    async function requestNotificationPermission() { if (!('Notification' in window)) { showNotif('⚠️', 'متصفحك لا يدعم الإشعارات'); return; } const perm = await Notification.requestPermission(); notifPermission = perm === 'granted'; showNotif(notifPermission ? '🔔 تم التفعيل!' : 'ℹ️ الإشعارات', notifPermission ? 'ستصلك إشعارات المهام والصلوات' : 'لم يتم تفعيل الإشعارات'); }
-    function sendBrowserNotif(title, body) { if (!notifPermission) return; try { const n = new Notification(title, { body }); setTimeout(() => n.close(), 8000); } catch (e) { } }
+    function checkHabitTimers() {
+      const now = new Date(), nowMins = now.getHours() * 60 + now.getMinutes(), todayDay = now.getDay(), todayStr = now.toISOString().split('T')[0];
+      habits.good.forEach(h => {
+        if (!h.habitTime || h.days[todayDay]) return; // skip if already done today
+        const isTargetDay = h.freq === 'daily' || (h.targetDays && h.targetDays.includes(todayDay));
+        if (!isTargetDay) return;
+        const [hh, mm] = h.habitTime.split(':').map(Number), hMins = hh * 60 + mm;
+        const slot = `${todayStr}_${hMins}`;
+        if ((nowMins === hMins || nowMins === hMins + 1) && !_wasNotified('habit', h.id, slot)) {
+          _markNotified('habit', h.id, slot);
+          sendBrowserNotif('💪 حان وقت عادتك!', h.icon + ' ' + h.name);
+          showNotif('💪 وقت العادة!', h.name);
+        }
+      });
+    }
+    async function requestNotificationPermission() {
+      if (!('Notification' in window)) { showNotif('⚠️', 'متصفحك لا يدعم الإشعارات'); return; }
+      const perm = await Notification.requestPermission();
+      notifPermission = perm === 'granted';
+      showNotif(notifPermission ? '🔔 تم التفعيل!' : 'ℹ️ الإشعارات', notifPermission ? 'ستصلك إشعارات المهام، الصلوات والعادات تلقائياً' : 'لم يتم تفعيل الإشعارات');
+    }
+    function sendBrowserNotif(title, body) {
+      if (!notifPermission) {
+        // Try to get permission on first notif attempt
+        if (Notification.permission === 'default') {
+          Notification.requestPermission().then(p => { notifPermission = p === 'granted'; if (notifPermission) { const n = new Notification(title, { body }); setTimeout(() => n.close(), 8000); } });
+        }
+        return;
+      }
+      try { const n = new Notification(title, { body }); setTimeout(() => n.close(), 8000); } catch (e) { }
+    }
 
     // ===== TASK PARSING =====
     let parseDebounceTimer = null;
@@ -5645,10 +5823,49 @@
     }
     function catEmoji(c) { return { work: '💼', study: '📚', personal: '🌟', health: '❤️' }[c] || '📌'; }
     function priLabel(p) { return { high: '🔴 عالية', med: '🟡 متوسطة', low: '🟢 منخفضة' }[p] || p; }
+    // ─── UNIFIED SMART NOTIFICATIONS ENGINE ─────────────────────────────────
+    // Registry to prevent duplicate notifications within same day+minute slot
+    let _notifRegistry = {};
+
+    function _notifKey(type, id, slot) { return `${type}_${id}_${slot}`; }
+    function _wasNotified(type, id, slot) { return !!_notifRegistry[_notifKey(type, id, slot)]; }
+    function _markNotified(type, id, slot) {
+      _notifRegistry[_notifKey(type, id, slot)] = true;
+      // Clean up old registry entries every hour
+      setTimeout(() => { delete _notifRegistry[_notifKey(type, id, slot)]; }, 60 * 60 * 1000);
+    }
+
     function scheduleTaskNotif(task) {
+      if (!task.taskTime) return;
+      // Auto-request notification permission if needed
+      if (Notification.permission === 'default') Notification.requestPermission().then(p => { notifPermission = p === 'granted'; });
       const now = new Date(), taskD = task.taskDate ? new Date(task.taskDate + 'T00:00:00') : new Date();
       const [h, m] = task.taskTime.split(':').map(Number); taskD.setHours(h, m, 0, 0); const diff = taskD - now;
-      if (diff > 0 && diff < 86400000 * 2) { setTimeout(() => { sendBrowserNotif('⏰ حان وقت المهمة!', task.name); showNotif('⏰ حان الوقت!', task.name); }, diff); if (diff > 15 * 60 * 1000) setTimeout(() => { sendBrowserNotif('🔔 تذكير', task.name + ' بعد 15 دقيقة'); }, diff - 15 * 60 * 1000); }
+      if (diff > 0 && diff < 86400000 * 2) {
+        setTimeout(() => { sendBrowserNotif('⏰ حان وقت المهمة!', task.name); showNotif('⏰ حان الوقت!', task.name); }, diff);
+        if (diff > 15 * 60 * 1000) setTimeout(() => { sendBrowserNotif('🔔 تذكير: ' + task.name, 'بعد 15 دقيقة'); }, diff - 15 * 60 * 1000);
+      }
+    }
+
+    function scheduleHabitNotif(habit) {
+      if (!habit.habitTime) return;
+      // Auto-request permission
+      if (Notification.permission === 'default') Notification.requestPermission().then(p => { notifPermission = p === 'granted'; });
+      // Calculate daily reminder timeout
+      const now = new Date();
+      const [hh, mm] = habit.habitTime.split(':').map(Number);
+      const target = new Date();
+      target.setHours(hh, mm, 0, 0);
+      let diff = target - now;
+      if (diff < 0) diff += 24 * 60 * 60 * 1000; // tomorrow
+      const todayDay = now.getDay();
+      const isTargetDay = habit.freq === 'daily' || (habit.targetDays && habit.targetDays.includes(todayDay));
+      if (isTargetDay && diff < 24 * 60 * 60 * 1000) {
+        setTimeout(() => {
+          sendBrowserNotif('💪 حان وقت عادتك!', habit.icon + ' ' + habit.name);
+          showNotif('💪 تذكير العادة', habit.name);
+        }, diff);
+      }
     }
 
     // ===== HABITS RPG =====
@@ -5674,6 +5891,8 @@
       if (habitModalType === 'good') habits.good.push(newH); else habits.bad.push(newH);
       saveAll(); renderHabits(); renderHabitsCharts(); document.getElementById('habitAddModal').style.display = 'none';
       showNotif(habitModalType === 'good' ? '✅ عادة جديدة!' : '🎯 هدف جديد!', name + (habitFreq === 'weekly' ? ' (أسبوعية)' : ' (يومية)'));
+      // Auto-schedule notification if a time was set
+      if (habitTime && habitModalType === 'good') scheduleHabitNotif(newH);
     }
     function renderHabitTemplates() {
       const grid = document.getElementById('habitTemplateGrid'); if (!grid) return; selectedTemplates = new Set();
@@ -6317,7 +6536,7 @@
           </div>
           <button class="accel-start-btn" onclick="closeAccelPopup();startFlowWithTaskId(${task.id})">🧬 ابدأ وضع التدفق الآن</button>
         `;
-      } catch (e) {
+      } catch(e) {
         popup.innerHTML = `<div style="padding:20px;text-align:center;"><div style="font-size:14px;color:var(--t2);">ابدأ بخطوة واحدة صغيرة الآن! 🚀</div><button onclick="closeAccelPopup()" class="btn btn-ghost btn-sm" style="margin-top:12px;">إغلاق</button></div>`;
       }
     }
@@ -6325,8 +6544,8 @@
     function closeAccelPopup() {
       const bg = document.getElementById('accelBg');
       const popup = document.getElementById('accelPopup');
-      if (bg) { bg.style.opacity = '0'; setTimeout(() => { try { document.body.removeChild(bg); } catch (e) { } }, 300); }
-      if (popup) { popup.style.opacity = '0'; popup.style.transform = 'translate(-50%,-50%) scale(.85)'; popup.style.transition = 'all .3s'; setTimeout(() => { try { document.body.removeChild(popup); } catch (e) { } }, 300); }
+      if (bg) { bg.style.opacity='0'; setTimeout(() => { try { document.body.removeChild(bg); } catch(e) {} }, 300); }
+      if (popup) { popup.style.opacity='0'; popup.style.transform='translate(-50%,-50%) scale(.85)'; popup.style.transition='all .3s'; setTimeout(() => { try { document.body.removeChild(popup); } catch(e) {} }, 300); }
     }
 
     // Override analyzeOneTask to also offer acceleration
@@ -6339,7 +6558,7 @@
       const goal = input?.value?.trim();
       if (!goal) { showNotif('💡', 'أدخل هدفاً أولاً'); return; }
       const resultEl = document.getElementById('goalMapResult');
-      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يُنشئ خريطة أهدافك...</div></div>`;
+      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);\"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يُنشئ خريطة أهدافك...</div></div>`;
 
       const prompt = `أنت خبير تخطيط استراتيجي. الهدف الكبير: "${goal}"
 قسّمه لـ 3-4 مراحل، كل مرحلة فيها 2-4 مهام عملية.
@@ -6352,7 +6571,7 @@
         if (!match) throw new Error('no json');
         const data = JSON.parse(match[0]);
         renderGoalMap(data, resultEl);
-      } catch (e) {
+      } catch(e) {
         resultEl.innerHTML = `<div style="color:var(--danger);font-size:12px;padding:12px;">حدث خطأ — حاول مجدداً</div>`;
       }
     }
@@ -6369,7 +6588,7 @@
       if (data.phases) {
         data.phases.forEach((phase, pi) => {
           html += `<div class="mindmap-branch">
-            <div class="mindmap-phase" style="color:${['var(--sky)', '#c4b5fd', 'var(--green)', 'var(--gold)'][pi % 4]};">
+            <div class="mindmap-phase" style="color:${['var(--sky)','#c4b5fd','var(--green)','var(--gold)'][pi % 4]};">
               ${phase.icon || '📌'} ${phase.name}
             </div>`;
           if (phase.tasks) {
@@ -6387,7 +6606,7 @@
       }
       html += `
         <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn btn-primary btn-sm" onclick="addAllMapTasks(${JSON.stringify(allTasks.map(t => t.name)).replace(/"/g, "'")})">
+          <button class="btn btn-primary btn-sm" onclick="addAllMapTasks(${JSON.stringify(allTasks.map(t=>t.name)).replace(/"/g,"'")})">
             <i class="ti ti-plus"></i> إضافة كل المهام
           </button>
           <button class="btn btn-ghost btn-sm" onclick="document.getElementById('goalMapInput').value='';document.getElementById('goalMapResult').innerHTML='';">مسح</button>
@@ -6395,6 +6614,333 @@
       `;
       container.innerHTML = html;
     }
+
+    function toggleMindMapTask(id) {
+      const el = document.querySelector(`#${id} .mindmap-task-checkbox`);
+      if (el) el.classList.toggle('checked');
+    }
+
+    function addAllMapTasks(taskNames) {
+      const names = typeof taskNames === 'string' ? JSON.parse(taskNames.replace(/'/g,'"')) : taskNames;
+      names.forEach(name => {
+        tasks.push({ id: Date.now() + Math.random(), name, priority: 'med', category: 'personal', done: false, progress: 0, taskTime: '', taskDate: new Date().toISOString().split('T')[0], createdAt: new Date().toISOString() });
+      });
+      saveAll(); renderTasks(); updateStats(); renderDashboard();
+      showNotif('🎯 تمت الإضافة!', `أُضيفت ${names.length} مهام من خريطة الأهداف`);
+      addXP(names.length * 5, `أنشأت خريطة أهداف بـ ${names.length} مهام!`);
+    }
+
+    function openGoalMap() {
+      showPage('aitools', document.querySelectorAll('.nav-item')[7]);
+      setTimeout(() => document.getElementById('goalMapInput')?.focus(), 300);
+    }
+
+    // ─── 5. TOMORROW PREDICTOR AI ───────────────────────────────────────────
+    async function runTomorrowPredictor() {
+      const resultEl = document.getElementById('tomorrowPredictorResult');
+      if (!resultEl) { showPage('aitools', document.querySelectorAll('.nav-item')[7]); return; }
+      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يحلل نمط إنجازك...</div></div>`;
+
+      const total = tasks.length, done = tasks.filter(t => t.done).length;
+      const completionRate = total > 0 ? Math.round(done / total * 100) : 0;
+      const now = new Date();
+      const dayName = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'][(now.getDay()+1)%7];
+      const pending = tasks.filter(t => !t.done).slice(0, 5);
+      const sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+      const lastSleep = Object.entries(sleepData).slice(-3).map(([d,v]) => {
+        return typeof v === 'object' ? `تقييم ${v.rating}/5` : v;
+      }).join(',');
+
+      const prompt = `أنت خبير تنبؤ بالإنتاجية. بيانات المستخدم:
+- معدل الإنجاز الكلي: ${completionRate}%
+- مهام معلقة: ${pending.length}
+- غداً: ${dayName}
+- جودة النوم الأخيرة: ${lastSleep || 'غير متاحة'}
+- XP الكلي: ${xpData.total}
+بناءً على هذه البيانات، تنبأ بنسبة نجاح المستخدم غداً (رقم من 0-100) وأعطه توصيات.
+أجب بـ JSON: {"probability":75,"dayType":"منتج","insight":"...","tips":["نصيحة1","نصيحة2"],"bestTime":"الصباح الباكر"}`;
+
+      try {
+        const resp = await callAI(prompt);
+        const match = resp.match(/\{[\s\S]*?\}/);
+        let prob = completionRate, dayType = 'عادي', insight = 'استمر في جهودك!', tips = ['ابدأ بأصعب مهمة في الصباح','خذ استراحات منتظمة'], bestTime = 'الصباح';
+        if (match) {
+          const d = JSON.parse(match[0]);
+          prob = d.probability || prob; dayType = d.dayType || dayType;
+          insight = d.insight || insight; tips = d.tips || tips; bestTime = d.bestTime || bestTime;
+        }
+        const color = prob >= 70 ? '#39d353' : prob >= 40 ? '#fbbf24' : '#f43f5e';
+        resultEl.innerHTML = `
+          <div class="predictor-card">
+            <div class="predictor-badge">🔮 توقع AI ليوم ${dayName}</div>
+            <div class="predictor-score">
+              <div class="predictor-pct">${prob}%</div>
+              <div class="predictor-text">
+                <strong style="color:${color};">${dayType}</strong><br>
+                ${insight}
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--t3);margin-bottom:10px;">⏰ أفضل وقت للعمل: <strong style="color:var(--sky);">${bestTime}</strong></div>
+            <div class="predictor-tasks">
+              ${pending.map((t, i) => {
+                const taskProb = Math.max(10, prob - i * 8);
+                const barColor = taskProb >= 60 ? '#39d353' : taskProb >= 35 ? '#fbbf24' : '#f43f5e';
+                return `<div class="predictor-task-row">
+                  <div class="predictor-task-prob" style="color:${barColor};">${taskProb}%</div>
+                  <div class="predictor-task-bar-wrap"><div class="predictor-task-bar" style="width:${taskProb}%;background:${barColor};"></div></div>
+                  <div class="predictor-task-name">${t.name.substring(0,30)}${t.name.length>30?'...':''}</div>
+                </div>`;
+              }).join('')}
+            </div>
+            ${tips.length ? `<div style="margin-top:12px;display:flex;flex-direction:column;gap:5px;">${tips.map(tip => `<div style="font-size:12px;color:var(--t2);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--sky);flex-shrink:0;">💡</span>${tip}</div>`).join('')}</div>` : ''}
+          </div>
+        `;
+      } catch(e) {
+        resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر التنبؤ — تأكد من الاتصال بالإنترنت</div>`;
+      }
+    }
+
+    // ─── 6. AI WEEKLY MIRROR ────────────────────────────────────────────────
+    async function generateWeeklyMirror() {
+      const resultEl = document.getElementById('weeklyMirrorResult');
+      if (!resultEl) { showPage('aitools', document.querySelectorAll('.nav-item')[7]); return; }
+      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يُنشئ تقريرك الأسبوعي...</div></div>`;
+
+      const today = new Date();
+      let weekDone = 0, weekTotal = 0;
+      const dayNames = ['أح','إث','ثل','أر','خم','جم','سب'];
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(today); d.setDate(d.getDate() - i);
+        const ds = d.toISOString().split('T')[0];
+        const dayDone = tasks.filter(t => t.done && t.createdAt?.startsWith(ds)).length;
+        const dayAll = tasks.filter(t => t.createdAt?.startsWith(ds)).length;
+        weekDone += dayDone; weekTotal += dayAll;
+      }
+      const totalPrayers = Object.values(prayerLogData).slice(-7).reduce((s, d) => s + Object.keys(d).length, 0);
+      const totalHabits = habits.good.filter(h => h.days.some(Boolean)).length;
+      const completionRate = weekTotal > 0 ? Math.round(weekDone / weekTotal * 100) : 0;
+
+      const prompt = `أنت مرشد إنتاجية شخصي. تقرير الأسبوع للمستخدم ${settings.name}:
+- مهام أُنجزت هذا الأسبوع: ${weekDone} من ${weekTotal}
+- معدل الإنجاز: ${completionRate}%
+- صلوات أُدّيت: ${totalPrayers}
+- عادات نشطة: ${totalHabits}
+- XP المكتسبة: ${xpData.total}
+اكتب تقريراً شخصياً محفزاً يشمل: نقاط قوة، نقاط تحسين، توصية للأسبوع القادم. (5-7 جمل بالعربية، دافئ وشخصي)`;
+
+      try {
+        const resp = await callAI(prompt);
+        const grade = completionRate >= 80 ? 'A' : completionRate >= 60 ? 'B' : completionRate >= 40 ? 'C' : 'D';
+        const gradeColor = completionRate >= 70 ? '#39d353' : completionRate >= 40 ? '#fbbf24' : '#f43f5e';
+        const weekStart = new Date(today); weekStart.setDate(weekStart.getDate() - 6);
+        resultEl.innerHTML = `
+          <div class="mirror-card">
+            <div class="mirror-header">
+              <div class="mirror-avatar">📊</div>
+              <div style="flex:1;">
+                <div class="mirror-week-title">تقرير أسبوعك — ${settings.name}</div>
+                <div class="mirror-date">${weekStart.toLocaleDateString('ar-EG',{month:'short',day:'numeric'})} – ${today.toLocaleDateString('ar-EG',{month:'short',day:'numeric'})}</div>
+              </div>
+              <div class="mirror-grade" style="background:linear-gradient(135deg,${gradeColor},${gradeColor}aa);">${grade}</div>
+            </div>
+            <div class="mirror-stats-row">
+              <div class="mirror-stat">
+                <div class="mirror-stat-num" style="color:var(--sky);">${weekDone}</div>
+                <div class="mirror-stat-label">مهمة منجزة</div>
+              </div>
+              <div class="mirror-stat">
+                <div class="mirror-stat-num" style="color:var(--gold);">${totalPrayers}</div>
+                <div class="mirror-stat-label">صلاة أُدّيت</div>
+              </div>
+              <div class="mirror-stat">
+                <div class="mirror-stat-num" style="color:var(--green);">${completionRate}%</div>
+                <div class="mirror-stat-label">معدل الإنجاز</div>
+              </div>
+            </div>
+            <div class="mirror-insight-box">${resp.replace(/\n/g,'<br>')}</div>
+          </div>
+        `;
+      } catch(e) {
+        resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر إنشاء التقرير</div>`;
+      }
+    }
+    let sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+    let selectedSleepFactors = [];
+    let currentSleepRating = 0;
+
+    function openSleepTracker() {
+      showPage('aitools', document.querySelectorAll('.nav-item')[7]);
+      setTimeout(() => renderSleepData(), 200);
+    }
+
+    function calculateSleepHours() {
+      const bedtime = document.getElementById('sleepBedtimeInput').value;
+      const waketime = document.getElementById('sleepWaketimeInput').value;
+      const box = document.getElementById('sleepSummaryBox');
+      const badge = document.getElementById('sleepDurationBadge');
+      if (!bedtime || !waketime) { if(box) box.style.display = 'none'; return null; }
+      
+      const [bh, bm] = bedtime.split(':').map(Number);
+      const [wh, wm] = waketime.split(':').map(Number);
+      
+      let diffMins = (wh * 60 + wm) - (bh * 60 + bm);
+      if (diffMins < 0) {
+        diffMins += 24 * 60; // sleep crossed midnight
+      }
+      const hours = diffMins / 60;
+      if (box && badge) {
+        box.style.display = 'flex';
+        badge.textContent = `${hours.toFixed(1)} ساعة`;
+        if (hours >= 7 && hours <= 9) {
+          badge.className = 'sleep-duration-badge good';
+        } else {
+          badge.className = 'sleep-duration-badge bad';
+        }
+      }
+      return hours;
+    }
+
+    function toggleSleepFactor(btn, factor) {
+      btn.classList.toggle('selected');
+      if (btn.classList.contains('selected')) {
+        if (!selectedSleepFactors.includes(factor)) selectedSleepFactors.push(factor);
+      } else {
+        selectedSleepFactors = selectedSleepFactors.filter(f => f !== factor);
+      }
+    }
+
+    function selectSleepRating(val) {
+      currentSleepRating = val;
+      document.querySelectorAll('#sleepRating .sleep-star').forEach(b => {
+        b.classList.toggle('selected', parseInt(b.dataset.val) === val);
+      });
+    }
+
+    // Keep rateSleep for voice AI or simple actions
+    async function rateSleep(val) {
+      selectSleepRating(val);
+      await saveDetailedSleep();
+    }
+
+    async function saveDetailedSleep() {
+      if (currentSleepRating === 0) { showNotif('⚠️ تقرير النوم', 'الرجاء تقييم جودة النوم أولاً'); return; }
+      const bedtime = document.getElementById('sleepBedtimeInput').value;
+      const waketime = document.getElementById('sleepWaketimeInput').value;
+      const hours = calculateSleepHours();
+      const today = new Date().toISOString().split('T')[0];
+      const todayDone = tasks.filter(t => t.done).length;
+      
+      sleepData[today] = {
+        rating: currentSleepRating,
+        tasksDone: todayDone,
+        timestamp: Date.now(),
+        bedtime: bedtime || null,
+        waketime: waketime || null,
+        duration: hours !== null ? parseFloat(hours.toFixed(1)) : null,
+        factors: [...selectedSleepFactors]
+      };
+      
+      localStorage.setItem('ttasks_sleep', JSON.stringify(sleepData));
+      showNotif('🌙 تم الحفظ بنجاح!', 'تم تسجيل تقرير نومك وربطه بإنتاجيتك.');
+      renderSleepData();
+      if (Object.keys(sleepData).length >= 3) {
+        await analyzeSleepCorrelation();
+      }
+    }
+
+    function renderSleepData() {
+      const corChart = document.getElementById('sleepCorrelationChart');
+      if (!corChart) return;
+      const entries = Object.entries(sleepData).slice(-7).sort((a, b) => a[0].localeCompare(b[0]));
+      if (!entries.length) { corChart.innerHTML = '<div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته بإنتاجيتك</div>'; return; }
+      
+      const maxTasks = Math.max(...entries.map(([, v]) => v.tasksDone || 0), 1);
+      const emojis = ['', '😴', '😑', '😊', '😄', '🤩'];
+      const factorIcons = { caffeine: '☕', screens: '📱', reading: '📚', pray: '🕌', exercise: '🏃', food: '🍔' };
+      const factorNames = { caffeine: 'كافيين متأخر', screens: 'شاشات قبل النوم', reading: 'استرخاء/قراءة', pray: 'قيام ليل/قرآن', exercise: 'رياضة قوية', food: 'أكل متأخر' };
+      
+      corChart.innerHTML = `<div class="sleep-correlation">${entries.map(([date, v]) => {
+        const d = new Date(date); const dayLabel = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()];
+        const barW = maxTasks > 0 ? Math.round((v.tasksDone / maxTasks) * 100) : 0;
+        return `<div class="sleep-corr-row" style="flex-wrap: wrap; gap: 8px 10px;">
+          <div class="sleep-corr-day">${dayLabel}</div>
+          <div class="sleep-corr-stars">
+            <div>${emojis[v.rating] || '?'} ${v.rating}/5</div>
+            ${v.duration ? `<div style="font-size:9.7px;color:var(--t3);margin-top:2px;">${v.duration} ساعة</div>` : ''}
+          </div>
+          <div class="sleep-corr-tasks">${v.tasksDone} مهمة</div>
+          <div class="sleep-corr-bar-wrap"><div class="sleep-corr-bar" style="width:${barW}%;"></div></div>
+          ${v.factors && v.factors.length ? `
+            <div class="sleep-detail-factors" style="width:100%; margin-top: 4px; padding-right: 40px; display:flex; flex-wrap:wrap; gap:4px;">
+              ${v.factors.map(f => `<span class="sleep-detail-factor-tag" style="font-size: 10px; background: rgba(255,255,255,0.03); border:1px solid rgba(0,180,216,0.1); border-radius:10px; padding:1px 6px;">${factorIcons[f] || '·'} ${factorNames[f] || f}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>`;
+      }).join('')}</div>`;
+      
+      // Restore today's details
+      const today = new Date().toISOString().split('T')[0];
+      if (sleepData[today]) {
+        const val = sleepData[today].rating;
+        currentSleepRating = val;
+        document.querySelectorAll('#sleepRating .sleep-star').forEach(b => {
+          b.classList.toggle('selected', parseInt(b.dataset.val) === val);
+        });
+        if (sleepData[today].bedtime) document.getElementById('sleepBedtimeInput').value = sleepData[today].bedtime;
+        if (sleepData[today].waketime) document.getElementById('sleepWaketimeInput').value = sleepData[today].waketime;
+        calculateSleepHours();
+        
+        selectedSleepFactors = sleepData[today].factors || [];
+        document.querySelectorAll('#sleepFactorsGrid .sleep-factor-chip').forEach(chip => {
+          const factorKey = chip.getAttribute('onclick').match(/'([^']+)'/)[1];
+          chip.classList.toggle('selected', selectedSleepFactors.includes(factorKey));
+        });
+      } else {
+        document.getElementById('sleepBedtimeInput').value = '';
+        document.getElementById('sleepWaketimeInput').value = '';
+        const sBox = document.getElementById('sleepSummaryBox');
+        if(sBox) sBox.style.display = 'none';
+        currentSleepRating = 0;
+        document.querySelectorAll('#sleepRating .sleep-star').forEach(b => b.classList.remove('selected'));
+        selectedSleepFactors = [];
+        document.querySelectorAll('#sleepFactorsGrid .sleep-factor-chip').forEach(chip => chip.classList.remove('selected'));
+      }
+    }
+
+    async function analyzeSleepCorrelation() {
+      const insightEl = document.getElementById('sleepAIInsight');
+      if (!insightEl) return;
+      const entries = Object.entries(sleepData).slice(-7);
+      const avg = entries.reduce((s, [, v]) => s + v.rating, 0) / entries.length;
+      const avgTasks = entries.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / entries.length;
+      const highSleepDays = entries.filter(([, v]) => v.rating >= 4);
+      const highSleepAvgTasks = highSleepDays.length ? highSleepDays.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / highSleepDays.length : 0;
+      
+      let factorsSummary = {};
+      entries.forEach(([, v]) => {
+        if (v.factors) {
+          v.factors.forEach(f => {
+            factorsSummary[f] = (factorsSummary[f] || 0) + 1;
+          });
+        }
+      });
+      const factorsText = Object.entries(factorsSummary).map(([f, count]) => `${f}: ${count} مرات`).join(', ');
+
+      const prompt = `محلل نوم وإنتاجية ذكي. بيانات المستخدم خلال الأيام السابقة:
+- متوسط جودة النوم العام: ${avg.toFixed(1)}/5
+- متوسط المهام اليومية المنجزة: ${avgTasks.toFixed(1)}
+- أيام النوم الممتاز (4-5 نجوم): ${highSleepDays.length} يوم، ومتوسط إنجازها: ${highSleepAvgTasks.toFixed(1)} مهمة.
+- العوامل المسجلة: [${factorsText || 'لا توجد عوامل مسجلة'}].
+(ملاحظة العوامل: caffeine = كافيين متأخر، screens = شاشات قبل النوم، reading = قراءة/استرخاء، pray = قيام ليل، exercise = رياضة، food = أكل متأخر).
+
+اكتب تحليلاً دقيقاً ومقنعاً جداً يربط العوامل (خصوصاً السلبية كالشاشات والكافيين أو الإيجابية كقيام الليل والقراءة) بجودة النوم والإنتاجية مع نصيحة واحدة ذهبية لتحسين نومهم وإنتاجيتهم غداً. (موجز ومؤثر وبالعربية).`;
+      try {
+        const resp = await callAI(prompt);
+        insightEl.innerHTML = `<div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:12px;font-size:12.5px;color:var(--t2);line-height:1.7;"><span style="color:#c4b5fd;font-weight:700;">🧠 تحليل النوم التفاعلي AI:</span> ${resp}</div>`;
+      } catch (e) { }
+    }
+
+
 
     function toggleMindMapTask(id) {
       const el = document.querySelector(`#${id} .mindmap-task-checkbox`);
@@ -6542,74 +7088,6 @@
       } catch (e) {
         resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر إنشاء التقرير</div>`;
       }
-    }
-
-    // ─── 7. SLEEP TRACKER & CORRELATION ─────────────────────────────────────
-    let sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
-
-    function openSleepTracker() {
-      showPage('aitools', document.querySelectorAll('.nav-item')[7]);
-      setTimeout(() => renderSleepData(), 200);
-    }
-
-    async function rateSleep(val) {
-      const today = new Date().toISOString().split('T')[0];
-      const todayDone = tasks.filter(t => t.done).length;
-      sleepData[today] = { rating: val, tasksDone: todayDone, timestamp: Date.now() };
-      localStorage.setItem('ttasks_sleep', JSON.stringify(sleepData));
-      document.querySelectorAll('.sleep-star').forEach(b => {
-        b.classList.toggle('selected', parseInt(b.dataset.val) === val);
-      });
-      renderSleepData();
-      showNotif('🌙 تم التسجيل!', 'جودة نومك: ' + ['😴', '😑', '😊', '😄', '🤩'][val - 1]);
-      if (Object.keys(sleepData).length >= 3) {
-        await analyzeSleepCorrelation();
-      }
-    }
-
-    function renderSleepData() {
-      const corChart = document.getElementById('sleepCorrelationChart');
-      if (!corChart) return;
-      const entries = Object.entries(sleepData).slice(-7).sort((a, b) => a[0].localeCompare(b[0]));
-      if (!entries.length) { corChart.innerHTML = '<div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته بإنتاجيتك</div>'; return; }
-      const maxTasks = Math.max(...entries.map(([, v]) => v.tasksDone || 0), 1);
-      const emojis = ['', '😴', '😑', '😊', '😄', '🤩'];
-      corChart.innerHTML = `<div class="sleep-correlation">${entries.map(([date, v]) => {
-        const d = new Date(date); const dayLabel = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()];
-        const barW = maxTasks > 0 ? Math.round((v.tasksDone / maxTasks) * 100) : 0;
-        return `<div class="sleep-corr-row">
-          <div class="sleep-corr-day">${dayLabel}</div>
-          <div class="sleep-corr-stars">${emojis[v.rating] || '?'} ${v.rating}/5</div>
-          <div class="sleep-corr-tasks">${v.tasksDone}</div>
-          <div class="sleep-corr-bar-wrap"><div class="sleep-corr-bar" style="width:${barW}%;"></div></div>
-        </div>`;
-      }).join('')}</div>`;
-      // Restore today's rating
-      const today = new Date().toISOString().split('T')[0];
-      if (sleepData[today]) {
-        document.querySelectorAll('.sleep-star').forEach(b => {
-          b.classList.toggle('selected', parseInt(b.dataset.val) === sleepData[today].rating);
-        });
-      }
-    }
-
-    async function analyzeSleepCorrelation() {
-      const insightEl = document.getElementById('sleepAIInsight');
-      if (!insightEl) return;
-      const entries = Object.entries(sleepData).slice(-7);
-      const avg = entries.reduce((s, [, v]) => s + v.rating, 0) / entries.length;
-      const avgTasks = entries.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / entries.length;
-      const highSleepDays = entries.filter(([, v]) => v.rating >= 4);
-      const highSleepAvgTasks = highSleepDays.length ? highSleepDays.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / highSleepDays.length : 0;
-      const prompt = `محلل نوم وإنتاجية. بيانات المستخدم (${entries.length} أيام):
-متوسط جودة النوم: ${avg.toFixed(1)}/5
-متوسط المهام اليومية: ${avgTasks.toFixed(1)}
-أيام النوم الجيد (4-5): ${highSleepDays.length} أيام، متوسط مهامها: ${highSleepAvgTasks.toFixed(1)}
-اكتب 2 جمل: 1) ملاحظة مخصصة عن العلاقة، 2) توصية عملية. (مختصر وبالعربية)`;
-      try {
-        const resp = await callAI(prompt);
-        insightEl.innerHTML = `<div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:12px;font-size:12.5px;color:var(--t2);line-height:1.7;"><span style="color:#c4b5fd;font-weight:700;">🧠 تحليل AI:</span> ${resp}</div>`;
-      } catch (e) { }
     }
 
     // ─── SHOW PAGE UPDATE (add aitools) ──────────────────────────────────────
