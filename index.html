@@ -4,13 +4,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
-  <title>T.Tasks v4 — مدير المهام الذكي</title>
+  <title>T.Tasks — مدير المهام الذكي</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script src="https://js.puter.com/v2/"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+  <!-- ═══════════════════════════════════════════════
+       SEO & Social Media Meta Tags
+  ═══════════════════════════════════════════════ -->
+  <meta name="description"
+    content="T.Tasks — المنصة الأرقى لإدارة مهامك، صلواتك، وعاداتك بذكاء اصطناعي حقيقي. خطط لدنياك وآخرتك بأرقى أسلوب مع مساعد صوتي ذكي، نظام XP، وأدوات AI أسطورية.">
+  <meta name="keywords"
+    content="T.Tasks, مدير المهام, ذكاء اصطناعي, تخطيط, إنتاجية, عادات, صلاة, منظم, تطبيق مهام عربي">
+  <meta name="author" content="محمد عبد المطلب">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#04060f">
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="T.Tasks — مدير المهام الذكي 🚀">
+  <meta property="og:description"
+    content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب — بذكاء اصطناعي حقيقي.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="شعار T.Tasks — مدير المهام الذكي">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:site_name" content="T.Tasks">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="T.Tasks — مدير المهام الذكي 🚀">
+  <meta name="twitter:description"
+    content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب.">
+  <meta name="twitter:image" content="logo.png">
+  <meta name="twitter:image:alt" content="T.Tasks App">
+  <!-- PWA / Mobile App feel -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="T.Tasks">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="logo.png">
+
   <style>
     * {
       margin: 0;
@@ -84,11 +119,14 @@
       border-radius: 6px
     }
 
+    /* ═══════════════════════════════════════════════
+       INTRO SCREEN — CINEMATIC PREMIUM REDESIGN
+    ═══════════════════════════════════════════════ */
     #introScreen {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: radial-gradient(ellipse at center, #0d1b3e 0%, #070f1f 70%);
+      background: #04060f;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -96,6 +134,82 @@
       overflow: hidden
     }
 
+    /* — Aurora gradient orbs — */
+    .intro-aurora {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden
+    }
+
+    .intro-aurora::before {
+      content: '';
+      position: absolute;
+      width: 70vmax;
+      height: 70vmax;
+      top: -25vmax;
+      left: -20vmax;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 86, 219, .45) 0%, transparent 65%);
+      animation: auroraFloat1 12s ease-in-out infinite alternate
+    }
+
+    .intro-aurora::after {
+      content: '';
+      position: absolute;
+      width: 60vmax;
+      height: 60vmax;
+      bottom: -20vmax;
+      right: -15vmax;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 180, 216, .35) 0%, transparent 65%);
+      animation: auroraFloat2 15s ease-in-out infinite alternate
+    }
+
+    .intro-aurora-mid {
+      position: absolute;
+      width: 50vmax;
+      height: 50vmax;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 58, 237, .25) 0%, transparent 60%);
+      animation: auroraFloat3 9s ease-in-out infinite alternate;
+      pointer-events: none
+    }
+
+    @keyframes auroraFloat1 {
+      from {
+        transform: translate(0, 0) scale(1)
+      }
+
+      to {
+        transform: translate(8vw, 6vh) scale(1.15)
+      }
+    }
+
+    @keyframes auroraFloat2 {
+      from {
+        transform: translate(0, 0) scale(1)
+      }
+
+      to {
+        transform: translate(-6vw, -8vh) scale(1.2)
+      }
+    }
+
+    @keyframes auroraFloat3 {
+      from {
+        transform: translate(-50%, -50%) scale(1)
+      }
+
+      to {
+        transform: translate(-50%, -50%) scale(1.3)
+      }
+    }
+
+    /* — Animated star field — */
     .intro-bg-particles {
       position: absolute;
       inset: 0;
@@ -105,82 +219,107 @@
 
     .intro-bg-particles span {
       position: absolute;
-      width: 2px;
-      height: 2px;
       border-radius: 50%;
-      background: var(--sky);
-      animation: floatParticle linear infinite;
+      background: #fff;
+      animation: starTwinkle linear infinite;
       opacity: 0
     }
 
-    @keyframes floatParticle {
+    @keyframes starTwinkle {
       0% {
         opacity: 0;
         transform: translateY(100vh) scale(0)
       }
 
       10% {
-        opacity: .8
+        opacity: 1
       }
 
       90% {
-        opacity: .8
+        opacity: .7
       }
 
       100% {
         opacity: 0;
-        transform: translateY(-20vh) scale(1.5)
+        transform: translateY(-10vh) scale(1)
       }
     }
 
+    /* — Moving grid — */
     .intro-grid {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(0, 180, 216, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 180, 216, .05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite
+      background-image:
+        linear-gradient(rgba(0, 180, 216, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 180, 216, .04) 1px, transparent 1px);
+      background-size: 70px 70px;
+      animation: gridMove 25s linear infinite
     }
 
     @keyframes gridMove {
-      0% {
-        background-position: 0 0
-      }
-
-      100% {
-        background-position: 60px 60px
+      to {
+        background-position: 70px 70px
       }
     }
 
+    /* — Scan line sweep — */
+    .intro-scanline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0, 180, 216, .6), transparent);
+      animation: scanSweep 4s linear infinite;
+      pointer-events: none;
+      z-index: 1
+    }
+
+    @keyframes scanSweep {
+      from {
+        top: -2px
+      }
+
+      to {
+        top: 100%
+      }
+    }
+
+    /* — Content wrapper — */
     .intro-content {
       position: relative;
-      z-index: 2;
+      z-index: 10;
       text-align: center;
-      padding: 20px;
+      padding: 24px 20px;
       width: 100%;
-      max-width: 440px
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0
     }
 
+    /* — Logo — */
     .intro-logo-wrap {
       position: relative;
-      margin-bottom: 24px;
-      animation: logoReveal 1.2s cubic-bezier(.34, 1.56, .64, 1) forwards;
+      margin-bottom: 28px;
+      animation: logoReveal 1.4s cubic-bezier(.34, 1.56, .64, 1) forwards;
       opacity: 0;
-      transform: scale(.3) rotate(-15deg)
+      transform: scale(.2) rotate(-20deg)
     }
 
     @keyframes logoReveal {
       0% {
         opacity: 0;
-        transform: scale(.3) rotate(-15deg)
+        transform: scale(.2) rotate(-20deg)
       }
 
-      60% {
+      65% {
         opacity: 1;
-        transform: scale(1.1) rotate(3deg)
+        transform: scale(1.08) rotate(2deg)
       }
 
-      80% {
-        transform: scale(.97) rotate(-1deg)
+      82% {
+        transform: scale(.96) rotate(-1deg)
       }
 
       100% {
@@ -189,12 +328,42 @@
       }
     }
 
+    .intro-logo-ring {
+      position: absolute;
+      inset: -18px;
+      border-radius: 38px;
+      border: 1.5px solid rgba(0, 180, 216, .4);
+      animation: ringPulse 2.5s ease-in-out infinite
+    }
+
+    .intro-logo-ring2 {
+      position: absolute;
+      inset: -32px;
+      border-radius: 48px;
+      border: 1px solid rgba(26, 86, 219, .25);
+      animation: ringPulse 2.5s ease-in-out .8s infinite
+    }
+
+    @keyframes ringPulse {
+
+      0%,
+      100% {
+        opacity: .5;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05)
+      }
+    }
+
     .intro-logo-glow {
       position: absolute;
-      inset: -20px;
+      inset: -30px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 180, 216, .3) 0%, transparent 70%);
-      animation: glowPulse 2s ease-in-out infinite
+      background: radial-gradient(circle, rgba(0, 180, 216, .4) 0%, transparent 70%);
+      animation: glowPulse 2.5s ease-in-out infinite
     }
 
     @keyframes glowPulse {
@@ -202,103 +371,192 @@
       0%,
       100% {
         transform: scale(1);
-        opacity: .6
+        opacity: .5
       }
 
       50% {
-        transform: scale(1.15);
+        transform: scale(1.2);
         opacity: 1
       }
     }
 
     .intro-logo-img {
-      width: clamp(110px, 32vw, 170px);
-      height: clamp(110px, 32vw, 170px);
+      width: clamp(100px, 28vw, 155px);
+      height: clamp(100px, 28vw, 155px);
       object-fit: contain;
       position: relative;
       z-index: 1;
-      filter: drop-shadow(0 0 30px rgba(0, 180, 216, .5));
+      filter: drop-shadow(0 0 28px rgba(0, 180, 216, .6));
       background: #fff;
-      border-radius: 22px;
+      border-radius: 28px;
       padding: 8px
     }
 
+    /* — App name — */
     .intro-title {
-      font-size: clamp(34px, 10vw, 56px);
+      font-size: clamp(38px, 11vw, 62px);
       font-weight: 900;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, #fff 0%, #00b4d8 40%, #1a56db 70%, #39d353 100%);
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #ffffff 0%, #90e0ef 35%, #1a56db 65%, #7c3aed 100%);
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: titleSlide .8s ease .6s both;
-      opacity: 0
+      animation: titleReveal .9s ease .5s both, shimmerGrad 6s ease infinite 1.4s;
+      opacity: 0;
+      line-height: 1;
+      margin-bottom: 6px
     }
 
-    @keyframes titleSlide {
+    @keyframes titleReveal {
+      from {
+        opacity: 0;
+        transform: translateY(16px)
+      }
+
       to {
         opacity: 1;
         transform: translateY(0)
       }
     }
 
-    .intro-subtitle {
-      font-size: 14px;
-      color: var(--sky);
-      letter-spacing: 3px;
-      margin: 8px 0 16px;
-      font-weight: 500;
-      animation: titleSlide .8s ease .9s both;
+    @keyframes shimmerGrad {
+
+      0%,
+      100% {
+        background-position: 0% 50%
+      }
+
+      50% {
+        background-position: 100% 50%
+      }
+    }
+
+    /* — Divider line — */
+    .intro-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+      border-radius: 2px;
+      margin: 10px auto 14px;
+      animation: titleReveal .8s ease .8s both;
       opacity: 0
     }
 
-    .intro-tagline {
-      animation: titleSlide .8s ease 1s both;
+    /* — Subtitle — */
+    .intro-subtitle {
+      font-size: 12px;
+      color: rgba(0, 180, 216, .85);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+      animation: titleReveal .8s ease 1s both;
       opacity: 0;
-      margin-bottom: 18px
+      margin-bottom: 28px
     }
 
-    .intro-tagline-box {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, .2), rgba(245, 158, 11, .15));
-      border: 1px solid rgba(139, 92, 246, .4);
-      border-radius: 14px;
-      padding: 10px 18px;
-      flex-wrap: wrap;
-      justify-content: center
+    /* — Quote block — */
+    .intro-tagline {
+      opacity: 0;
+      animation: titleReveal .8s ease 1.2s both;
+      margin-bottom: 24px;
+      width: 100%
     }
 
-    .intro-tagline-icons {
-      display: flex;
-      gap: 6px;
-      font-size: 20px;
-      justify-content: center;
-      margin-bottom: 4px
+    .intro-quote-wrap {
+      position: relative;
+      background: linear-gradient(135deg, rgba(26, 86, 219, .12), rgba(124, 58, 237, .1));
+      border: 1px solid rgba(0, 180, 216, .2);
+      border-radius: 20px;
+      padding: 20px 22px 16px;
+      backdrop-filter: blur(8px);
+      text-align: right;
+      overflow: hidden
     }
 
-    .intro-tagline-text {
-      font-size: 14px;
-      font-weight: 700;
-      color: #e0c9ff;
-      line-height: 1.6;
-      text-align: center
+    .intro-quote-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 180, 216, .5), transparent)
     }
 
+    .quote-mark {
+      font-size: 48px;
+      line-height: 1;
+      color: rgba(0, 180, 216, .3);
+      font-family: Georgia, serif;
+      display: block;
+      margin-bottom: -10px
+    }
+
+    .intro-quote-line {
+      font-size: clamp(12px, 3.2vw, 14.5px);
+      font-weight: 600;
+      color: rgba(224, 230, 255, .88);
+      line-height: 1.75;
+      margin: 0 0 2px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: quoteLineIn .7s ease forwards
+    }
+
+    .intro-quote-line.delay-1 {
+      animation-delay: 1.6s
+    }
+
+    .intro-quote-line.delay-2 {
+      animation-delay: 2.5s
+    }
+
+    .intro-quote-line.delay-3 {
+      animation-delay: 3.4s
+    }
+
+    @keyframes quoteLineIn {
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .highlight-cyan {
+      color: #00d4f5;
+      font-weight: 800;
+      text-shadow: 0 0 12px rgba(0, 212, 245, .5)
+    }
+
+    .highlight-gold {
+      color: #fbbf24;
+      font-weight: 800;
+      text-shadow: 0 0 12px rgba(251, 191, 36, .5)
+    }
+
+    .highlight-purple {
+      color: #c4b5fd;
+      font-weight: 800;
+      text-shadow: 0 0 12px rgba(196, 181, 253, .5)
+    }
+
+    /* — Waveform bars — */
     .intro-bars {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       justify-content: center;
-      margin-bottom: 20px;
-      animation: titleSlide .8s ease 1.1s both;
+      align-items: flex-end;
+      height: 36px;
+      margin-bottom: 22px;
+      animation: titleReveal .8s ease 4s both;
       opacity: 0
     }
 
     .intro-bar {
-      width: 3px;
-      border-radius: 3px;
-      background: linear-gradient(to top, var(--blue), var(--sky));
-      animation: barGrow .5s ease var(--d) both;
+      width: 4px;
+      border-radius: 4px;
+      background: linear-gradient(to top, #1a56db, #00b4d8);
+      animation: barGrow .6s ease var(--d) both, barWave 1.5s ease-in-out calc(var(--d) + 0.8s) infinite alternate;
       transform-origin: bottom;
       transform: scaleY(0)
     }
@@ -309,35 +567,61 @@
       }
     }
 
+    @keyframes barWave {
+      from {
+        transform: scaleY(1)
+      }
+
+      to {
+        transform: scaleY(.4)
+      }
+    }
+
+    /* — Progress bar — */
     .intro-loading {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      animation: titleSlide .8s ease 1.4s both;
-      opacity: 0
+      animation: titleReveal .8s ease 4.2s both;
+      opacity: 0;
+      width: 100%
     }
 
     .intro-prog-bar {
-      width: min(260px, 70vw);
+      width: min(300px, 78vw);
       height: 3px;
-      background: rgba(0, 180, 216, .15);
+      background: rgba(0, 180, 216, .12);
       border-radius: 2px;
-      overflow: hidden
+      overflow: hidden;
+      position: relative
     }
 
     .intro-prog-fill {
       height: 100%;
       width: 0%;
       border-radius: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--sky), var(--green));
-      transition: width .1s linear
+      background: linear-gradient(90deg, #1a56db, #00b4d8, #7c3aed);
+      background-size: 200% 100%;
+      transition: width .12s linear;
+      animation: progShimmer 1.5s linear infinite
+    }
+
+    @keyframes progShimmer {
+      from {
+        background-position: 200% 0
+      }
+
+      to {
+        background-position: -200% 0
+      }
     }
 
     .intro-prog-text {
-      font-size: 12px;
-      color: var(--t2);
-      letter-spacing: 2px
+      font-size: 11px;
+      color: rgba(148, 163, 184, .7);
+      letter-spacing: 2px;
+      text-transform: uppercase
     }
 
     /* XP SYSTEM */
@@ -666,7 +950,7 @@
     .logo-icon {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
+      border-radius: 14px;
       flex-shrink: 0;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -2801,37 +3085,1271 @@
         font-size: 20px
       }
     }
+
+    /* ============================================
+       LEGENDARY AI FEATURES — v5 STYLES
+    ============================================ */
+
+    /* VOICE AI BUTTON (Floating) */
+    .voice-fab {
+      position: fixed;
+      left: 20px;
+      bottom: calc(90px + var(--safe-bottom));
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #00b4d8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(124, 58, 237, .45);
+      z-index: 200;
+      border: none;
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+      animation: voiceFabIn .6s cubic-bezier(.34, 1.56, .64, 1) .5s both;
+    }
+
+    @keyframes voiceFabIn {
+      from {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    .voice-fab:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 32px rgba(124, 58, 237, .6);
+    }
+
+    .voice-fab.listening {
+      animation: voicePulse 1s ease infinite;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, .5);
+    }
+
+    @keyframes voicePulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, .6);
+      }
+
+      70% {
+        box-shadow: 0 0 0 18px rgba(239, 68, 68, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+    }
+
+    .voice-fab i {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .voice-tooltip {
+      position: fixed;
+      left: 84px;
+      bottom: calc(103px + var(--safe-bottom));
+      background: rgba(13, 27, 62, .95);
+      border: 1px solid rgba(124, 58, 237, .4);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 12px;
+      color: #c4b5fd;
+      white-space: nowrap;
+      z-index: 201;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all .25s ease;
+      display: none;
+    }
+
+    .voice-fab:hover+.voice-tooltip,
+    .voice-tooltip.show {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .voice-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .8);
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      backdrop-filter: blur(12px);
+      animation: fadeIn .3s ease;
+    }
+
+    .voice-wave {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 60px;
+    }
+
+    .voice-wave span {
+      display: block;
+      width: 5px;
+      background: linear-gradient(to top, #7c3aed, #00b4d8);
+      border-radius: 3px;
+      animation: waveBar 1.2s ease infinite;
+    }
+
+    .voice-wave span:nth-child(2) {
+      animation-delay: .1s;
+    }
+
+    .voice-wave span:nth-child(3) {
+      animation-delay: .2s;
+    }
+
+    .voice-wave span:nth-child(4) {
+      animation-delay: .3s;
+    }
+
+    .voice-wave span:nth-child(5) {
+      animation-delay: .4s;
+    }
+
+    .voice-wave span:nth-child(6) {
+      animation-delay: .2s;
+    }
+
+    .voice-wave span:nth-child(7) {
+      animation-delay: .1s;
+    }
+
+    @keyframes waveBar {
+
+      0%,
+      100% {
+        height: 12px;
+      }
+
+      50% {
+        height: 48px;
+      }
+    }
+
+    .voice-status-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e0c9ff;
+      font-family: var(--font-display);
+    }
+
+    .voice-cancel-btn {
+      background: rgba(244, 63, 94, .2);
+      border: 1px solid rgba(244, 63, 94, .4);
+      color: #f43f5e;
+      padding: 10px 24px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-family: inherit;
+    }
+
+    .voice-result-card {
+      background: rgba(13, 27, 62, .9);
+      border: 1px solid rgba(124, 58, 237, .4);
+      border-radius: 14px;
+      padding: 16px 20px;
+      max-width: 380px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .voice-result-text {
+      font-size: 16px;
+      color: #e0c9ff;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .voice-result-sub {
+      font-size: 12px;
+      color: var(--t3);
+    }
+
+    /* FLOW STATE MODE */
+    .flow-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 6000;
+      background: radial-gradient(ellipse at center, #050b15 0%, #020609 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: fadeIn .5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .flow-ambient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, .08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(0, 180, 216, .06) 0%, transparent 50%);
+      animation: ambientFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes ambientFloat {
+
+      0%,
+      100% {
+        transform: scale(1) rotate(0);
+      }
+
+      50% {
+        transform: scale(1.05) rotate(2deg);
+      }
+    }
+
+    .flow-task-name {
+      font-size: clamp(24px, 5vw, 42px);
+      font-weight: 900;
+      font-family: var(--font-display);
+      background: linear-gradient(135deg, #fff 0%, #c4b5fd 40%, #00b4d8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-timer-ring {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 24px auto;
+      z-index: 1;
+    }
+
+    .flow-timer-svg {
+      width: 200px;
+      height: 200px;
+      transform: rotate(-90deg);
+    }
+
+    .flow-ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, .06);
+      stroke-width: 10;
+    }
+
+    .flow-ring-fill {
+      fill: none;
+      stroke: url(#flowGrad);
+      stroke-width: 10;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s linear;
+    }
+
+    .flow-timer-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flow-timer-num {
+      font-size: 52px;
+      font-weight: 900;
+      font-family: var(--font-display);
+      color: #fff;
+      line-height: 1;
+    }
+
+    .flow-timer-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .5);
+      margin-top: 4px;
+    }
+
+    .flow-controls {
+      display: flex;
+      gap: 12px;
+      z-index: 1;
+      margin-top: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .flow-btn {
+      padding: 12px 22px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .07);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: inherit;
+    }
+
+    .flow-btn:hover {
+      background: rgba(255, 255, 255, .15);
+      border-color: rgba(255, 255, 255, .3);
+    }
+
+    .flow-btn.primary {
+      background: linear-gradient(135deg, #7c3aed, #00b4d8);
+      border: none;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, .4);
+    }
+
+    .flow-btn.danger {
+      background: rgba(244, 63, 94, .15);
+      border-color: rgba(244, 63, 94, .3);
+      color: #f43f5e;
+    }
+
+    .flow-session-badge {
+      background: rgba(124, 58, 237, .2);
+      border: 1px solid rgba(124, 58, 237, .4);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #c4b5fd;
+      z-index: 1;
+      margin-bottom: 12px;
+    }
+
+    .flow-mode-pills {
+      display: flex;
+      gap: 8px;
+      z-index: 1;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .flow-pill {
+      padding: 7px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .06);
+      color: rgba(255, 255, 255, .6);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: inherit;
+    }
+
+    .flow-pill.active {
+      background: rgba(124, 58, 237, .25);
+      border-color: rgba(124, 58, 237, .6);
+      color: #c4b5fd;
+    }
+
+    .flow-guard {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(244, 63, 94, .15);
+      border: 1px solid rgba(244, 63, 94, .3);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #f43f5e;
+      z-index: 6001;
+      display: none;
+      animation: fadeIn .3s ease;
+      max-width: 240px;
+    }
+
+    /* GOAL MIND MAP */
+    .mindmap-canvas {
+      width: 100%;
+      min-height: 360px;
+      background: rgba(7, 15, 31, .6);
+      border: 1px solid var(--border2);
+      border-radius: var(--rad);
+      overflow: auto;
+      position: relative;
+    }
+
+    .mindmap-svg {
+      width: 100%;
+      min-height: 360px;
+    }
+
+    .mindmap-central {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, .25), rgba(0, 180, 216, .15));
+      border: 2px solid rgba(124, 58, 237, .5);
+      border-radius: 20px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #e0c9ff;
+      margin: 20px auto;
+      display: flex;
+    }
+
+    .mindmap-branch {
+      margin: 8px 0 8px 24px;
+      border-right: 2px solid rgba(0, 180, 216, .3);
+      padding-right: 16px;
+    }
+
+    .mindmap-phase {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--sky);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mindmap-task {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0 5px 16px;
+      font-size: 12.5px;
+      color: var(--t2);
+      border-right: 1px dashed rgba(57, 211, 83, .25);
+      margin-right: 8px;
+    }
+
+    .mindmap-task::before {
+      content: '→';
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .mindmap-task-checkbox {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(57, 211, 83, .4);
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .mindmap-task-checkbox.checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    /* TASK ACCELERATOR */
+    .accel-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.85);
+      background: linear-gradient(135deg, #0d1b3e, #070f1f);
+      border: 1px solid rgba(124, 58, 237, .45);
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 400px;
+      width: 90%;
+      z-index: 3000;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .7), 0 0 60px rgba(124, 58, 237, .15);
+      animation: accelIn .4s cubic-bezier(.34, 1.56, .64, 1) forwards;
+    }
+
+    @keyframes accelIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.7);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .accel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .accel-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, .3), rgba(0, 180, 216, .2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .accel-title {
+      font-size: 16px;
+      font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--t1);
+    }
+
+    .accel-task-name {
+      font-size: 12px;
+      color: var(--t3);
+      margin-top: 2px;
+    }
+
+    .accel-section {
+      margin-bottom: 12px;
+    }
+
+    .accel-section-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--sky);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .accel-first-step {
+      background: linear-gradient(135deg, rgba(57, 211, 83, .12), rgba(0, 212, 170, .08));
+      border: 1px solid rgba(57, 211, 83, .3);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #6ee7b7;
+      line-height: 1.5;
+    }
+
+    .accel-strategy {
+      background: rgba(124, 58, 237, .08);
+      border: 1px solid rgba(124, 58, 237, .2);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: var(--t2);
+      line-height: 1.6;
+    }
+
+    .accel-start-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c3aed, #00b4d8);
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 4px;
+      transition: all .2s;
+    }
+
+    .accel-start-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(124, 58, 237, .4);
+    }
+
+    .accel-overlay-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .6);
+      z-index: 2999;
+      backdrop-filter: blur(4px);
+    }
+
+    /* TOMORROW PREDICTOR */
+    .predictor-card {
+      background: linear-gradient(135deg, rgba(124, 58, 237, .1), rgba(0, 180, 216, .08));
+      border: 1px solid rgba(124, 58, 237, .3);
+      border-radius: var(--rad);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .predictor-card::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(124, 58, 237, .15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .predictor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(124, 58, 237, .2);
+      border: 1px solid rgba(124, 58, 237, .4);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 10px;
+      color: #c4b5fd;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .predictor-score {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .predictor-pct {
+      font-size: 48px;
+      font-weight: 900;
+      font-family: var(--font-display);
+      background: linear-gradient(135deg, #c4b5fd, #00b4d8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .predictor-text {
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.6;
+    }
+
+    .predictor-tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .predictor-task-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      background: rgba(7, 15, 31, .5);
+      border-radius: 8px;
+    }
+
+    .predictor-task-prob {
+      font-size: 12px;
+      font-weight: 700;
+      width: 38px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .predictor-task-bar-wrap {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .predictor-task-bar {
+      height: 100%;
+      border-radius: 2px;
+      transition: width .8s ease;
+    }
+
+    .predictor-task-name {
+      font-size: 11.5px;
+      color: var(--t2);
+      flex: 2;
+    }
+
+    /* WEEKLY MIRROR */
+    .mirror-card {
+      background: linear-gradient(135deg, rgba(13, 27, 62, .8), rgba(7, 15, 31, .8));
+      border: 1px solid rgba(0, 180, 216, .25);
+      border-radius: var(--rad);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mirror-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .mirror-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .mirror-week-title {
+      font-size: 16px;
+      font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--t1);
+    }
+
+    .mirror-date {
+      font-size: 11px;
+      color: var(--t3);
+      margin-top: 2px;
+    }
+
+    .mirror-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .mirror-stat {
+      background: rgba(7, 15, 31, .6);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .mirror-stat-num {
+      font-size: 22px;
+      font-weight: 800;
+      font-family: var(--font-display);
+    }
+
+    .mirror-stat-label {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 2px;
+    }
+
+    .mirror-insight-box {
+      background: rgba(0, 180, 216, .07);
+      border: 1px solid rgba(0, 180, 216, .2);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.7;
+      min-height: 60px;
+    }
+
+    .mirror-grade {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #ffd700);
+      font-size: 22px;
+      font-weight: 900;
+      color: #0a1320;
+      font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+
+    /* SLEEP TRACKER */
+    .sleep-rating {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sleep-star {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(7, 15, 31, .6);
+      border: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: inherit;
+    }
+
+    .sleep-star:hover,
+    .sleep-star.selected {
+      background: rgba(124, 58, 237, .2);
+      border-color: rgba(124, 58, 237, .5);
+      transform: scale(1.1);
+    }
+
+    .sleep-correlation {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sleep-corr-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      background: rgba(7, 15, 31, .5);
+      border-radius: 8px;
+    }
+
+    .sleep-corr-day {
+      font-size: 11px;
+      color: var(--t3);
+      width: 30px;
+      flex-shrink: 0;
+    }
+
+    .sleep-corr-stars {
+      font-size: 12px;
+      flex-shrink: 0;
+      width: 60px;
+    }
+
+    .sleep-corr-tasks {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sky);
+      width: 30px;
+      flex-shrink: 0;
+    }
+
+    .sleep-corr-bar-wrap {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .sleep-corr-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #7c3aed, #00b4d8);
+      border-radius: 2px;
+    }
+
+    /* AI TOOLS PAGE */
+    .ai-tool-card {
+      background: var(--darkcard);
+      border: 1px solid var(--border2);
+      border-radius: var(--rad);
+      padding: 20px;
+      transition: all .25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-tool-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(124, 58, 237, .4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .3);
+    }
+
+    .ai-tool-card::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      opacity: .08;
+    }
+
+    .ai-tool-card.purple::after {
+      background: #7c3aed;
+    }
+
+    .ai-tool-card.blue::after {
+      background: #1a56db;
+    }
+
+    .ai-tool-card.green::after {
+      background: #39d353;
+    }
+
+    .ai-tool-card.orange::after {
+      background: #f59e0b;
+    }
+
+    .ai-tool-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .ai-tool-name {
+      font-size: 15px;
+      font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--t1);
+      margin-bottom: 5px;
+    }
+
+    .ai-tool-desc {
+      font-size: 12px;
+      color: var(--t3);
+      line-height: 1.5;
+    }
+
+    .ai-tool-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 9px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .ai-tool-badge.new {
+      background: rgba(57, 211, 83, .2);
+      color: var(--green);
+      border: 1px solid rgba(57, 211, 83, .3);
+    }
+
+    .ai-tool-badge.hot {
+      background: rgba(244, 63, 94, .2);
+      color: #f43f5e;
+      border: 1px solid rgba(244, 63, 94, .3);
+    }
+
+    .ai-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .typing-dots {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .typing-dots span {
+      width: 6px;
+      height: 6px;
+      background: var(--sky);
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out both;
+    }
+
+    .typing-dots span:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .typing-dots span:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes typingBounce {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0);
+      }
+
+      40% {
+        transform: scale(1.0);
+      }
+    }
+
+    /* MOBILE DRAWER NAV */
+    .mobile-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 4000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .mobile-drawer-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer {
+      width: 100%;
+      background: linear-gradient(to top, #060c18 0%, #0d1b3e 100%);
+      border-top: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 24px 24px 0 0;
+      padding: 16px 20px calc(20px + var(--safe-bottom)) 20px;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-drawer-overlay.show .mobile-drawer {
+      transform: translateY(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .drawer-bar {
+      width: 40px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    .drawer-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      font-family: var(--font-display);
+    }
+
+    .drawer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .drawer-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .drawer-item:active {
+      transform: scale(0.95);
+    }
+
+    .drawer-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .drawer-label {
+      font-size: 11px;
+      color: var(--t2);
+      font-weight: 600;
+    }
+
+    /* Premium Intro styling */
+    #introScreen {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #050b18 0%, #010307 100%) !important;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .intro-title {
+      font-size: clamp(38px, 12vw, 62px);
+      text-shadow: 0 0 20px rgba(0, 180, 216, 0.4), 0 0 40px rgba(124, 58, 237, 0.2);
+      letter-spacing: -2px;
+    }
+
+    /* Animated Quote Styling */
+    .intro-quote-wrap {
+      position: relative;
+      padding: 14px 28px;
+      max-width: 440px;
+      margin: 15px auto 25px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .quote-mark {
+      font-size: 52px;
+      font-family: Georgia, serif;
+      line-height: 0;
+      color: rgba(0, 180, 216, 0.35);
+      display: block;
+      height: 12px;
+    }
+
+    .intro-quote-line {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+      line-height: 1.8;
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUpQuote 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    .intro-quote-line.delay-1 {
+      animation-delay: 0.8s;
+    }
+
+    .intro-quote-line.delay-2 {
+      animation-delay: 2.2s;
+    }
+
+    .intro-quote-line.delay-3 {
+      animation-delay: 3.6s;
+    }
+
+    @keyframes fadeInUpQuote {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .highlight-cyan {
+      color: var(--sky);
+      text-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+      font-weight: 800;
+    }
+
+    .highlight-gold {
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+      font-weight: 800;
+    }
+
+    .highlight-purple {
+      color: #c4b5fd;
+      text-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+      font-weight: 800;
+    }
+
+    .intro-prog-bar {
+      height: 4px !important;
+      box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+    }
+
+    @media(max-width:700px) {
+      .voice-fab {
+        left: 16px;
+        bottom: calc(80px + var(--safe-bottom));
+      }
+
+      .ai-tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mirror-stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div id="introScreen">
+    <!-- Layered atmospheric backgrounds -->
+    <div class="intro-aurora">
+      <div class="intro-aurora-mid"></div>
+    </div>
     <div class="intro-bg-particles" id="particles"></div>
     <div class="intro-grid"></div>
+    <div class="intro-scanline"></div>
+
     <div class="intro-content">
+      <!-- Logo with double ring halos -->
       <div class="intro-logo-wrap">
         <div class="intro-logo-glow"></div>
+        <div class="intro-logo-ring"></div>
+        <div class="intro-logo-ring2"></div>
         <img class="intro-logo-img" src="logo.png" alt="T.Tasks"
           onerror="this.style.background='linear-gradient(135deg,#1a56db,#00b4d8)'">
       </div>
+
+      <!-- Brand name -->
       <div class="intro-title">T.Tasks</div>
-      <div class="intro-subtitle">مدير المهام الذكي · Puter AI</div>
+      <div class="intro-divider"></div>
+      <div class="intro-subtitle">المنصة الأرقى لإدارة دنياك وآخرتك بذكاء</div>
+
+      <!-- Cinematic quote -->
       <div class="intro-tagline">
-        <div class="intro-tagline-box">
-          <div>
-            <div class="intro-tagline-icons">🌍 ✨ 🕌</div>
-            <div class="intro-tagline-text">اجمع دنياك وآخرتك في مكان واحد<br><span
-                style="font-size:12px;color:rgba(224,201,255,.7);font-weight:500;">مهامك · عاداتك · صلواتك — نظام XP
-                أسطوري</span></div>
-          </div>
+        <div class="intro-quote-wrap">
+          <span class="quote-mark">“</span>
+          <p class="intro-quote-line delay-1">التخطيط ليس مجرد تنظيم للمهام...</p>
+          <p class="intro-quote-line delay-2">بل هو الجسر الذي يعبر بك من <span class="highlight-cyan">الفوضى</span> إلى
+            <span class="highlight-gold">القمة</span>
+          </p>
+          <p class="intro-quote-line delay-3"><span class="highlight-purple">T.Tasks</span> — رفيقك الأفضل لإدارة دنياك
+            وآخرتك بأرقى أسلوب</p>
         </div>
       </div>
+
+      <!-- Animated waveform bars -->
       <div class="intro-bars" id="introBars"></div>
+
+      <!-- Loading progress -->
       <div class="intro-loading">
         <div class="intro-prog-bar">
           <div class="intro-prog-fill" id="introProgFill"></div>
         </div>
-        <div class="intro-prog-text" id="introProgText">جارٍ تهيئة Puter AI...</div>
+        <div class="intro-prog-text" id="introProgText">تهيئة محرك التخطيط الذكي...</div>
       </div>
     </div>
   </div>
@@ -2855,7 +4373,7 @@
         <div
           style="width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--sky));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">
           ⚡</div>
-        <div class="modal-title">مرحباً في T.Tasks v4</div>
+        <div class="modal-title">مرحباً في T.Tasks</div>
       </div>
       <div class="modal-step" id="stepLabel">الخطوة 1 من 6</div>
       <div class="progress-bar">
@@ -2930,7 +4448,7 @@
   <nav class="sidebar" id="mainSidebar" style="display:none;">
     <div class="logo-wrap">
       <div class="logo-icon"><img src="logo.png" alt="T.Tasks" onerror="this.style.display='none'"></div>
-      <span class="logo-text">T.Tasks v4</span>
+      <span class="logo-text">T.Tasks</span>
     </div>
     <div class="nav-item active" onclick="showPage('dashboard',this)"><i class="ti ti-layout-dashboard"></i><span
         class="nav-label">لوحة التحكم</span></div>
@@ -2946,6 +4464,11 @@
         الروحي</span></div>
     <div class="nav-item" onclick="showPage('ai',this)"><i class="ti ti-robot"></i><span class="nav-label">مساعد
         AI</span></div>
+    <div class="nav-item" onclick="showPage('aitools',this)"
+      style="background:linear-gradient(90deg,rgba(124,58,237,.15),rgba(0,180,216,.08));border:1px solid rgba(124,58,237,.25);color:#c4b5fd;">
+      <i class="ti ti-sparkles" style="color:#c4b5fd;"></i><span class="nav-label" style="color:#c4b5fd;">أدوات AI
+        ✨</span>
+    </div>
     <div class="nav-divider"></div>
     <div class="nav-item" onclick="showPage('settings',this)"><i class="ti ti-settings"></i><span
         class="nav-label">الإعدادات</span></div>
@@ -2978,9 +4501,46 @@
       onclick="showPage('tasks',document.querySelectorAll('.bnav-item')[1]);setTimeout(()=>document.getElementById('aiTaskParserInput')?.focus(),350)">
       <i class="ti ti-plus"></i>
     </div>
-    <div class="bnav-item" onclick="showPageMobile('prayer',this)"><i class="ti ti-moon"></i><span>الصلوات</span></div>
-    <div class="bnav-item" onclick="showPageMobile('ai',this)"><i class="ti ti-robot"></i><span>AI</span></div>
+    <div class="bnav-item" onclick="showPageMobile('aitools',this)"><i class="ti ti-sparkles"
+        style="color:#c4b5fd;"></i><span>أدوات AI</span></div>
+    <div class="bnav-item" onclick="toggleMobileDrawer(true)"><i class="ti ti-menu-2"></i><span>المزيد</span></div>
   </nav>
+
+  <!-- MOBILE DRAWER OVERLAY -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileDrawer(false)">
+    <div class="mobile-drawer" onclick="event.stopPropagation()">
+      <div class="drawer-header">
+        <div class="drawer-bar"></div>
+        <div class="drawer-title">كل الأقسام والميزات</div>
+      </div>
+      <div class="drawer-grid">
+        <div class="drawer-item" onclick="navigateFromDrawer('prayer')">
+          <div class="drawer-icon" style="background: rgba(245,158,11,.15); color: #f59e0b;">🕌</div>
+          <div class="drawer-label">مواقيت الصلوات</div>
+        </div>
+        <div class="drawer-item" onclick="navigateFromDrawer('spiritual')">
+          <div class="drawer-icon" style="background: rgba(139,92,246,.15); color: #a78bfa;">🌟</div>
+          <div class="drawer-label">الرقي الروحي</div>
+        </div>
+        <div class="drawer-item" onclick="navigateFromDrawer('habits')">
+          <div class="drawer-icon" style="background: rgba(57,211,83,.15); color: #39d353;">🔥</div>
+          <div class="drawer-label">العادات و XP</div>
+        </div>
+        <div class="drawer-item" onclick="navigateFromDrawer('analytics')">
+          <div class="drawer-icon" style="background: rgba(0,180,216,.15); color: #00b4d8;">📊</div>
+          <div class="drawer-label">التحليلات والتقدم</div>
+        </div>
+        <div class="drawer-item" onclick="navigateFromDrawer('ai')">
+          <div class="drawer-icon" style="background: rgba(26,86,219,.15); color: #60a5fa;">💬</div>
+          <div class="drawer-label">مساعد AI الذكي</div>
+        </div>
+        <div class="drawer-item" onclick="navigateFromDrawer('settings')">
+          <div class="drawer-icon" style="background: rgba(255,255,255,.08); color: #e2e8f0;">⚙️</div>
+          <div class="drawer-label">الإعدادات والملف</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="main" id="mainApp" style="display:none;">
     <!-- DASHBOARD -->
@@ -3479,7 +5039,7 @@
               <div>
                 <div class="dev-name">محمد عبد المطلب</div>
                 <div class="dev-role">⚡ Full-Stack Developer &amp; AI Engineer</div>
-                <div style="font-size:11px;color:var(--t3);margin-top:2px;">T.Tasks v4.0 · Puter AI · XP System</div>
+                <div style="font-size:11px;color:var(--t3);margin-top:2px;">T.Tasks · Puter AI · XP System</div>
               </div>
             </div>
           </div>
@@ -3521,11 +5081,158 @@
                 class="ti ti-trash"></i> حذف كل البيانات</button>
           </div>
           <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
-            <div style="font-size:12px;color:var(--t3);">T.Tasks v4.0 Puter AI Edition · XP System</div>
+            <div style="font-size:12px;color:var(--t3);">T.Tasks Puter AI Edition · XP System · AI Legends</div>
             <div style="font-size:11px;color:var(--t3);margin-top:2px;">by محمد عبد المطلب © 2026</div>
-            <div style="font-size:11px;color:var(--sky);margin-top:2px;">supported by Puter AI · gpt-5.4</div>
+            <div style="font-size:11px;color:var(--sky);margin-top:2px;">supported by Puter AI · gpt-5.4 · 7 Legendary
+              AI Features</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- AI TOOLS PAGE -->
+    <div class="page" id="page-aitools">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">أدوات AI الأسطورية <span style="font-size:14px;color:#c4b5fd;">🔥Exclusive</span>
+          </h1>
+          <p class="page-subtitle">7 ميزات ذكاء اصطناعي نادرة لم تُوجد في أي تطبيق مهام</p>
+        </div>
+        <span class="puter-badge"
+          style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(0,180,216,.1));border-color:rgba(124,58,237,.4);color:#c4b5fd;">🧠
+          Puter AI · gpt-5.4</span>
+      </div>
+
+      <!-- AI TOOLS GRID -->
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card purple" onclick="openFlowMode()">
+          <div class="ai-tool-badge hot">🔥 HOT</div>
+          <div class="ai-tool-icon"
+            style="background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(109,40,217,.15));">🧬</div>
+          <div class="ai-tool-name">وضع التدفق</div>
+          <div class="ai-tool-desc">ادخل وضع التركيز المطلق — مؤقت ذكي + محيط هادئ + حارس التدفق</div>
+        </div>
+        <div class="ai-tool-card blue" onclick="startVoiceAI()">
+          <div class="ai-tool-badge new">NEW</div>
+          <div class="ai-tool-icon" style="background:linear-gradient(135deg,rgba(26,86,219,.25),rgba(0,180,216,.15));">
+            🎤</div>
+          <div class="ai-tool-name">المساعد الصوتي</div>
+          <div class="ai-tool-desc">تحدث مع AI صوتياً — أضف مهامك وعاداتك بصوتك فقط بتقنية Puter Speech-to-Text</div>
+        </div>
+        <div class="ai-tool-card purple" onclick="openGoalMap()">
+          <div class="ai-tool-badge new">NEW</div>
+          <div class="ai-tool-icon"
+            style="background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(124,58,237,.15));">🎯</div>
+          <div class="ai-tool-name">خريطة الأهداف</div>
+          <div class="ai-tool-desc">أدخل هدفاً كبيراً واحداً وشاهد AI يُحوّله لخريطة مهام تفاعلية كاملة</div>
+        </div>
+        <div class="ai-tool-card orange" onclick="runTomorrowPredictor()">
+          <div class="ai-tool-badge hot">🔮</div>
+          <div class="ai-tool-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(251,191,36,.1));">
+            🔮</div>
+          <div class="ai-tool-name">تنبؤ الغد</div>
+          <div class="ai-tool-desc">AI يتنبأ بنسبة نجاحك غداً بناءً على نمط إنجازك التاريخي</div>
+        </div>
+        <div class="ai-tool-card green" onclick="generateWeeklyMirror()">
+          <div class="ai-tool-badge new">NEW</div>
+          <div class="ai-tool-icon" style="background:linear-gradient(135deg,rgba(57,211,83,.2),rgba(0,212,170,.1));">📊
+          </div>
+          <div class="ai-tool-name">مرآة الأسبوع</div>
+          <div class="ai-tool-desc">تقرير أسبوعي شخصي عميق من AI — ماذا أنجزت؟ أين تُبدع؟ كيف تتحسن؟</div>
+        </div>
+        <div class="ai-tool-card blue" onclick="openSleepTracker()">
+          <div class="ai-tool-badge new">NEW</div>
+          <div class="ai-tool-icon" style="background:linear-gradient(135deg,rgba(26,86,219,.2),rgba(0,180,216,.1));">🌙
+          </div>
+          <div class="ai-tool-name">مراقب النوم</div>
+          <div class="ai-tool-desc">سجّل جودة نومك وشاهد AI يكشف علاقته بإنتاجيتك</div>
+        </div>
+        <div class="ai-tool-card orange" onclick="showPage('tasks',document.querySelectorAll('.nav-item')[1])">
+          <div class="ai-tool-badge hot">⚡</div>
+          <div class="ai-tool-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(239,68,68,.1));">⚡
+          </div>
+          <div class="ai-tool-name">مسرّع المهام</div>
+          <div class="ai-tool-desc">انقر زر ⚡ في أي مهمة — AI يُعطيك الخطوة الأولى فوراً لتتغلب على التسويف</div>
+        </div>
+      </div>
+
+      <!-- FLOW STATE ZONE -->
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+          <span><i class="ti ti-brain" style="color:#c4b5fd;"></i> وضع التدفق — Flow State AI</span>
+          <button class="btn btn-sm" onclick="openFlowMode()"
+            style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(0,180,216,.1));border:1px solid rgba(124,58,237,.4);color:#c4b5fd;padding:7px 14px;font-size:11px;"><i
+              class="ti ti-player-play"></i> ابدأ التدفق</button>
+        </div>
+        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">اختر مهمة وادخل وضع التركيز المطلق — يُطفئ
+          المشتتات ويُشغّل مؤقت ذكي</p>
+        <div id="flowTaskSelect" style="display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto;">
+        </div>
+      </div>
+
+      <!-- GOAL MIND MAP -->
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title"><i class="ti ti-sitemap" style="color:#c4b5fd;"></i> خريطة الأهداف — Goal Mind Map AI
+        </div>
+        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">أدخل هدفاً كبيراً وشاهد AI يُفجّره لمراحل ومهام
+        </p>
+        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+          <input class="task-input" id="goalMapInput" placeholder="مثال: أريد إطلاق مشروعي الخاص خلال 3 أشهر..."
+            style="flex:1;min-width:200px;">
+          <button class="btn btn-sm" onclick="generateGoalMap()"
+            style="background:linear-gradient(135deg,#7c3aed,#00b4d8);color:#fff;border:none;padding:0 16px;min-height:40px;"><i
+              class="ti ti-sparkles"></i> ولّد الخريطة</button>
+        </div>
+        <div id="goalMapResult" style="min-height:60px;"></div>
+      </div>
+
+      <!-- TOMORROW PREDICTOR -->
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+          <span><i class="ti ti-telescope" style="color:#c4b5fd;"></i> تنبؤ الغد — Tomorrow Predictor AI</span>
+          <button class="btn btn-sm" onclick="runTomorrowPredictor()"
+            style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(245,158,11,.1));border:1px solid rgba(124,58,237,.3);color:#c4b5fd;padding:7px 14px;font-size:11px;"><i
+              class="ti ti-refresh"></i> تحليل الآن</button>
+        </div>
+        <div id="tomorrowPredictorResult">
+          <div style="color:var(--t3);font-size:12px;text-align:center;padding:20px;">انقر "تحليل الآن" لرؤية توقعات غدك
+            من AI</div>
+        </div>
+      </div>
+
+      <!-- WEEKLY MIRROR -->
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+          <span><i class="ti ti-mirror" style="color:var(--sky);"></i> مرآة الأسبوع — AI Weekly Mirror</span>
+          <button class="btn btn-sm" onclick="generateWeeklyMirror()"
+            style="background:linear-gradient(135deg,rgba(0,180,216,.15),rgba(26,86,219,.1));border:1px solid rgba(0,180,216,.3);color:var(--sky);padding:7px 14px;font-size:11px;"><i
+              class="ti ti-sparkles"></i> أنشئ التقرير</button>
+        </div>
+        <div id="weeklyMirrorResult">
+          <div style="color:var(--t3);font-size:12px;text-align:center;padding:20px;">انقر "أنشئ التقرير" لتحصل على
+            تحليل أسبوعك من AI</div>
+        </div>
+      </div>
+
+      <!-- SLEEP TRACKER -->
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title"><i class="ti ti-moon" style="color:#c4b5fd;"></i> مراقب النوم والإنتاجية</div>
+        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">سجّل جودة نومك اليومي وشاهد تأثيره على مهامك</p>
+        <div style="margin-bottom:14px;">
+          <div style="font-size:12px;color:var(--t2);margin-bottom:8px;">كيف نمت الليلة الماضية؟</div>
+          <div class="sleep-rating" id="sleepRating">
+            <button class="sleep-star" onclick="rateSleep(1)" data-val="1">😴</button>
+            <button class="sleep-star" onclick="rateSleep(2)" data-val="2">😑</button>
+            <button class="sleep-star" onclick="rateSleep(3)" data-val="3">😊</button>
+            <button class="sleep-star" onclick="rateSleep(4)" data-val="4">😄</button>
+            <button class="sleep-star" onclick="rateSleep(5)" data-val="5">🤩</button>
+          </div>
+        </div>
+        <div id="sleepCorrelationChart">
+          <div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته
+            بإنتاجيتك</div>
+        </div>
+        <div id="sleepAIInsight" style="margin-top:10px;"></div>
       </div>
     </div>
   </main>
@@ -3534,6 +5241,15 @@
     <div class="notif-title" id="notifTitle"></div>
     <div id="notifBody"></div>
   </div>
+
+  <!-- VOICE AI FLOATING BUTTON -->
+  <button class="voice-fab" id="voiceFab" onclick="startVoiceAI()" title="المساعد الصوتي">
+    <i class="ti ti-microphone"></i>
+  </button>
+  <div class="voice-tooltip" id="voiceTooltip">🎤 تحدث مع AI صوتياً</div>
+
+  <!-- FLOW GUARD -->
+  <div class="flow-guard" id="flowGuard">⚠️ أنت في وضع التدفق! تجنب التشتت.</div>
 
   <script>
     // ===== STATE =====
@@ -3662,10 +5378,10 @@
       for (let i = 0; i < (window.innerWidth < 600 ? 16 : 30); i++) { const s = document.createElement('span'); s.style.cssText = `left:${Math.random() * 100}%;animation-duration:${4 + Math.random() * 8}s;animation-delay:${Math.random() * 5}s;background:${Math.random() > .5 ? '#00b4d8' : '#39d353'};`; pContainer.appendChild(s); }
       const barsEl = document.getElementById('introBars');
       [30, 50, 80, 60, 90, 70, 55, 85, 65, 40].forEach((h, i) => { const bar = document.createElement('div'); bar.className = 'intro-bar'; bar.style.cssText = `height:${h}px;--d:${1.1 + i * .06}s`; barsEl.appendChild(bar); });
-      let prog = 0; const texts = ['جارٍ تهيئة Puter AI...', 'تحميل نظام XP...', 'تحميل gpt-5.4...', 'جاهز! 🚀'];
+      let prog = 0; const texts = ['تهيئة محرك التخطيط الذكي...', 'تحميل المساعد الشخصي وصوت AI...', 'تجهيز مؤشرات الأداء ونظام XP...', 'مستعدون للانطلاق! 🚀'];
       const fill = document.getElementById('introProgFill'), txt = document.getElementById('introProgText');
       const iv = setInterval(() => {
-        prog += Math.random() * 4 + 2; if (prog >= 100) prog = 100; fill.style.width = prog + '%';
+        prog += Math.random() * 1.6 + 0.8; if (prog >= 100) prog = 100; fill.style.width = prog + '%';
         txt.textContent = prog < 30 ? texts[0] : prog < 60 ? texts[1] : prog < 85 ? texts[2] : texts[3];
         if (prog >= 100) { clearInterval(iv); setTimeout(() => { const s = document.getElementById('introScreen'); s.style.transition = 'opacity .6s ease'; s.style.opacity = '0'; setTimeout(() => { s.style.display = 'none'; if (window.innerWidth <= 700) document.getElementById('mobileBottomNav').style.display = 'flex'; else document.getElementById('mainSidebar').style.display = 'flex'; document.getElementById('mainApp').style.display = 'block'; checkFirstRun(); }, 600); }, 600); }
       }, 80);
@@ -4198,6 +5914,789 @@
     function showNotif(title, body) { const n = document.getElementById('notification'); document.getElementById('notifTitle').textContent = title; document.getElementById('notifBody').textContent = body; n.style.display = 'block'; setTimeout(() => { n.style.display = 'none'; }, 3500); }
     function syncNavVisibility() { const isMobile = window.innerWidth <= 700; const sidebar = document.getElementById('mainSidebar'), bnav = document.getElementById('mobileBottomNav'); if (document.getElementById('introScreen').style.display !== 'none') return; if (isMobile) { sidebar.style.display = 'none'; bnav.style.display = 'flex'; } else { sidebar.style.display = 'flex'; bnav.style.display = 'none'; } }
     window.addEventListener('resize', syncNavVisibility);
+
+    // ===== LEGENDARY AI FEATURES v5 =====
+
+    // ─── 1. VOICE AI COMMANDER ─────────────────────────────────────────────
+    let voiceRecording = false;
+    let mediaRecorderInst = null;
+    let audioChunks = [];
+
+    async function startVoiceAI() {
+      if (voiceRecording) return;
+      const overlay = buildVoiceOverlay('🎤 تحدث الآن — أخبرني بما تريد...', true);
+      document.body.appendChild(overlay);
+      voiceRecording = true;
+      document.getElementById('voiceFab').classList.add('listening');
+      const btn = overlay.querySelector('.voice-cancel-btn');
+      btn.onclick = () => stopVoiceRecording(overlay, null);
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorderInst = new MediaRecorder(stream);
+        audioChunks = [];
+        mediaRecorderInst.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+        mediaRecorderInst.onstop = async () => {
+          stream.getTracks().forEach(t => t.stop());
+          const blob = new Blob(audioChunks, { type: 'audio/webm' });
+          await processVoiceBlob(blob, overlay);
+        };
+        mediaRecorderInst.start();
+        // Auto-stop after 8 seconds
+        setTimeout(() => { if (voiceRecording && mediaRecorderInst?.state === 'recording') mediaRecorderInst.stop(); }, 8000);
+      } catch (err) {
+        // Fallback: use Web Speech API
+        document.body.removeChild(overlay);
+        document.getElementById('voiceFab').classList.remove('listening');
+        voiceRecording = false;
+        startWebSpeechFallback();
+      }
+    }
+
+    async function processVoiceBlob(blob, overlay) {
+      overlay.querySelector('.voice-status-text').textContent = '🧠 AI يعالج كلامك...';
+      overlay.querySelector('.voice-wave').style.display = 'none';
+      try {
+        // Use Puter AI speech2txt
+        const transcript = await puter.ai.speech2txt(blob);
+        const text = transcript?.text || transcript || '';
+        if (text && text.trim().length > 2) {
+          await handleVoiceText(text.trim(), overlay);
+        } else {
+          showVoiceError(overlay, 'لم أسمع شيئاً واضحاً — حاول مجدداً');
+        }
+      } catch (e) {
+        console.warn('Puter speech2txt error:', e);
+        // Fallback to Web Speech
+        document.body.removeChild(overlay);
+        document.getElementById('voiceFab').classList.remove('listening');
+        voiceRecording = false;
+        startWebSpeechFallback();
+      }
+    }
+
+    async function handleVoiceText(text, overlay) {
+      document.getElementById('voiceFab').classList.remove('listening');
+      voiceRecording = false;
+      overlay.querySelector('.voice-status-text').textContent = '✨ فهمت: "' + text + '"';
+
+      const intentPrompt = `حلل النص الصوتي للمستخدم: "${text}"
+حدد النية بدقة بكلمة واحدة بالإنجليزية:
+- إذا كان يريد القيام بعمل أو مهمة في وقت محدد أو اليوم (مثل: "أريد أن أتمرن"، "سجل مهمة"، "تذكير بـ..."): أجب بـ "task"
+- إذا كان يريد بناء عادة أو تكرار سلوك (مثل: "أضف عادة القراءة"، "أريد التعود على..."): أجب بـ "habit"
+- غير ذلك (سؤال، استفسار، دردشة): أجب بـ "chat"`;
+
+      try {
+        const intentResp = await callAI(intentPrompt);
+        const intent = intentResp.trim().toLowerCase();
+
+        if (intent.includes('task')) {
+          overlay.querySelector('.voice-status-text').textContent = '⏳ جارٍ جدولة المهمة...';
+          const parsed = await parseTaskWithAI(text);
+          addTaskFromParsed(parsed);
+          finishVoiceOverlay(overlay, '✅ تمت إضافة المهمة!', parsed.name, `الوقت: ${parsed.taskTime || 'غير محدد'} | الأولوية: ${priLabel(parsed.priority)}`);
+          return;
+        } else if (intent.includes('habit')) {
+          overlay.querySelector('.voice-status-text').textContent = '⏳ جارٍ إضافة العادة...';
+          const habitPrompt = `المستخدم قال: "${text}"
+استخرج اسم العادة فقط باختصار شديد (مثال: "تمرين رياضي"، "قراءة يومية").
+أجب بالاسم فقط بدون أي كلمات أخرى.`;
+          const habitName = (await callAI(habitPrompt)).trim();
+          const nameToUse = habitName || text;
+          habits.good.push({ id: Date.now(), name: nameToUse, icon: '⭐', days: [false, false, false, false, false, false, false], freq: 'daily', targetDays: [0, 1, 2, 3, 4, 5, 6], xpValue: 15, streak: 0, totalDone: 0 });
+          saveAll(); renderHabits();
+          finishVoiceOverlay(overlay, '🌟 تمت إضافة العادة!', nameToUse, 'تمت إضافتها بنجاح لعاداتك اليومية');
+          return;
+        }
+      } catch (e) {
+        console.warn('Voice processing error:', e);
+      }
+
+      overlay.querySelector('.voice-status-text').textContent = '💬 جارٍ الرد...';
+      try {
+        const reply = await callAI(`أجب باختصار شديد (لا يتجاوز جملتين) باللغة العربية على قول المستخدم: "${text}"`);
+        finishVoiceOverlay(overlay, '💬 رد المساعد:', reply, '');
+      } catch (e) {
+        finishVoiceOverlay(overlay, '💬 سمعت:', text, 'تمت المعالجة');
+      }
+    }
+
+    function stopVoiceRecording(overlay, blob) {
+      voiceRecording = false;
+      document.getElementById('voiceFab').classList.remove('listening');
+      if (mediaRecorderInst && mediaRecorderInst.state === 'recording') {
+        mediaRecorderInst.stop();
+      } else if (overlay) {
+        try { document.body.removeChild(overlay); } catch (e) { }
+      }
+    }
+
+    function startWebSpeechFallback() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        showNotif('⚠️ تحذير', 'المتصفح لا يدعم التعرف على الكلام. جرب Chrome.'); return;
+      }
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SR();
+      recognition.lang = 'ar-SA'; recognition.continuous = false; recognition.interimResults = false;
+      const overlay = buildVoiceOverlay('🎤 تحدث الآن...', true);
+      document.body.appendChild(overlay);
+      voiceRecording = true;
+      document.getElementById('voiceFab').classList.add('listening');
+      overlay.querySelector('.voice-cancel-btn').onclick = () => { recognition.stop(); };
+      recognition.onresult = async e => {
+        const text = e.results[0][0].transcript;
+        await handleVoiceText(text, overlay);
+      };
+      recognition.onerror = recognition.onend = () => {
+        if (voiceRecording) {
+          voiceRecording = false;
+          document.getElementById('voiceFab').classList.remove('listening');
+          try { document.body.removeChild(overlay); } catch (e) { }
+        }
+      };
+      recognition.start();
+    }
+
+    function buildVoiceOverlay(statusText, showCancel) {
+      const el = document.createElement('div');
+      el.className = 'voice-overlay';
+      el.id = 'voiceOverlay';
+      el.innerHTML = `
+        <div class="voice-wave">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="voice-status-text">${statusText}</div>
+        ${showCancel ? '<button class="voice-cancel-btn">إلغاء</button>' : ''}
+      `;
+      return el;
+    }
+
+    function finishVoiceOverlay(overlay, title, subtitle, extra) {
+      overlay.innerHTML = `
+        <div class="voice-result-card">
+          <div style="font-size:32px;margin-bottom:12px;">🎙️</div>
+          <div class="voice-result-text">${title}<br><strong style="color:#fff;">${subtitle}</strong></div>
+          ${extra ? `<div class="voice-result-sub" style="margin-top:6px;">${extra}</div>` : ''}
+          <button class="voice-cancel-btn" style="margin-top:14px;" onclick="document.body.removeChild(document.getElementById('voiceOverlay'))">حسناً ✓</button>
+        </div>
+      `;
+      setTimeout(() => { try { document.body.removeChild(overlay); } catch (e) { } }, 4000);
+    }
+
+    function showVoiceError(overlay, msg) {
+      overlay.innerHTML = `<div class="voice-result-card"><div style="font-size:32px;margin-bottom:12px;">⚠️</div><div class="voice-result-text">${msg}</div><button class="voice-cancel-btn" style="margin-top:14px;" onclick="document.body.removeChild(document.getElementById('voiceOverlay'))">حسناً</button></div>`;
+      document.getElementById('voiceFab').classList.remove('listening');
+      voiceRecording = false;
+    }
+
+    // ─── 2. FLOW STATE MODE ────────────────────────────────────────────────
+    let flowTimerInterval = null;
+    let flowSeconds = 0;
+    let flowTotalSeconds = 25 * 60;
+    let flowTaskName = '';
+    let flowRunning = false;
+    let flowMode = 25;
+
+    function openFlowMode(taskId) {
+      renderFlowTaskList();
+      if (taskId) {
+        const t = tasks.find(x => x.id === taskId);
+        if (t) startFlowWithTask(t);
+        return;
+      }
+      const el = document.getElementById('flowTaskSelect');
+      const pending = tasks.filter(t => !t.done).slice(0, 8);
+      el.innerHTML = pending.length ? pending.map(t => `
+        <div class="task-item" style="cursor:pointer;padding:9px 12px;" onclick="startFlowWithTask(${JSON.stringify(t).replace(/"/g, "'")})">
+          <span style="flex:1;font-size:13px;">${t.name}</span>
+          <span class="tag ${t.priority}">${priLabel(t.priority)}</span>
+          <button class="btn btn-sm" style="background:linear-gradient(135deg,#7c3aed,#00b4d8);color:#fff;border:none;padding:5px 12px;font-size:11px;" onclick="event.stopPropagation();startFlowWithTaskId(${t.id})">▶ ابدأ</button>
+        </div>`).join('') : '<div style="color:var(--t3);font-size:12px;padding:12px;text-align:center;">أضف مهاماً أولاً</div>';
+      showPage('aitools', document.querySelectorAll('.nav-item')[7]);
+    }
+
+    function renderFlowTaskList() {
+      const el = document.getElementById('flowTaskSelect');
+      if (!el) return;
+      const pending = tasks.filter(t => !t.done).slice(0, 8);
+      el.innerHTML = pending.length ? pending.map(t => `
+        <div class="task-item" style="cursor:pointer;padding:9px 12px;">
+          <span style="flex:1;font-size:13px;">${t.name}</span>
+          <span class="tag ${t.priority}">${priLabel(t.priority)}</span>
+          <button class="btn btn-sm" style="background:linear-gradient(135deg,#7c3aed,#00b4d8);color:#fff;border:none;padding:5px 12px;font-size:11px;" onclick="startFlowWithTaskId(${t.id})">▶ ابدأ</button>
+        </div>`).join('') : '<div style="color:var(--t3);font-size:12px;padding:12px;text-align:center;">أضف مهاماً أولاً</div>';
+    }
+
+    function startFlowWithTaskId(id) {
+      const t = tasks.find(x => x.id === id);
+      if (t) startFlowWithTask(t);
+    }
+
+    function startFlowWithTask(task) {
+      flowTaskName = task.name;
+      flowMode = 25; flowTotalSeconds = 25 * 60; flowSeconds = flowTotalSeconds;
+      buildFlowOverlay();
+    }
+
+    function buildFlowOverlay() {
+      const existing = document.getElementById('flowOverlay');
+      if (existing) document.body.removeChild(existing);
+      const circumference = 2 * Math.PI * 88;
+      const el = document.createElement('div');
+      el.className = 'flow-overlay'; el.id = 'flowOverlay';
+      el.innerHTML = `
+        <div class="flow-ambient"></div>
+        <svg style="position:absolute;width:0;height:0"><defs><linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#00b4d8"/></linearGradient></defs></svg>
+        <div class="flow-session-badge">🧬 وضع التدفق النشط</div>
+        <div class="flow-mode-pills">
+          <button class="flow-pill active" id="fp25" onclick="setFlowMode(25)">⏱ 25 دقيقة</button>
+          <button class="flow-pill" id="fp45" onclick="setFlowMode(45)">🎯 45 دقيقة</button>
+          <button class="flow-pill" id="fp90" onclick="setFlowMode(90)">🔥 90 دقيقة</button>
+        </div>
+        <div class="flow-task-name" id="flowTaskNameEl">${flowTaskName}</div>
+        <div class="flow-timer-ring">
+          <svg class="flow-timer-svg" viewBox="0 0 200 200">
+            <circle class="flow-ring-bg" cx="100" cy="100" r="88"></circle>
+            <circle class="flow-ring-fill" id="flowRingEl" cx="100" cy="100" r="88"
+              stroke-dasharray="${circumference}"
+              stroke-dashoffset="0"></circle>
+          </svg>
+          <div class="flow-timer-center">
+            <div class="flow-timer-num" id="flowTimerNum">25:00</div>
+            <div class="flow-timer-label" id="flowTimerLabel">ابدأ التدفق</div>
+          </div>
+        </div>
+        <div class="flow-controls">
+          <button class="flow-btn primary" id="flowStartBtn" onclick="toggleFlowTimer()">▶ ابدأ</button>
+          <button class="flow-btn" onclick="resetFlowTimer()">↺ إعادة</button>
+          <button class="flow-btn danger" onclick="exitFlowMode()">✕ إنهاء</button>
+        </div>
+      `;
+      document.body.appendChild(el);
+      document.getElementById('flowGuard').style.display = 'none';
+    }
+
+    function setFlowMode(mins) {
+      flowMode = mins; flowTotalSeconds = mins * 60; flowSeconds = flowTotalSeconds;
+      flowRunning = false; clearInterval(flowTimerInterval);
+      document.getElementById('flowStartBtn').textContent = '▶ ابدأ';
+      document.querySelectorAll('.flow-pill').forEach(p => p.classList.remove('active'));
+      document.getElementById('fp' + mins)?.classList.add('active');
+      updateFlowDisplay();
+    }
+
+    function toggleFlowTimer() {
+      if (flowRunning) {
+        clearInterval(flowTimerInterval); flowRunning = false;
+        document.getElementById('flowStartBtn').textContent = '▶ استأنف';
+        document.getElementById('flowTimerLabel').textContent = 'متوقف مؤقتاً';
+        document.getElementById('flowGuard').style.display = 'none';
+      } else {
+        flowRunning = true;
+        document.getElementById('flowStartBtn').textContent = '⏸ إيقاف';
+        document.getElementById('flowTimerLabel').textContent = 'التدفق نشط 🔥';
+        document.getElementById('flowGuard').style.display = 'block';
+        flowTimerInterval = setInterval(() => {
+          flowSeconds--;
+          updateFlowDisplay();
+          if (flowSeconds <= 0) {
+            clearInterval(flowTimerInterval); flowRunning = false;
+            onFlowComplete();
+          }
+        }, 1000);
+      }
+    }
+
+    function updateFlowDisplay() {
+      const mins = Math.floor(flowSeconds / 60), secs = flowSeconds % 60;
+      const timeStr = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+      const numEl = document.getElementById('flowTimerNum');
+      const ringEl = document.getElementById('flowRingEl');
+      if (numEl) numEl.textContent = timeStr;
+      if (ringEl) {
+        const circumference = 2 * Math.PI * 88;
+        const progress = flowSeconds / flowTotalSeconds;
+        ringEl.style.strokeDashoffset = circumference * (1 - progress);
+      }
+    }
+
+    function resetFlowTimer() {
+      clearInterval(flowTimerInterval); flowRunning = false;
+      flowSeconds = flowTotalSeconds;
+      document.getElementById('flowStartBtn').textContent = '▶ ابدأ';
+      document.getElementById('flowTimerLabel').textContent = 'ابدأ التدفق';
+      document.getElementById('flowGuard').style.display = 'none';
+      updateFlowDisplay();
+    }
+
+    async function onFlowComplete() {
+      const el = document.getElementById('flowOverlay');
+      if (el) {
+        document.getElementById('flowTimerLabel').textContent = '🎉 انتهت الجلسة!';
+        document.getElementById('flowStartBtn').textContent = '🏆 مكتملة!';
+      }
+      document.getElementById('flowGuard').style.display = 'none';
+      addXP(flowMode >= 45 ? 40 : flowMode >= 25 ? 25 : 15, `أكملت جلسة تدفق ${flowMode} دقيقة!`);
+      showNotif('🧬 جلسة تدفق مكتملة!', `${flowMode} دقيقة تركيز — +${flowMode >= 45 ? 40 : 25} XP!`);
+      sendBrowserNotif('🎉 جلسة تدفق منتهية!', 'رائع! أنجزت ' + flowMode + ' دقيقة تدفق كاملة!');
+      setTimeout(() => exitFlowMode(), 3000);
+    }
+
+    function exitFlowMode() {
+      clearInterval(flowTimerInterval); flowRunning = false;
+      document.getElementById('flowGuard').style.display = 'none';
+      const el = document.getElementById('flowOverlay');
+      if (el) { el.style.opacity = '0'; el.style.transition = 'opacity .4s'; setTimeout(() => { try { document.body.removeChild(el); } catch (e) { } }, 400); }
+    }
+
+    // ─── 3. TASK ACCELERATION ENGINE ────────────────────────────────────────
+    async function accelerateTask(taskId) {
+      const task = tasks.find(t => t.id === taskId);
+      if (!task) return;
+      // Remove existing popup
+      const oldBg = document.getElementById('accelBg');
+      const oldPopup = document.getElementById('accelPopup');
+      if (oldBg) document.body.removeChild(oldBg);
+      if (oldPopup) document.body.removeChild(oldPopup);
+
+      // Show loading popup
+      const bg = document.createElement('div');
+      bg.className = 'accel-overlay-bg'; bg.id = 'accelBg';
+      bg.onclick = closeAccelPopup;
+      document.body.appendChild(bg);
+
+      const popup = document.createElement('div');
+      popup.className = 'accel-popup'; popup.id = 'accelPopup';
+      popup.innerHTML = `
+        <div class="accel-header">
+          <div class="accel-icon">⚡</div>
+          <div><div class="accel-title">مسرّع AI</div><div class="accel-task-name">${task.name}</div></div>
+        </div>
+        <div style="text-align:center;padding:20px;color:var(--t3);">
+          <div class="typing-dots"><span></span><span></span><span></span></div>
+          <div style="margin-top:8px;font-size:12px;">AI يحلل مهمتك...</div>
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      const prompt = `أنت خبير إنتاجية. المستخدم يتسوّف في البدء بمهمة: "${task.name}" (أولوية: ${task.priority}).
+أعطه:
+1. الخطوة الأولى الواحدة فقط (جملة واحدة بسيطة جداً لا تتجاوز 15 كلمة)
+2. استراتيجية التنفيذ (جملتان)
+3. جملة تحفيزية واحدة مختصرة
+أجب بـ JSON: {"firstStep":"...","strategy":"...","motivation":"..."}`;
+
+      try {
+        const resp = await callAI(prompt);
+        const match = resp.match(/\{[\s\S]*?\}/);
+        let firstStep = 'افتح الملف أو الأداة المطلوبة والبدأ بأول سطر';
+        let strategy = 'قسّم المهمة لأجزاء صغيرة وابدأ بأسهلها. استخدم تقنية 2 دقيقة.';
+        let motivation = 'أصعب جزء هو البدء — بعد 2 دقيقة ستجد نفسك منغمساً!';
+        if (match) {
+          const d = JSON.parse(match[0]);
+          firstStep = d.firstStep || firstStep;
+          strategy = d.strategy || strategy;
+          motivation = d.motivation || motivation;
+        }
+        popup.innerHTML = `
+          <div class="accel-header">
+            <div class="accel-icon">⚡</div>
+            <div><div class="accel-title">مسرّع AI</div><div class="accel-task-name">${task.name}</div></div>
+            <button onclick="closeAccelPopup()" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:18px;margin-right:auto;">×</button>
+          </div>
+          <div class="accel-section">
+            <div class="accel-section-label">⚡ الخطوة الأولى الآن</div>
+            <div class="accel-first-step">${firstStep}</div>
+          </div>
+          <div class="accel-section">
+            <div class="accel-section-label">🧠 الاستراتيجية</div>
+            <div class="accel-strategy">${strategy}</div>
+          </div>
+          <div style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);border-radius:10px;padding:10px 12px;font-size:12.5px;color:#fbbf24;margin-bottom:12px;">
+            ✨ ${motivation}
+          </div>
+          <button class="accel-start-btn" onclick="closeAccelPopup();startFlowWithTaskId(${task.id})">🧬 ابدأ وضع التدفق الآن</button>
+        `;
+      } catch (e) {
+        popup.innerHTML = `<div style="padding:20px;text-align:center;"><div style="font-size:14px;color:var(--t2);">ابدأ بخطوة واحدة صغيرة الآن! 🚀</div><button onclick="closeAccelPopup()" class="btn btn-ghost btn-sm" style="margin-top:12px;">إغلاق</button></div>`;
+      }
+    }
+
+    function closeAccelPopup() {
+      const bg = document.getElementById('accelBg');
+      const popup = document.getElementById('accelPopup');
+      if (bg) { bg.style.opacity = '0'; setTimeout(() => { try { document.body.removeChild(bg); } catch (e) { } }, 300); }
+      if (popup) { popup.style.opacity = '0'; popup.style.transform = 'translate(-50%,-50%) scale(.85)'; popup.style.transition = 'all .3s'; setTimeout(() => { try { document.body.removeChild(popup); } catch (e) { } }, 300); }
+    }
+
+    // Override analyzeOneTask to also offer acceleration
+    const _oldAnalyzeOneTask = typeof analyzeOneTask !== 'undefined' ? analyzeOneTask : null;
+    function analyzeOneTask(id) { accelerateTask(id); }
+
+    // ─── 4. GOAL MIND MAP AI ────────────────────────────────────────────────
+    async function generateGoalMap() {
+      const input = document.getElementById('goalMapInput');
+      const goal = input?.value?.trim();
+      if (!goal) { showNotif('💡', 'أدخل هدفاً أولاً'); return; }
+      const resultEl = document.getElementById('goalMapResult');
+      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يُنشئ خريطة أهدافك...</div></div>`;
+
+      const prompt = `أنت خبير تخطيط استراتيجي. الهدف الكبير: "${goal}"
+قسّمه لـ 3-4 مراحل، كل مرحلة فيها 2-4 مهام عملية.
+أجب بـ JSON فقط:
+{"goal":"${goal}","phases":[{"name":"اسم المرحلة","icon":"emoji","tasks":["مهمة1","مهمة2","مهمة3"]}]}`;
+
+      try {
+        const resp = await callAI(prompt);
+        const match = resp.match(/\{[\s\S]*\}/);
+        if (!match) throw new Error('no json');
+        const data = JSON.parse(match[0]);
+        renderGoalMap(data, resultEl);
+      } catch (e) {
+        resultEl.innerHTML = `<div style="color:var(--danger);font-size:12px;padding:12px;">حدث خطأ — حاول مجدداً</div>`;
+      }
+    }
+
+    function renderGoalMap(data, container) {
+      let html = `
+        <div class="mindmap-central">
+          <span style="font-size:24px;">🎯</span>
+          <span>${data.goal}</span>
+        </div>
+      `;
+      const colors = ['rgba(0,180,216,.3)', 'rgba(124,58,237,.3)', 'rgba(57,211,83,.3)', 'rgba(245,158,11,.3)'];
+      const allTasks = [];
+      if (data.phases) {
+        data.phases.forEach((phase, pi) => {
+          html += `<div class="mindmap-branch">
+            <div class="mindmap-phase" style="color:${['var(--sky)', '#c4b5fd', 'var(--green)', 'var(--gold)'][pi % 4]};">
+              ${phase.icon || '📌'} ${phase.name}
+            </div>`;
+          if (phase.tasks) {
+            phase.tasks.forEach((task, ti) => {
+              const tid = `mmtask_${pi}_${ti}`;
+              allTasks.push({ id: tid, name: task });
+              html += `<div class="mindmap-task" id="${tid}">
+                <div class="mindmap-task-checkbox" onclick="toggleMindMapTask('${tid}')"></div>
+                <span>${task}</span>
+              </div>`;
+            });
+          }
+          html += `</div>`;
+        });
+      }
+      html += `
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-primary btn-sm" onclick="addAllMapTasks(${JSON.stringify(allTasks.map(t => t.name)).replace(/"/g, "'")})">
+            <i class="ti ti-plus"></i> إضافة كل المهام
+          </button>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('goalMapInput').value='';document.getElementById('goalMapResult').innerHTML='';">مسح</button>
+        </div>
+      `;
+      container.innerHTML = html;
+    }
+
+    function toggleMindMapTask(id) {
+      const el = document.querySelector(`#${id} .mindmap-task-checkbox`);
+      if (el) el.classList.toggle('checked');
+    }
+
+    function addAllMapTasks(taskNames) {
+      const names = typeof taskNames === 'string' ? JSON.parse(taskNames.replace(/'/g, '"')) : taskNames;
+      names.forEach(name => {
+        tasks.push({ id: Date.now() + Math.random(), name, priority: 'med', category: 'personal', done: false, progress: 0, taskTime: '', taskDate: new Date().toISOString().split('T')[0], createdAt: new Date().toISOString() });
+      });
+      saveAll(); renderTasks(); updateStats(); renderDashboard();
+      showNotif('🎯 تمت الإضافة!', `أُضيفت ${names.length} مهام من خريطة الأهداف`);
+      addXP(names.length * 5, `أنشأت خريطة أهداف بـ ${names.length} مهام!`);
+    }
+
+    function openGoalMap() {
+      showPage('aitools', document.querySelectorAll('.nav-item')[7]);
+      setTimeout(() => document.getElementById('goalMapInput')?.focus(), 300);
+    }
+
+    // ─── 5. TOMORROW PREDICTOR AI ───────────────────────────────────────────
+    async function runTomorrowPredictor() {
+      const resultEl = document.getElementById('tomorrowPredictorResult');
+      if (!resultEl) { showPage('aitools', document.querySelectorAll('.nav-item')[7]); return; }
+      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يحلل نمط إنجازك...</div></div>`;
+
+      const total = tasks.length, done = tasks.filter(t => t.done).length;
+      const completionRate = total > 0 ? Math.round(done / total * 100) : 0;
+      const now = new Date();
+      const dayName = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][(now.getDay() + 1) % 7];
+      const pending = tasks.filter(t => !t.done).slice(0, 5);
+      const sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+      const lastSleep = Object.entries(sleepData).slice(-3).map(([d, v]) => v).join(',');
+
+      const prompt = `أنت خبير تنبؤ بالإنتاجية. بيانات المستخدم:
+- معدل الإنجاز الكلي: ${completionRate}%
+- مهام معلقة: ${pending.length}
+- غداً: ${dayName}
+- جودة النوم الأخيرة: ${lastSleep || 'غير متاحة'}
+- XP الكلي: ${xpData.total}
+بناءً على هذه البيانات، تنبأ بنسبة نجاح المستخدم غداً (رقم من 0-100) وأعطه توصيات.
+أجب بـ JSON: {"probability":75,"dayType":"منتج","insight":"...","tips":["نصيحة1","نصيحة2"],"bestTime":"الصباح الباكر"}`;
+
+      try {
+        const resp = await callAI(prompt);
+        const match = resp.match(/\{[\s\S]*?\}/);
+        let prob = completionRate, dayType = 'عادي', insight = 'استمر في جهودك!', tips = ['ابدأ بأصعب مهمة في الصباح', 'خذ استراحات منتظمة'], bestTime = 'الصباح';
+        if (match) {
+          const d = JSON.parse(match[0]);
+          prob = d.probability || prob; dayType = d.dayType || dayType;
+          insight = d.insight || insight; tips = d.tips || tips; bestTime = d.bestTime || bestTime;
+        }
+        const color = prob >= 70 ? '#39d353' : prob >= 40 ? '#fbbf24' : '#f43f5e';
+        resultEl.innerHTML = `
+          <div class="predictor-card">
+            <div class="predictor-badge">🔮 توقع AI ليوم ${dayName}</div>
+            <div class="predictor-score">
+              <div class="predictor-pct">${prob}%</div>
+              <div class="predictor-text">
+                <strong style="color:${color};">${dayType}</strong><br>
+                ${insight}
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--t3);margin-bottom:10px;">⏰ أفضل وقت للعمل: <strong style="color:var(--sky);">${bestTime}</strong></div>
+            <div class="predictor-tasks">
+              ${pending.map((t, i) => {
+          const taskProb = Math.max(10, prob - i * 8);
+          const barColor = taskProb >= 60 ? '#39d353' : taskProb >= 35 ? '#fbbf24' : '#f43f5e';
+          return `<div class="predictor-task-row">
+                  <div class="predictor-task-prob" style="color:${barColor};">${taskProb}%</div>
+                  <div class="predictor-task-bar-wrap"><div class="predictor-task-bar" style="width:${taskProb}%;background:${barColor};"></div></div>
+                  <div class="predictor-task-name">${t.name.substring(0, 30)}${t.name.length > 30 ? '...' : ''}</div>
+                </div>`;
+        }).join('')}
+            </div>
+            ${tips.length ? `<div style="margin-top:12px;display:flex;flex-direction:column;gap:5px;">${tips.map(tip => `<div style="font-size:12px;color:var(--t2);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--sky);flex-shrink:0;">💡</span>${tip}</div>`).join('')}</div>` : ''}
+          </div>
+        `;
+      } catch (e) {
+        resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر التنبؤ — تأكد من الاتصال بالإنترنت</div>`;
+      }
+    }
+
+    // ─── 6. AI WEEKLY MIRROR ────────────────────────────────────────────────
+    async function generateWeeklyMirror() {
+      const resultEl = document.getElementById('weeklyMirrorResult');
+      if (!resultEl) { showPage('aitools', document.querySelectorAll('.nav-item')[7]); return; }
+      resultEl.innerHTML = `<div style="text-align:center;padding:20px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:8px;font-size:12px;">AI يُنشئ تقريرك الأسبوعي...</div></div>`;
+
+      const today = new Date();
+      let weekDone = 0, weekTotal = 0;
+      const dayNames = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'];
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(today); d.setDate(d.getDate() - i);
+        const ds = d.toISOString().split('T')[0];
+        const dayDone = tasks.filter(t => t.done && t.createdAt?.startsWith(ds)).length;
+        const dayAll = tasks.filter(t => t.createdAt?.startsWith(ds)).length;
+        weekDone += dayDone; weekTotal += dayAll;
+      }
+      const totalPrayers = Object.values(prayerLogData).slice(-7).reduce((s, d) => s + Object.keys(d).length, 0);
+      const totalHabits = habits.good.filter(h => h.days.some(Boolean)).length;
+      const completionRate = weekTotal > 0 ? Math.round(weekDone / weekTotal * 100) : 0;
+
+      const prompt = `أنت مرشد إنتاجية شخصي. تقرير الأسبوع للمستخدم ${settings.name}:
+- مهام أُنجزت هذا الأسبوع: ${weekDone} من ${weekTotal}
+- معدل الإنجاز: ${completionRate}%
+- صلوات أُدّيت: ${totalPrayers}
+- عادات نشطة: ${totalHabits}
+- XP المكتسبة: ${xpData.total}
+اكتب تقريراً شخصياً محفزاً يشمل: نقاط قوة، نقاط تحسين، توصية للأسبوع القادم. (5-7 جمل بالعربية، دافئ وشخصي)`;
+
+      try {
+        const resp = await callAI(prompt);
+        const grade = completionRate >= 80 ? 'A' : completionRate >= 60 ? 'B' : completionRate >= 40 ? 'C' : 'D';
+        const gradeColor = completionRate >= 70 ? '#39d353' : completionRate >= 40 ? '#fbbf24' : '#f43f5e';
+        const weekStart = new Date(today); weekStart.setDate(weekStart.getDate() - 6);
+        resultEl.innerHTML = `
+          <div class="mirror-card">
+            <div class="mirror-header">
+              <div class="mirror-avatar">📊</div>
+              <div style="flex:1;">
+                <div class="mirror-week-title">تقرير أسبوعك — ${settings.name}</div>
+                <div class="mirror-date">${weekStart.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric' })} – ${today.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric' })}</div>
+              </div>
+              <div class="mirror-grade" style="background:linear-gradient(135deg,${gradeColor},${gradeColor}aa);">${grade}</div>
+            </div>
+            <div class="mirror-stats-row">
+              <div class="mirror-stat">
+                <div class="mirror-stat-num" style="color:var(--sky);">${weekDone}</div>
+                <div class="mirror-stat-label">مهمة منجزة</div>
+              </div>
+              <div class="mirror-stat">
+                <div class="mirror-stat-num" style="color:var(--gold);">${totalPrayers}</div>
+                <div class="mirror-stat-label">صلاة أُدّيت</div>
+              </div>
+              <div class="mirror-stat">
+                <div class="mirror-stat-num" style="color:var(--green);">${completionRate}%</div>
+                <div class="mirror-stat-label">معدل الإنجاز</div>
+              </div>
+            </div>
+            <div class="mirror-insight-box">${resp.replace(/\n/g, '<br>')}</div>
+          </div>
+        `;
+      } catch (e) {
+        resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر إنشاء التقرير</div>`;
+      }
+    }
+
+    // ─── 7. SLEEP TRACKER & CORRELATION ─────────────────────────────────────
+    let sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+
+    function openSleepTracker() {
+      showPage('aitools', document.querySelectorAll('.nav-item')[7]);
+      setTimeout(() => renderSleepData(), 200);
+    }
+
+    async function rateSleep(val) {
+      const today = new Date().toISOString().split('T')[0];
+      const todayDone = tasks.filter(t => t.done).length;
+      sleepData[today] = { rating: val, tasksDone: todayDone, timestamp: Date.now() };
+      localStorage.setItem('ttasks_sleep', JSON.stringify(sleepData));
+      document.querySelectorAll('.sleep-star').forEach(b => {
+        b.classList.toggle('selected', parseInt(b.dataset.val) === val);
+      });
+      renderSleepData();
+      showNotif('🌙 تم التسجيل!', 'جودة نومك: ' + ['😴', '😑', '😊', '😄', '🤩'][val - 1]);
+      if (Object.keys(sleepData).length >= 3) {
+        await analyzeSleepCorrelation();
+      }
+    }
+
+    function renderSleepData() {
+      const corChart = document.getElementById('sleepCorrelationChart');
+      if (!corChart) return;
+      const entries = Object.entries(sleepData).slice(-7).sort((a, b) => a[0].localeCompare(b[0]));
+      if (!entries.length) { corChart.innerHTML = '<div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته بإنتاجيتك</div>'; return; }
+      const maxTasks = Math.max(...entries.map(([, v]) => v.tasksDone || 0), 1);
+      const emojis = ['', '😴', '😑', '😊', '😄', '🤩'];
+      corChart.innerHTML = `<div class="sleep-correlation">${entries.map(([date, v]) => {
+        const d = new Date(date); const dayLabel = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()];
+        const barW = maxTasks > 0 ? Math.round((v.tasksDone / maxTasks) * 100) : 0;
+        return `<div class="sleep-corr-row">
+          <div class="sleep-corr-day">${dayLabel}</div>
+          <div class="sleep-corr-stars">${emojis[v.rating] || '?'} ${v.rating}/5</div>
+          <div class="sleep-corr-tasks">${v.tasksDone}</div>
+          <div class="sleep-corr-bar-wrap"><div class="sleep-corr-bar" style="width:${barW}%;"></div></div>
+        </div>`;
+      }).join('')}</div>`;
+      // Restore today's rating
+      const today = new Date().toISOString().split('T')[0];
+      if (sleepData[today]) {
+        document.querySelectorAll('.sleep-star').forEach(b => {
+          b.classList.toggle('selected', parseInt(b.dataset.val) === sleepData[today].rating);
+        });
+      }
+    }
+
+    async function analyzeSleepCorrelation() {
+      const insightEl = document.getElementById('sleepAIInsight');
+      if (!insightEl) return;
+      const entries = Object.entries(sleepData).slice(-7);
+      const avg = entries.reduce((s, [, v]) => s + v.rating, 0) / entries.length;
+      const avgTasks = entries.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / entries.length;
+      const highSleepDays = entries.filter(([, v]) => v.rating >= 4);
+      const highSleepAvgTasks = highSleepDays.length ? highSleepDays.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / highSleepDays.length : 0;
+      const prompt = `محلل نوم وإنتاجية. بيانات المستخدم (${entries.length} أيام):
+متوسط جودة النوم: ${avg.toFixed(1)}/5
+متوسط المهام اليومية: ${avgTasks.toFixed(1)}
+أيام النوم الجيد (4-5): ${highSleepDays.length} أيام، متوسط مهامها: ${highSleepAvgTasks.toFixed(1)}
+اكتب 2 جمل: 1) ملاحظة مخصصة عن العلاقة، 2) توصية عملية. (مختصر وبالعربية)`;
+      try {
+        const resp = await callAI(prompt);
+        insightEl.innerHTML = `<div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:12px;font-size:12.5px;color:var(--t2);line-height:1.7;"><span style="color:#c4b5fd;font-weight:700;">🧠 تحليل AI:</span> ${resp}</div>`;
+      } catch (e) { }
+    }
+
+    // ─── SHOW PAGE UPDATE (add aitools) ──────────────────────────────────────
+    const _origShowPage = showPage;
+    showPage = function (name, el) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.querySelectorAll('.bnav-item').forEach(n => n.classList.remove('active'));
+      const pageEl = document.getElementById('page-' + name);
+      if (!pageEl) return;
+      pageEl.classList.add('active');
+      if (el) el.classList.add('active');
+      syncNavActive(name);
+      if (name === 'dashboard') renderDashboard();
+      if (name === 'analytics') renderAnalytics();
+      if (name === 'habits') { renderHabits(); loadHabitsTips(); renderHabitsCharts(); }
+      if (name === 'prayer') renderPrayerPage();
+      if (name === 'spiritual') renderSpiritualPage();
+      if (name === 'aitools') { renderFlowTaskList(); renderSleepData(); }
+      window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    };
+
+    // ─── UPDATE syncNavActive for aitools & more ─────────────────────────────
+    const _origSyncNav = syncNavActive;
+    syncNavActive = function (name) {
+      const map = { dashboard: 0, tasks: 1, analytics: 2, habits: 3, prayer: 4, spiritual: 5, ai: 6, aitools: 7, settings: 8 };
+      const items = document.querySelectorAll('.nav-item');
+      if (map[name] !== undefined && items[map[name]]) {
+        items.forEach(n => n.classList.remove('active'));
+        items[map[name]].classList.add('active');
+      }
+      const bmap = { dashboard: 0, tasks: 1, aitools: 3 };
+      const bitems = document.querySelectorAll('.bnav-item');
+      bitems.forEach(n => n.classList.remove('active'));
+      if (name in bmap && bitems[bmap[name]]) {
+        bitems[bmap[name]].classList.add('active');
+      } else if (['prayer', 'spiritual', 'habits', 'analytics', 'ai', 'settings'].includes(name) && bitems[4]) {
+        bitems[4].classList.add('active'); // Highlight "More" item
+      }
+    };
+
+    // ─── MOBILE DRAWER HELPER FUNCTIONS ──────────────────────────────────────
+    function toggleMobileDrawer(show) {
+      const overlay = document.getElementById('mobileDrawerOverlay');
+      if (overlay) {
+        overlay.classList.toggle('show', show);
+      }
+    }
+
+    function navigateFromDrawer(pageName) {
+      toggleMobileDrawer(false);
+      showPage(pageName, null);
+    }
+
+    // ─── TASK ACCELERATION BUTTON in task list ────────────────────────────────
+    // Override renderTasks to add accelerate button
+    const _origRenderTasks = renderTasks;
+    renderTasks = function (filter = 'all') {
+      const container = document.getElementById('tasksList');
+      const todayStr = new Date().toISOString().split('T')[0], now = new Date(), nowMins = now.getHours() * 60 + now.getMinutes();
+      let filtered = tasks;
+      if (filter === 'pending') filtered = tasks.filter(t => !t.done);
+      if (filter === 'done') filtered = tasks.filter(t => t.done);
+      if (filter === 'high') filtered = tasks.filter(t => t.priority === 'high');
+      if (filter === 'overdue') filtered = tasks.filter(t => { if (t.done || !t.taskTime) return false; const [h, m] = t.taskTime.split(':').map(Number); return nowMins > h * 60 + m + 30 && (!t.taskDate || t.taskDate === todayStr); });
+      if (!filtered.length) { container.innerHTML = `<div style="text-align:center;padding:28px;color:var(--t3);font-size:13px;">لا توجد مهام في هذه الفئة</div>`; return; }
+      const xpMap = { high: XP_VALUES.task_high, med: XP_VALUES.task_med, low: XP_VALUES.task_low };
+      container.innerHTML = filtered.map(t => {
+        let isOverdue = false;
+        if (!t.done && t.taskTime) { const [h, m] = t.taskTime.split(':').map(Number); if (nowMins > h * 60 + m + 30 && (!t.taskDate || t.taskDate === todayStr)) isOverdue = true; }
+        const canComplete = t.done || canCompleteTask(t);
+        const timeBadge = t.taskTime ? `<span class="task-time-badge ${isOverdue ? 'overdue-badge' : ''} ${t.isPrayer ? 'prayer-badge' : ''}"><i class="ti ti-clock" style="font-size:9px;"></i> ${t.taskTime}${t.taskDate && t.taskDate !== todayStr ? ' — ' + t.taskDate : ''}</span>` : '';
+        const xpBadge = !t.done ? `<span class="task-xp-badge">+${xpMap[t.priority] || 20} XP</span>` : '';
+        return `<div class="task-item ${t.done ? 'done' : ''} ${isOverdue ? 'overdue' : ''} ${t.isPrayer ? 'prayer-task' : ''}" id="ti-${t.id}">
+      <div class="task-check ${t.done ? 'checked' : ''}" onclick="toggleTask(${t.id})" style="${!canComplete && !t.done ? 'border-color:rgba(251,191,36,.5);cursor:not-allowed;' : ''}" title="${!canComplete && !t.done ? 'ابدأ في وقتها!' : ''}">${t.done ? '<i class="ti ti-check" style="font-size:11px;color:#0f172a;"></i>' : !canComplete ? '🔒' : ''}</div>
+      <div style="flex:1;min-width:0;"><div class="task-name">${t.name}</div>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><div class="progress-mini"><div class="progress-mini-fill" style="width:${t.progress}%"></div></div><span style="font-size:10px;color:var(--t3);">${t.progress}%</span><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}</div></div>
+      <div class="task-meta"><span class="tag ${t.priority}">${priLabel(t.priority)}</span></div>
+      <div class="task-actions">
+        <button class="icon-btn" onclick="accelerateTask(${t.id})" title="مسرّع AI" style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(0,180,216,.1));color:#c4b5fd;border:1px solid rgba(124,58,237,.25);"><i class="ti ti-bolt"></i></button>
+        <button class="icon-btn" onclick="handleLightningClick(${t.id})" title="حارب التسويف" style="background:rgba(245,158,11,.13);color:#f59e0b;"><i class="ti ti-flame"></i></button>
+        <button class="icon-btn del" onclick="deleteTask(${t.id})"><i class="ti ti-trash"></i></button>
+      </div>
+      <input type="range" min="0" max="100" value="${t.progress}" class="task-range" oninput="updateProgress(${t.id},this.value)">
+    </div>`;
+      }).join('');
+    };
 
     // ===== INIT =====
     window.addEventListener('load', () => {
