@@ -9,8 +9,10 @@
   <!-- ═══════════════════════════════════════════════
        SEO & Social Media Meta Tags
   ═══════════════════════════════════════════════ -->
-  <meta name="description" content="T.Tasks — المنصة الأرقى لإدارة مهامك، صلواتك، وعاداتك بذكاء اصطناعي حقيقي. خطط لدنياك وآخرتك بأرقى أسلوب مع مساعد صوتي ذكي، نظام XP، وأدوات AI أسطورية.">
-  <meta name="keywords" content="T.Tasks, مدير المهام, ذكاء اصطناعي, تخطيط, إنتاجية, عادات, صلاة, منظم, تطبيق مهام عربي">
+  <meta name="description"
+    content="T.Tasks — المنصة الأرقى لإدارة مهامك، صلواتك، وعاداتك بذكاء اصطناعي حقيقي. خطط لدنياك وآخرتك بأرقى أسلوب مع مساعد صوتي ذكي، نظام XP، وأدوات AI أسطورية.">
+  <meta name="keywords"
+    content="T.Tasks, مدير المهام, ذكاء اصطناعي, تخطيط, إنتاجية, عادات, صلاة, منظم, تطبيق مهام عربي">
   <meta name="author" content="محمد عبد المطلب">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#04060f">
@@ -18,7 +20,8 @@
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="T.Tasks — مدير المهام الذكي 🚀">
-  <meta property="og:description" content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب — بذكاء اصطناعي حقيقي.">
+  <meta property="og:description"
+    content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب — بذكاء اصطناعي حقيقي.">
   <meta property="og:image" content="logo.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
@@ -29,7 +32,8 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="T.Tasks — مدير المهام الذكي 🚀">
-  <meta name="twitter:description" content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب.">
+  <meta name="twitter:description"
+    content="التخطيط ليس مجرد تنظيم للمهام... بل هو الجسر الذي يعبر بك من الفوضى إلى القمة. T.Tasks رفيقك الأفضل لإدارة دنياك وآخرتك بأرقى أسلوب.">
   <meta name="twitter:image" content="logo.png">
   <meta name="twitter:image:alt" content="T.Tasks App">
 
@@ -1885,9 +1889,64 @@
     }
 
     .task-range {
+      -webkit-appearance: none;
+      appearance: none;
       width: 100%;
-      accent-color: var(--sky);
-      order: 10
+      height: 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+      order: 10;
+      margin-top: 8px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .task-range:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .task-range::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+    }
+    .task-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--purple));
+      cursor: pointer;
+      margin-top: -4px;
+      box-shadow: 0 0 10px rgba(0, 180, 216, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .task-range::-webkit-slider-thumb:hover {
+      transform: scale(1.35);
+      box-shadow: 0 0 15px rgba(124, 58, 237, 0.8);
+    }
+    .task-range::-webkit-slider-thumb:active {
+      transform: scale(1.5);
+      box-shadow: 0 0 20px rgba(0, 180, 216, 0.9);
+    }
+    .task-range::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--purple));
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 180, 216, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .task-range::-moz-range-thumb:hover {
+      transform: scale(1.35);
+      box-shadow: 0 0 15px rgba(124, 58, 237, 0.8);
+    }
+    .task-range::-moz-range-thumb:active {
+      transform: scale(1.5);
+      box-shadow: 0 0 20px rgba(0, 180, 216, 0.9);
     }
 
     /* CHARTS */
@@ -3292,8 +3351,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px;
+      justify-content: flex-start;
+      overflow-y: auto;
+      padding: 40px 24px;
       animation: fadeIn .5s ease;
     }
 
@@ -3970,6 +4030,7 @@
       gap: 8px;
       margin-top: 8px;
     }
+
     .sleep-factor-chip {
       padding: 6px 12px;
       font-size: 12px;
@@ -3984,10 +4045,12 @@
       transition: all 0.2s ease;
       font-family: inherit;
     }
+
     .sleep-factor-chip:hover {
       background: rgba(0, 180, 216, 0.1);
       border-color: rgba(0, 180, 216, 0.3);
     }
+
     .sleep-factor-chip.selected {
       background: rgba(124, 58, 237, 0.25);
       border-color: rgba(124, 58, 237, 0.6);
@@ -3995,12 +4058,14 @@
       font-weight: 700;
       box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
     }
+
     .sleep-inputs-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-bottom: 12px;
     }
+
     .sleep-summary-box {
       background: rgba(124, 58, 237, 0.06);
       border: 1px dashed rgba(124, 58, 237, 0.25);
@@ -4011,28 +4076,33 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .sleep-duration-badge {
       padding: 4px 8px;
       border-radius: 6px;
       font-size: 11.5px;
       font-weight: 800;
     }
+
     .sleep-duration-badge.good {
       background: rgba(57, 211, 83, 0.12);
       color: var(--green);
       border: 1px solid rgba(57, 211, 83, 0.25);
     }
+
     .sleep-duration-badge.bad {
       background: rgba(244, 63, 94, 0.12);
       color: var(--danger);
       border: 1px solid rgba(244, 63, 94, 0.25);
     }
+
     .sleep-detail-factors {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
       margin-top: 4px;
     }
+
     .sleep-detail-factor-tag {
       font-size: 10px;
       padding: 2px 6px;
@@ -4364,6 +4434,211 @@
       height: 4px !important;
       box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
     }
+
+    /* AI Flow Coach & Audio Styles */
+    .flow-ai-box {
+      background: rgba(124, 58, 237, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 14px;
+      padding: 14px 18px;
+      max-width: 480px;
+      margin: 15px auto;
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.6;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.4s ease;
+      backdrop-filter: blur(8px);
+    }
+    .flow-ai-box::before {
+      content: '🧠 مُرشد التركيز AI: ';
+      color: #c4b5fd;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .flow-ai-btn {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(0, 180, 216, 0.15));
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      color: #c4b5fd;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      cursor: pointer;
+      margin-top: 8px;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flow-ai-btn:hover {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(0, 180, 216, 0.3));
+      transform: translateY(-1px);
+      box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+    }
+    .flow-audio-panel {
+      margin-top: 20px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .flow-audio-label {
+      font-size: 11px;
+      color: var(--t3);
+      margin-left: 4px;
+    }
+    .flow-audio-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--t2);
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .flow-audio-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .flow-audio-btn.active {
+      background: rgba(0, 180, 216, 0.2);
+      border-color: rgba(0, 180, 216, 0.5);
+      color: var(--sky);
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+    }
+
+    /* ─── FOCUS PROOF CAMERA PANEL ──────────────────────────────────── */
+    .flow-proof-btn {
+      background: linear-gradient(135deg, rgba(0,180,216,.18), rgba(124,58,237,.18));
+      border: 1px solid rgba(0,180,216,.4);
+      color: var(--sky);
+      padding: 9px 18px;
+      border-radius: 22px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: .3px;
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .flow-proof-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,180,216,.08), rgba(124,58,237,.08));
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .flow-proof-btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,180,216,.45); }
+    .flow-proof-btn:hover::before { opacity: 1; }
+
+    .flow-proof-panel {
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,180,216,.2);
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 14px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 0 40px rgba(0,180,216,.1), 0 8px 32px rgba(0,0,0,.5);
+      animation: fadeIn .35s ease;
+    }
+    .flow-proof-panel-title {
+      font-size: 13px; font-weight: 800;
+      color: var(--sky); letter-spacing: .5px;
+      margin-bottom: 12px; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .flow-proof-video {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      display: block;
+      background: #000;
+    }
+    .flow-proof-snap-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      background: linear-gradient(135deg, #7c3aed, #00b4d8);
+      border: none;
+      border-radius: 14px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: .5px;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .flow-proof-snap-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(0,180,216,.5); }
+    .flow-proof-snap-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .flow-proof-canvas { display: none; }
+
+    .flow-proof-result {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: rgba(124,58,237,.08);
+      border: 1px solid rgba(124,58,237,.3);
+      border-radius: 14px;
+      animation: fadeIn .35s ease;
+    }
+    .flow-proof-verdict {
+      font-size: 14px; font-weight: 800;
+      margin-bottom: 8px; display: flex;
+      align-items: center; gap: 8px;
+    }
+    .flow-proof-verdict.pass { color: #39d353; }
+    .flow-proof-verdict.warn { color: #f59e0b; }
+    .flow-proof-verdict.fail { color: #f43f5e; }
+    .flow-proof-analysis {
+      font-size: 12px;
+      color: var(--t2);
+      line-height: 1.7;
+    }
+    .flow-proof-thumb {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 10px;
+      max-height: 160px;
+      object-fit: cover;
+    }
+    .flow-proof-close-btn {
+      margin-top: 10px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--t3);
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s;
+    }
+    .flow-proof-close-btn:hover { background: rgba(255,255,255,.08); color: var(--t2); }
 
     @media(max-width:700px) {
       .voice-fab {
@@ -5153,10 +5428,12 @@
         <div class="card">
           <div class="card-title"><i class="ti ti-database"></i> البيانات &amp; الإشعارات</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <button class="btn btn-primary btn-sm" onclick="requestNotificationPermission()" id="notifPermBtn" style="padding:10px 14px;">
+            <button class="btn btn-primary btn-sm" onclick="requestNotificationPermission()" id="notifPermBtn"
+              style="padding:10px 14px;">
               <i class="ti ti-bell"></i> تفعيل الإشعارات الذكية
             </button>
-            <div style="font-size:10.5px;color:var(--t3);background:rgba(0,180,216,.05);border:1px solid rgba(0,180,216,.1);border-radius:8px;padding:8px 10px;line-height:1.6;">
+            <div
+              style="font-size:10.5px;color:var(--t3);background:rgba(0,180,216,.05);border:1px solid rgba(0,180,216,.1);border-radius:8px;padding:8px 10px;line-height:1.6;">
               📌 يشمل: المهام المجدولة ⏰ | الصلوات 🕌 | العادات اليومية 💪<br>
               يتحقق كل 20 ثانية لضمان دقة التذكير
             </div>
@@ -5302,19 +5579,24 @@
       <div class="card" style="margin-bottom:14px;">
         <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
           <span><i class="ti ti-moon" style="color:#c4b5fd;"></i> مراقب النوم والإنتاجية المطور</span>
-          <span style="font-size:10px;color:rgba(196,181,253,.8);background:rgba(196,181,253,.1);padding:3px 8px;border-radius:20px;border:1px solid rgba(196,181,253,.2);">تحليل العوامل</span>
+          <span
+            style="font-size:10px;color:rgba(196,181,253,.8);background:rgba(196,181,253,.1);padding:3px 8px;border-radius:20px;border:1px solid rgba(196,181,253,.2);">تحليل
+            العوامل</span>
         </div>
-        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">سجّل أوقات نومك، جودته، والعوامل المؤثرة لتحصل على تحليل إنتاجية دقيق</p>
+        <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">سجّل أوقات نومك، جودته، والعوامل المؤثرة لتحصل على
+          تحليل إنتاجية دقيق</p>
 
         <!-- Sleep Times Inputs -->
         <div class="sleep-inputs-row">
           <div>
             <label style="font-size:11px;color:var(--t3);display:block;margin-bottom:4px;">وقت النوم (تقريبي)</label>
-            <input class="task-input" type="time" id="sleepBedtimeInput" onchange="calculateSleepHours()" style="width:100%;padding:8px 10px;">
+            <input class="task-input" type="time" id="sleepBedtimeInput" onchange="calculateSleepHours()"
+              style="width:100%;padding:8px 10px;">
           </div>
           <div>
             <label style="font-size:11px;color:var(--t3);display:block;margin-bottom:4px;">وقت الاستيقاظ</label>
-            <input class="task-input" type="time" id="sleepWaketimeInput" onchange="calculateSleepHours()" style="width:100%;padding:8px 10px;">
+            <input class="task-input" type="time" id="sleepWaketimeInput" onchange="calculateSleepHours()"
+              style="width:100%;padding:8px 10px;">
           </div>
         </div>
 
@@ -5350,10 +5632,13 @@
         </div>
 
         <!-- Action Button -->
-        <button class="btn btn-primary btn-sm" onclick="saveDetailedSleep()" style="width:100%;margin-bottom:14px;padding:8px 0;font-weight:700;"><i class="ti ti-device-floppy"></i> حفظ تقرير النوم اليومي</button>
+        <button class="btn btn-primary btn-sm" onclick="saveDetailedSleep()"
+          style="width:100%;margin-bottom:14px;padding:8px 0;font-weight:700;"><i class="ti ti-device-floppy"></i> حفظ
+          تقرير النوم اليومي</button>
 
         <div id="sleepCorrelationChart">
-          <div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته بإنتاجيتك</div>
+          <div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته
+            بإنتاجيتك</div>
         </div>
         <div id="sleepAIInsight" style="margin-top:10px;"></div>
       </div>
@@ -5791,7 +6076,24 @@
       openProcrastinationCoach(taskId);
     }
     function deleteTask(id) { tasks = tasks.filter(x => x.id !== id); saveAll(); renderTasks(); updateStats(); renderDashboard(); }
-    function updateProgress(id, val) { const t = tasks.find(x => x.id === id); if (t) { t.progress = parseInt(val); saveAll(); } }
+    function updateProgress(id, val) {
+      const t = tasks.find(x => x.id === id);
+      if (t) {
+        t.progress = parseInt(val);
+        saveAll();
+        const taskItem = document.getElementById(`ti-${id}`);
+        if (taskItem) {
+          const miniFill = taskItem.querySelector('.progress-mini-fill');
+          if (miniFill) miniFill.style.width = val + '%';
+          const pctSpan = taskItem.querySelector('.task-pct-span');
+          if (pctSpan) pctSpan.textContent = val + '%';
+          taskItem.style.boxShadow = `0 0 ${Math.min(15, val / 6)}px rgba(0, 180, 216, ${val / 300})`;
+        }
+        if (t.progress === 100 && !t.done) {
+          toggleTask(id);
+        }
+      }
+    }
     function filterTasks(f, btn) { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTasks(f); }
     function updateStats() { const total = tasks.length, done = tasks.filter(t => t.done).length; document.getElementById('totalTasks').textContent = total; document.getElementById('doneTasks').textContent = done; document.getElementById('pendingTasks').textContent = total - done; document.getElementById('streakDays').textContent = streak; }
     function renderTasks(filter = 'all') {
@@ -5810,7 +6112,7 @@
         return `<div class="task-item ${t.done ? 'done' : ''} ${isOverdue ? 'overdue' : ''} ${t.isPrayer ? 'prayer-task' : ''}" id="ti-${t.id}">
       <div class="task-check ${t.done ? 'checked' : ''}" onclick="toggleTask(${t.id})" style="${!canComplete && !t.done ? 'border-color:rgba(251,191,36,.5);cursor:not-allowed;' : ''}" title="${!canComplete && !t.done ? 'ابدأ في وقتها!' : ''}">${t.done ? '<i class="ti ti-check" style="font-size:11px;color:#0f172a;"></i>' : !canComplete ? '🔒' : ''}</div>
       <div style="flex:1;min-width:0;"><div class="task-name">${t.name}</div>
-      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><div class="progress-mini"><div class="progress-mini-fill" style="width:${t.progress}%"></div></div><span style="font-size:10px;color:var(--t3);">${t.progress}%</span><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}</div></div>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><div class="progress-mini"><div class="progress-mini-fill" style="width:${t.progress}%"></div></div><span class="task-pct-span" style="font-size:10px;color:var(--t3);">${t.progress}%</span><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}</div></div>
       <div class="task-meta"><span class="tag ${t.priority}">${priLabel(t.priority)}</span></div>
       <div class="task-actions">
         <button class="icon-btn ai" onclick="handleLightningClick(${t.id})" title="حارب التسويف" style="background:rgba(245,158,11,.13);color:#f59e0b;"><i class="ti ti-flame"></i></button>
@@ -6315,6 +6617,8 @@
     let flowTaskName = '';
     let flowRunning = false;
     let flowMode = 25;
+    let flowProofTriggered = false;
+    let flowLockedByProof = false;
 
     function openFlowMode(taskId) {
       renderFlowTaskList();
@@ -6354,7 +6658,9 @@
     function startFlowWithTask(task) {
       flowTaskName = task.name;
       flowMode = 25; flowTotalSeconds = 25 * 60; flowSeconds = flowTotalSeconds;
+      flowProofTriggered = false; flowLockedByProof = false;
       buildFlowOverlay();
+      fetchFlowAICoachTip();
     }
 
     function buildFlowOverlay() {
@@ -6385,7 +6691,45 @@
             <div class="flow-timer-label" id="flowTimerLabel">ابدأ التدفق</div>
           </div>
         </div>
-        <div class="flow-controls">
+        
+        <!-- AI Coach Companion -->
+        <div class="flow-ai-box" id="flowAICoachBox">
+          <div id="flowAICoachMsg">جاري تحضير استراتيجية تركيز ذكية... 🧠</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px;">
+            <button class="flow-ai-btn" onclick="triggerFlowAISpark()"><i class="ti ti-bolt"></i> ⚡ حرق التشتت</button>
+            <button class="flow-proof-btn" onclick="openFocusProof()"><i class="ti ti-camera"></i> 📸 برهان التركيز AI</button>
+          </div>
+        </div>
+
+        <!-- Focus Proof Camera Panel (hidden by default) -->
+        <div class="flow-proof-panel" id="flowProofPanel" style="display:none;">
+          <div class="flow-proof-panel-title">
+            <span>🔍 رؤية المهمة بالذكاء الاصطناعي</span>
+          </div>
+          <video class="flow-proof-video" id="flowProofVideo" autoplay playsinline muted style="width:100%; border-radius:12px; max-height:180px; object-fit:cover;"></video>
+          <canvas class="flow-proof-canvas" id="flowProofCanvas" style="display:none;"></canvas>
+          <div style="display:flex;gap:8px;margin-top:12px;width:100%;">
+            <button class="flow-proof-snap-btn" id="flowProofSnapBtn" style="flex:1;margin-top:0;" onclick="captureAndAnalyzeFocus()">
+              📸 التقاط وصورة AI
+            </button>
+            <button class="flow-proof-snap-btn" style="flex:1;margin-top:0;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);" onclick="document.getElementById('flowProofFile').click()">
+              📁 رفع صورة
+            </button>
+          </div>
+          <input type="file" id="flowProofFile" accept="image/*" style="display:none;" onchange="handleProofFileSelect(this)">
+          <div id="flowProofResult" style="display:none;"></div>
+          <button class="flow-proof-close-btn" onclick="closeFocusProof()">✕ إغلاق الكاميرا</button>
+        </div>
+
+        <!-- Synthesized Ambient Sounds -->
+        <div class="flow-audio-panel">
+          <span class="flow-audio-label">🎵 بيئة التركيز الصوتية:</span>
+          <button class="flow-audio-btn active" id="fa-silent" onclick="setFlowAudio('silent')">🔇 صامت</button>
+          <button class="flow-audio-btn" id="fa-rain" onclick="setFlowAudio('rain')">🌧️ مطر مطور</button>
+          <button class="flow-audio-btn" id="fa-space" onclick="setFlowAudio('space')">🌌 سديم عميق</button>
+        </div>
+
+        <div class="flow-controls" style="margin-top:20px;">
           <button class="flow-btn primary" id="flowStartBtn" onclick="toggleFlowTimer()">▶ ابدأ</button>
           <button class="flow-btn" onclick="resetFlowTimer()">↺ إعادة</button>
           <button class="flow-btn danger" onclick="exitFlowMode()">✕ إنهاء</button>
@@ -6395,9 +6739,255 @@
       document.getElementById('flowGuard').style.display = 'none';
     }
 
+    async function fetchFlowAICoachTip() {
+      const msgEl = document.getElementById('flowAICoachMsg');
+      if (!msgEl) return;
+      try {
+        const prompt = `أنت مرشد تركيز محترف وصديق مشجع. اسم المستخدم هو ${settings.name}. المهمة التي يركز عليها المستخدم الآن هي: "${flowTaskName}". اعطه نصيحة أو استراتيجية تركيز قصيرة جداً (سطر واحد فقط، لا يتجاوز 12 كلمة)، محفزة وذكية وعملية باللغة العربية للبدء فوراً وبكل قوة.`;
+        const resp = await callAI(prompt);
+        msgEl.textContent = resp;
+      } catch (e) {
+        msgEl.textContent = "ركز على خطوة واحدة صغيرة جداً الآن، وسترى كيف سيتدفق عقلك! 🚀";
+      }
+    }
+
+    async function triggerFlowAISpark() {
+      const msgEl = document.getElementById('flowAICoachMsg');
+      if (!msgEl) return;
+      msgEl.innerHTML = `<div style="text-align:center;padding:5px;"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+      try {
+        const prompt = `المستخدم يشعر بالتشتت أو التكاسل الآن أثناء العمل على مهمة: "${flowTaskName}". اعطه تمرين تركيز ذهني فوري وسريع جداً (مثال: تنفس عميق، عد عكسي، أو خطوة متناهية الصغر) في جملة واحدة ملهمة وقصيرة جداً (أقل من 15 كلمة) باللغة العربية ليعود فوراً لمسار الإنجاز.`;
+        const resp = await callAI(prompt);
+        msgEl.textContent = resp;
+        showNotif('🧠 AI Spark Activated', 'تمرين تركيز سريع لمقاومة التشتت!');
+      } catch (e) {
+        msgEl.textContent = "أغلق عينيك، خذ نفساً عميقاً لـ 4 ثوانٍ، ثم افتحهما وابدأ بأسهل جزء في المهمة فوراً!";
+      }
+    }
+
+    let flowAudioCtx = null;
+    let flowRainNode = null;
+    let flowSpaceNode = null;
+
+    function setFlowAudio(type) {
+      document.querySelectorAll('.flow-audio-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('fa-' + type);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      stopFlowAmbientSound();
+      if (type === 'silent') return;
+
+      try {
+        if (!flowAudioCtx) {
+          flowAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (flowAudioCtx.state === 'suspended') {
+          flowAudioCtx.resume();
+        }
+
+        if (type === 'rain') {
+          // Synthesize Rain sound using White Noise & Lowpass Filter
+          const bufferSize = 2 * flowAudioCtx.sampleRate;
+          const noiseBuffer = flowAudioCtx.createBuffer(1, bufferSize, flowAudioCtx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            output[i] = Math.random() * 2 - 1;
+          }
+          const whiteNoise = flowAudioCtx.createBufferSource();
+          whiteNoise.buffer = noiseBuffer;
+          whiteNoise.loop = true;
+
+          const filter = flowAudioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.value = 850;
+
+          const gain = flowAudioCtx.createGain();
+          gain.gain.value = 0.08;
+
+          whiteNoise.connect(filter);
+          filter.connect(gain);
+          gain.connect(flowAudioCtx.destination);
+
+          whiteNoise.start();
+          flowRainNode = whiteNoise;
+        } else if (type === 'space') {
+          // Deep cosmic drone
+          const osc1 = flowAudioCtx.createOscillator();
+          const osc2 = flowAudioCtx.createOscillator();
+          const filter = flowAudioCtx.createBiquadFilter();
+
+          osc1.type = 'sawtooth';
+          osc1.frequency.value = 60;
+          osc2.type = 'triangle';
+          osc2.frequency.value = 60.3;
+
+          filter.type = 'lowpass';
+          filter.frequency.value = 180;
+
+          const lfo = flowAudioCtx.createOscillator();
+          lfo.type = 'sine';
+          lfo.frequency.value = 0.1;
+          const lfoGain = flowAudioCtx.createGain();
+          lfoGain.gain.value = 0.04;
+
+          const mainGain = flowAudioCtx.createGain();
+          mainGain.gain.value = 0.15;
+
+          lfo.connect(lfoGain);
+          lfoGain.connect(mainGain.gain);
+
+          osc1.connect(filter);
+          osc2.connect(filter);
+          filter.connect(mainGain);
+          mainGain.connect(flowAudioCtx.destination);
+
+          osc1.start();
+          osc2.start();
+          lfo.start();
+
+          flowSpaceNode = {
+            stop: () => {
+              try { osc1.stop(); } catch(e){}
+              try { osc2.stop(); } catch(e){}
+              try { lfo.stop(); } catch(e){}
+            }
+          };
+        }
+      } catch (e) {
+        console.error('Failed to play ambient synth:', e);
+        showNotif('⚠️ عذراً', 'لا يمكن تشغيل الصوت المحيطي في متصفحك حالياً.');
+      }
+    }
+
+    function stopFlowAmbientSound() {
+      if (flowRainNode) {
+        try { flowRainNode.stop(); } catch (e) { }
+        flowRainNode = null;
+      }
+      if (flowSpaceNode) {
+        try { flowSpaceNode.stop(); } catch (e) { }
+        flowSpaceNode = null;
+      }
+    }
+
+
+    // --- FOCUS PROOF: AI Camera Vision ---
+    let _proofStream = null;
+
+    async function openFocusProof() {
+      const panel = document.getElementById('flowProofPanel');
+      const video = document.getElementById('flowProofVideo');
+      const result = document.getElementById('flowProofResult');
+      if (!panel || !video) return;
+      panel.style.display = 'block';
+      if (result) result.style.display = 'none';
+      try {
+        _proofStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+        video.srcObject = _proofStream;
+      } catch (e) {
+        panel.innerHTML = '<div class="flow-proof-panel-title">⚠️ لا يمكن الوصول للكاميرا</div><p style="font-size:12px;color:var(--t3);text-align:center;">تأكد من السماح للمتصفح باستخدام الكاميرا.</p><button class="flow-proof-close-btn" onclick="closeFocusProof()">إغلاق</button>';
+
+      }
+    }
+
+    function closeFocusProof() {
+      if (_proofStream) { _proofStream.getTracks().forEach(function(t){ t.stop(); }); _proofStream = null; }
+      var video = document.getElementById('flowProofVideo');
+      if (video) video.srcObject = null;
+      var panel = document.getElementById('flowProofPanel');
+      if (panel) panel.style.display = 'none';
+    }
+
+        async function captureAndAnalyzeFocus() {
+      const video = document.getElementById('flowProofVideo');
+      const canvas = document.getElementById('flowProofCanvas');
+      if (!video || !canvas) return;
+      canvas.width = video.videoWidth || 640;
+      canvas.height = video.videoHeight || 480;
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+      await analyzeFocusImage(dataUrl);
+    }
+
+    function handleProofFileSelect(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        await analyzeFocusImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function analyzeFocusImage(dataUrl) {
+      const snapBtn = document.getElementById('flowProofSnapBtn');
+      const resultEl = document.getElementById('flowProofResult');
+      if (!resultEl) return;
+
+      if (snapBtn) {
+        snapBtn.disabled = true;
+        snapBtn.textContent = '...';
+      }
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<div style="text-align:center;padding:12px;color:var(--t3);font-size:12px;">🧠 الذكاء الاصطناعي يحلل صورتك...</div>';
+
+      try {
+        const prompt = 'أنت مراقب إنتاجية ذكي. المهمة التي يعمل عليها المستخدم هي: "' + flowTaskName + '".\nانظر إلى هذه الصورة وحدد:\n1) ماذا يفعل المستخدم بالضبط في الصورة؟\n2) هل ما يفعله يتوافق مع المهمة؟\n3) أعطِ حكماً: PASS أو WARN أو FAIL\n\nأجب بالعربية بالتنسيق التالي فقط:\nحكم: [PASS/WARN/FAIL]\nما أراه: [وصف دقيق]\nالتقييم: [جملة واحدة محفزة أو تحذيرية]';
+
+        const response = await puter.ai.chat(prompt, dataUrl, { model: 'gpt-5.4-nano' });
+        let respText = typeof response === 'string' ? response :
+          (response && response.message && response.message.content ?
+            (Array.isArray(response.message.content) ? response.message.content.map(function(c){ return c.text||''; }).join('') : response.message.content)
+            : (response && response.text ? response.text : String(response)));
+
+        let verdict = /حكم:\s*PASS/i.test(respText) ? 'PASS' : /حكم:\s*FAIL/i.test(respText) ? 'FAIL' : 'WARN';
+        const vcMap = {
+          PASS: { label: '✅ تركيزك مثبت!', cls: 'pass', xp: 10 },
+          WARN: { label: '⚠️ غير مؤكد', cls: 'warn', xp: 0 },
+          FAIL: { label: '❌ لست على مهمتك!', cls: 'fail', xp: 0 }
+        };
+        const vc = vcMap[verdict];
+        const cleanResp = respText.replace(/حكم:\s*(PASS|WARN|FAIL)\s*/i, '').trim();
+
+        resultEl.innerHTML = '<img src="' + dataUrl + '" class="flow-proof-thumb" alt="">' +
+          '<div class="flow-proof-verdict ' + vc.cls + '">' + vc.label + '</div>' +
+          '<div class="flow-proof-analysis">' + cleanResp.replace(/\n/g, '<br>') + '</div>';
+
+        if (verdict === 'PASS') {
+          flowLockedByProof = false; // Unlock session
+          
+          // Re-style panel to show success border
+          const panel = document.getElementById('flowProofPanel');
+          if (panel) {
+            panel.style.border = '2px solid #39d353';
+            panel.style.boxShadow = '0 0 25px rgba(57,211,83,0.5)';
+          }
+
+          // Restore timer UI to normal
+          const startBtn = document.getElementById('flowStartBtn');
+          if (startBtn) startBtn.textContent = '▶ استأنف الجلسة';
+          const labelEl = document.getElementById('flowTimerLabel');
+          if (labelEl) labelEl.textContent = 'تم إثبات التركيز! 🎉';
+
+          addXP(vc.xp, 'أثبتت تركيزك! 📸');
+          showNotif('📸 تم فتح القفل!', 'AI رأى أنك تعمل على: ' + flowTaskName);
+        } else if (verdict === 'FAIL') {
+          showNotif('⚠️ تنبيه!', 'AI لم يرك تعمل على مهمتك!');
+        }
+      } catch (e) {
+        resultEl.innerHTML = '<div class="flow-proof-analysis" style="color:var(--t3);">⚠️ تعذّر تحليل الصورة — تأكد من الاتصال بالإنترنت.</div>';
+      } finally {
+        if (snapBtn) {
+          snapBtn.disabled = false;
+          snapBtn.textContent = '📸 التقط صورة جديدة';
+        }
+      }
+    }
+
     function setFlowMode(mins) {
       flowMode = mins; flowTotalSeconds = mins * 60; flowSeconds = flowTotalSeconds;
       flowRunning = false; clearInterval(flowTimerInterval);
+      flowProofTriggered = false; flowLockedByProof = false;
       document.getElementById('flowStartBtn').textContent = '▶ ابدأ';
       document.querySelectorAll('.flow-pill').forEach(p => p.classList.remove('active'));
       document.getElementById('fp' + mins)?.classList.add('active');
@@ -6405,6 +6995,17 @@
     }
 
     function toggleFlowTimer() {
+      if (flowLockedByProof) {
+        showNotif('⚠️ الجلسة مقفلة!', 'الرجاء إثبات تركيزك بالتقاط أو رفع صورة لفتح قفل الجلسة أولاً.');
+        const panel = document.getElementById('flowProofPanel');
+        if (panel) {
+          const overlay = document.getElementById('flowOverlay'); if (overlay) overlay.scrollTo({ top: overlay.scrollHeight, behavior: 'smooth' });
+          panel.style.border = '2px solid var(--sky)';
+          panel.style.boxShadow = '0 0 35px rgba(0,180,216,0.8)';
+        }
+        return;
+      }
+
       if (flowRunning) {
         clearInterval(flowTimerInterval); flowRunning = false;
         document.getElementById('flowStartBtn').textContent = '▶ استأنف';
@@ -6418,6 +7019,32 @@
         flowTimerInterval = setInterval(() => {
           flowSeconds--;
           updateFlowDisplay();
+
+          // Midpoint check (50% elapsed)
+          const midPoint = Math.floor(flowTotalSeconds / 2);
+          if (flowSeconds === midPoint && !flowProofTriggered) {
+            flowProofTriggered = true;
+            flowLockedByProof = true;
+            clearInterval(flowTimerInterval);
+            flowRunning = false;
+            document.getElementById('flowStartBtn').textContent = '🔒 الجلسة مقفلة';
+            document.getElementById('flowTimerLabel').textContent = 'برهان التركيز مطلوب! 📸';
+            document.getElementById('flowGuard').style.display = 'none';
+            
+            openFocusProof();
+            
+            showNotif('📸 برهان التركيز مطلوب!', 'مضى نصف الوقت! يرجى تقديم صورة لإثبات تركيزك لمتابعة الجلسة.');
+            
+            setTimeout(() => {
+              const panel = document.getElementById('flowProofPanel');
+              if (panel) {
+                const overlay = document.getElementById('flowOverlay'); if (overlay) overlay.scrollTo({ top: overlay.scrollHeight, behavior: 'smooth' });
+                panel.style.border = '2px solid var(--sky)';
+                panel.style.boxShadow = '0 0 35px rgba(0,180,216,0.8)';
+              }
+            }, 500);
+          }
+
           if (flowSeconds <= 0) {
             clearInterval(flowTimerInterval); flowRunning = false;
             onFlowComplete();
@@ -6442,12 +7069,13 @@
     function resetFlowTimer() {
       clearInterval(flowTimerInterval); flowRunning = false;
       flowSeconds = flowTotalSeconds;
+      flowProofTriggered = false; flowLockedByProof = false;
       document.getElementById('flowStartBtn').textContent = '▶ ابدأ';
       document.getElementById('flowTimerLabel').textContent = 'ابدأ التدفق';
       document.getElementById('flowGuard').style.display = 'none';
       updateFlowDisplay();
     }
-
+    
     async function onFlowComplete() {
       const el = document.getElementById('flowOverlay');
       if (el) {
@@ -6455,6 +7083,7 @@
         document.getElementById('flowStartBtn').textContent = '🏆 مكتملة!';
       }
       document.getElementById('flowGuard').style.display = 'none';
+      stopFlowAmbientSound();
       addXP(flowMode >= 45 ? 40 : flowMode >= 25 ? 25 : 15, `أكملت جلسة تدفق ${flowMode} دقيقة!`);
       showNotif('🧬 جلسة تدفق مكتملة!', `${flowMode} دقيقة تركيز — +${flowMode >= 45 ? 40 : 25} XP!`);
       sendBrowserNotif('🎉 جلسة تدفق منتهية!', 'رائع! أنجزت ' + flowMode + ' دقيقة تدفق كاملة!');
@@ -6464,9 +7093,16 @@
     function exitFlowMode() {
       clearInterval(flowTimerInterval); flowRunning = false;
       document.getElementById('flowGuard').style.display = 'none';
+      stopFlowAmbientSound();
+      // Stop camera stream if Focus Proof was open
+      if (typeof _proofStream !== 'undefined' && _proofStream) {
+        _proofStream.getTracks().forEach(function(t){ t.stop(); });
+        _proofStream = null;
+      }
       const el = document.getElementById('flowOverlay');
       if (el) { el.style.opacity = '0'; el.style.transition = 'opacity .4s'; setTimeout(() => { try { document.body.removeChild(el); } catch (e) { } }, 400); }
     }
+
 
     // ─── 3. TASK ACCELERATION ENGINE ────────────────────────────────────────
     async function accelerateTask(taskId) {
@@ -6536,7 +7172,7 @@
           </div>
           <button class="accel-start-btn" onclick="closeAccelPopup();startFlowWithTaskId(${task.id})">🧬 ابدأ وضع التدفق الآن</button>
         `;
-      } catch(e) {
+      } catch (e) {
         popup.innerHTML = `<div style="padding:20px;text-align:center;"><div style="font-size:14px;color:var(--t2);">ابدأ بخطوة واحدة صغيرة الآن! 🚀</div><button onclick="closeAccelPopup()" class="btn btn-ghost btn-sm" style="margin-top:12px;">إغلاق</button></div>`;
       }
     }
@@ -6544,8 +7180,8 @@
     function closeAccelPopup() {
       const bg = document.getElementById('accelBg');
       const popup = document.getElementById('accelPopup');
-      if (bg) { bg.style.opacity='0'; setTimeout(() => { try { document.body.removeChild(bg); } catch(e) {} }, 300); }
-      if (popup) { popup.style.opacity='0'; popup.style.transform='translate(-50%,-50%) scale(.85)'; popup.style.transition='all .3s'; setTimeout(() => { try { document.body.removeChild(popup); } catch(e) {} }, 300); }
+      if (bg) { bg.style.opacity = '0'; setTimeout(() => { try { document.body.removeChild(bg); } catch (e) { } }, 300); }
+      if (popup) { popup.style.opacity = '0'; popup.style.transform = 'translate(-50%,-50%) scale(.85)'; popup.style.transition = 'all .3s'; setTimeout(() => { try { document.body.removeChild(popup); } catch (e) { } }, 300); }
     }
 
     // Override analyzeOneTask to also offer acceleration
@@ -6571,7 +7207,7 @@
         if (!match) throw new Error('no json');
         const data = JSON.parse(match[0]);
         renderGoalMap(data, resultEl);
-      } catch(e) {
+      } catch (e) {
         resultEl.innerHTML = `<div style="color:var(--danger);font-size:12px;padding:12px;">حدث خطأ — حاول مجدداً</div>`;
       }
     }
@@ -6588,7 +7224,7 @@
       if (data.phases) {
         data.phases.forEach((phase, pi) => {
           html += `<div class="mindmap-branch">
-            <div class="mindmap-phase" style="color:${['var(--sky)','#c4b5fd','var(--green)','var(--gold)'][pi % 4]};">
+            <div class="mindmap-phase" style="color:${['var(--sky)', '#c4b5fd', 'var(--green)', 'var(--gold)'][pi % 4]};">
               ${phase.icon || '📌'} ${phase.name}
             </div>`;
           if (phase.tasks) {
@@ -6606,7 +7242,7 @@
       }
       html += `
         <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn btn-primary btn-sm" onclick="addAllMapTasks(${JSON.stringify(allTasks.map(t=>t.name)).replace(/"/g,"'")})">
+          <button class="btn btn-primary btn-sm" onclick="addAllMapTasks(${JSON.stringify(allTasks.map(t => t.name)).replace(/"/g, "'")})">
             <i class="ti ti-plus"></i> إضافة كل المهام
           </button>
           <button class="btn btn-ghost btn-sm" onclick="document.getElementById('goalMapInput').value='';document.getElementById('goalMapResult').innerHTML='';">مسح</button>
@@ -6621,7 +7257,7 @@
     }
 
     function addAllMapTasks(taskNames) {
-      const names = typeof taskNames === 'string' ? JSON.parse(taskNames.replace(/'/g,'"')) : taskNames;
+      const names = typeof taskNames === 'string' ? JSON.parse(taskNames.replace(/'/g, '"')) : taskNames;
       names.forEach(name => {
         tasks.push({ id: Date.now() + Math.random(), name, priority: 'med', category: 'personal', done: false, progress: 0, taskTime: '', taskDate: new Date().toISOString().split('T')[0], createdAt: new Date().toISOString() });
       });
@@ -6644,10 +7280,10 @@
       const total = tasks.length, done = tasks.filter(t => t.done).length;
       const completionRate = total > 0 ? Math.round(done / total * 100) : 0;
       const now = new Date();
-      const dayName = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'][(now.getDay()+1)%7];
+      const dayName = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][(now.getDay() + 1) % 7];
       const pending = tasks.filter(t => !t.done).slice(0, 5);
       const sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
-      const lastSleep = Object.entries(sleepData).slice(-3).map(([d,v]) => {
+      const lastSleep = Object.entries(sleepData).slice(-3).map(([d, v]) => {
         return typeof v === 'object' ? `تقييم ${v.rating}/5` : v;
       }).join(',');
 
@@ -6663,7 +7299,7 @@
       try {
         const resp = await callAI(prompt);
         const match = resp.match(/\{[\s\S]*?\}/);
-        let prob = completionRate, dayType = 'عادي', insight = 'استمر في جهودك!', tips = ['ابدأ بأصعب مهمة في الصباح','خذ استراحات منتظمة'], bestTime = 'الصباح';
+        let prob = completionRate, dayType = 'عادي', insight = 'استمر في جهودك!', tips = ['ابدأ بأصعب مهمة في الصباح', 'خذ استراحات منتظمة'], bestTime = 'الصباح';
         if (match) {
           const d = JSON.parse(match[0]);
           prob = d.probability || prob; dayType = d.dayType || dayType;
@@ -6683,19 +7319,19 @@
             <div style="font-size:11px;color:var(--t3);margin-bottom:10px;">⏰ أفضل وقت للعمل: <strong style="color:var(--sky);">${bestTime}</strong></div>
             <div class="predictor-tasks">
               ${pending.map((t, i) => {
-                const taskProb = Math.max(10, prob - i * 8);
-                const barColor = taskProb >= 60 ? '#39d353' : taskProb >= 35 ? '#fbbf24' : '#f43f5e';
-                return `<div class="predictor-task-row">
+          const taskProb = Math.max(10, prob - i * 8);
+          const barColor = taskProb >= 60 ? '#39d353' : taskProb >= 35 ? '#fbbf24' : '#f43f5e';
+          return `<div class="predictor-task-row">
                   <div class="predictor-task-prob" style="color:${barColor};">${taskProb}%</div>
                   <div class="predictor-task-bar-wrap"><div class="predictor-task-bar" style="width:${taskProb}%;background:${barColor};"></div></div>
-                  <div class="predictor-task-name">${t.name.substring(0,30)}${t.name.length>30?'...':''}</div>
+                  <div class="predictor-task-name">${t.name.substring(0, 30)}${t.name.length > 30 ? '...' : ''}</div>
                 </div>`;
-              }).join('')}
+        }).join('')}
             </div>
             ${tips.length ? `<div style="margin-top:12px;display:flex;flex-direction:column;gap:5px;">${tips.map(tip => `<div style="font-size:12px;color:var(--t2);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--sky);flex-shrink:0;">💡</span>${tip}</div>`).join('')}</div>` : ''}
           </div>
         `;
-      } catch(e) {
+      } catch (e) {
         resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر التنبؤ — تأكد من الاتصال بالإنترنت</div>`;
       }
     }
@@ -6708,7 +7344,7 @@
 
       const today = new Date();
       let weekDone = 0, weekTotal = 0;
-      const dayNames = ['أح','إث','ثل','أر','خم','جم','سب'];
+      const dayNames = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'];
       for (let i = 0; i < 7; i++) {
         const d = new Date(today); d.setDate(d.getDate() - i);
         const ds = d.toISOString().split('T')[0];
@@ -6739,7 +7375,7 @@
               <div class="mirror-avatar">📊</div>
               <div style="flex:1;">
                 <div class="mirror-week-title">تقرير أسبوعك — ${settings.name}</div>
-                <div class="mirror-date">${weekStart.toLocaleDateString('ar-EG',{month:'short',day:'numeric'})} – ${today.toLocaleDateString('ar-EG',{month:'short',day:'numeric'})}</div>
+                <div class="mirror-date">${weekStart.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric' })} – ${today.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric' })}</div>
               </div>
               <div class="mirror-grade" style="background:linear-gradient(135deg,${gradeColor},${gradeColor}aa);">${grade}</div>
             </div>
@@ -6757,10 +7393,10 @@
                 <div class="mirror-stat-label">معدل الإنجاز</div>
               </div>
             </div>
-            <div class="mirror-insight-box">${resp.replace(/\n/g,'<br>')}</div>
+            <div class="mirror-insight-box">${resp.replace(/\n/g, '<br>')}</div>
           </div>
         `;
-      } catch(e) {
+      } catch (e) {
         resultEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذّر إنشاء التقرير</div>`;
       }
     }
@@ -6778,11 +7414,11 @@
       const waketime = document.getElementById('sleepWaketimeInput').value;
       const box = document.getElementById('sleepSummaryBox');
       const badge = document.getElementById('sleepDurationBadge');
-      if (!bedtime || !waketime) { if(box) box.style.display = 'none'; return null; }
-      
+      if (!bedtime || !waketime) { if (box) box.style.display = 'none'; return null; }
+
       const [bh, bm] = bedtime.split(':').map(Number);
       const [wh, wm] = waketime.split(':').map(Number);
-      
+
       let diffMins = (wh * 60 + wm) - (bh * 60 + bm);
       if (diffMins < 0) {
         diffMins += 24 * 60; // sleep crossed midnight
@@ -6829,7 +7465,7 @@
       const hours = calculateSleepHours();
       const today = new Date().toISOString().split('T')[0];
       const todayDone = tasks.filter(t => t.done).length;
-      
+
       sleepData[today] = {
         rating: currentSleepRating,
         tasksDone: todayDone,
@@ -6839,7 +7475,7 @@
         duration: hours !== null ? parseFloat(hours.toFixed(1)) : null,
         factors: [...selectedSleepFactors]
       };
-      
+
       localStorage.setItem('ttasks_sleep', JSON.stringify(sleepData));
       showNotif('🌙 تم الحفظ بنجاح!', 'تم تسجيل تقرير نومك وربطه بإنتاجيتك.');
       renderSleepData();
@@ -6853,12 +7489,12 @@
       if (!corChart) return;
       const entries = Object.entries(sleepData).slice(-7).sort((a, b) => a[0].localeCompare(b[0]));
       if (!entries.length) { corChart.innerHTML = '<div style="color:var(--t3);font-size:12px;text-align:center;padding:12px;">سجّل نومك لبضعة أيام لرؤية علاقته بإنتاجيتك</div>'; return; }
-      
+
       const maxTasks = Math.max(...entries.map(([, v]) => v.tasksDone || 0), 1);
       const emojis = ['', '😴', '😑', '😊', '😄', '🤩'];
       const factorIcons = { caffeine: '☕', screens: '📱', reading: '📚', pray: '🕌', exercise: '🏃', food: '🍔' };
       const factorNames = { caffeine: 'كافيين متأخر', screens: 'شاشات قبل النوم', reading: 'استرخاء/قراءة', pray: 'قيام ليل/قرآن', exercise: 'رياضة قوية', food: 'أكل متأخر' };
-      
+
       corChart.innerHTML = `<div class="sleep-correlation">${entries.map(([date, v]) => {
         const d = new Date(date); const dayLabel = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()];
         const barW = maxTasks > 0 ? Math.round((v.tasksDone / maxTasks) * 100) : 0;
@@ -6877,7 +7513,7 @@
           ` : ''}
         </div>`;
       }).join('')}</div>`;
-      
+
       // Restore today's details
       const today = new Date().toISOString().split('T')[0];
       if (sleepData[today]) {
@@ -6889,7 +7525,7 @@
         if (sleepData[today].bedtime) document.getElementById('sleepBedtimeInput').value = sleepData[today].bedtime;
         if (sleepData[today].waketime) document.getElementById('sleepWaketimeInput').value = sleepData[today].waketime;
         calculateSleepHours();
-        
+
         selectedSleepFactors = sleepData[today].factors || [];
         document.querySelectorAll('#sleepFactorsGrid .sleep-factor-chip').forEach(chip => {
           const factorKey = chip.getAttribute('onclick').match(/'([^']+)'/)[1];
@@ -6899,7 +7535,7 @@
         document.getElementById('sleepBedtimeInput').value = '';
         document.getElementById('sleepWaketimeInput').value = '';
         const sBox = document.getElementById('sleepSummaryBox');
-        if(sBox) sBox.style.display = 'none';
+        if (sBox) sBox.style.display = 'none';
         currentSleepRating = 0;
         document.querySelectorAll('#sleepRating .sleep-star').forEach(b => b.classList.remove('selected'));
         selectedSleepFactors = [];
@@ -6915,7 +7551,7 @@
       const avgTasks = entries.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / entries.length;
       const highSleepDays = entries.filter(([, v]) => v.rating >= 4);
       const highSleepAvgTasks = highSleepDays.length ? highSleepDays.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / highSleepDays.length : 0;
-      
+
       let factorsSummary = {};
       entries.forEach(([, v]) => {
         if (v.factors) {
@@ -7164,7 +7800,7 @@
         return `<div class="task-item ${t.done ? 'done' : ''} ${isOverdue ? 'overdue' : ''} ${t.isPrayer ? 'prayer-task' : ''}" id="ti-${t.id}">
       <div class="task-check ${t.done ? 'checked' : ''}" onclick="toggleTask(${t.id})" style="${!canComplete && !t.done ? 'border-color:rgba(251,191,36,.5);cursor:not-allowed;' : ''}" title="${!canComplete && !t.done ? 'ابدأ في وقتها!' : ''}">${t.done ? '<i class="ti ti-check" style="font-size:11px;color:#0f172a;"></i>' : !canComplete ? '🔒' : ''}</div>
       <div style="flex:1;min-width:0;"><div class="task-name">${t.name}</div>
-      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><div class="progress-mini"><div class="progress-mini-fill" style="width:${t.progress}%"></div></div><span style="font-size:10px;color:var(--t3);">${t.progress}%</span><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}</div></div>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><div class="progress-mini"><div class="progress-mini-fill" style="width:${t.progress}%"></div></div><span class="task-pct-span" style="font-size:10px;color:var(--t3);">${t.progress}%</span><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}</div></div>
       <div class="task-meta"><span class="tag ${t.priority}">${priLabel(t.priority)}</span></div>
       <div class="task-actions">
         <button class="icon-btn" onclick="accelerateTask(${t.id})" title="مسرّع AI" style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(0,180,216,.1));color:#c4b5fd;border:1px solid rgba(124,58,237,.25);"><i class="ti ti-bolt"></i></button>
