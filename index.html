@@ -1902,14 +1902,17 @@
       position: relative;
       transition: all 0.3s ease;
     }
+
     .task-range:hover {
       background: rgba(255, 255, 255, 0.15);
     }
+
     .task-range::-webkit-slider-runnable-track {
       width: 100%;
       height: 6px;
       cursor: pointer;
     }
+
     .task-range::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -1922,14 +1925,17 @@
       box-shadow: 0 0 10px rgba(0, 180, 216, 0.6);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+
     .task-range::-webkit-slider-thumb:hover {
       transform: scale(1.35);
       box-shadow: 0 0 15px rgba(124, 58, 237, 0.8);
     }
+
     .task-range::-webkit-slider-thumb:active {
       transform: scale(1.5);
       box-shadow: 0 0 20px rgba(0, 180, 216, 0.9);
     }
+
     .task-range::-moz-range-thumb {
       width: 14px;
       height: 14px;
@@ -1940,10 +1946,12 @@
       box-shadow: 0 0 10px rgba(0, 180, 216, 0.6);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+
     .task-range::-moz-range-thumb:hover {
       transform: scale(1.35);
       box-shadow: 0 0 15px rgba(124, 58, 237, 0.8);
     }
+
     .task-range::-moz-range-thumb:active {
       transform: scale(1.5);
       box-shadow: 0 0 20px rgba(0, 180, 216, 0.9);
@@ -4452,6 +4460,7 @@
       animation: fadeIn 0.4s ease;
       backdrop-filter: blur(8px);
     }
+
     .flow-ai-box::before {
       content: '🧠 مُرشد التركيز AI: ';
       color: #c4b5fd;
@@ -4459,6 +4468,7 @@
       display: block;
       margin-bottom: 4px;
     }
+
     .flow-ai-btn {
       background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(0, 180, 216, 0.15));
       border: 1px solid rgba(124, 58, 237, 0.35);
@@ -4474,11 +4484,13 @@
       align-items: center;
       gap: 6px;
     }
+
     .flow-ai-btn:hover {
       background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(0, 180, 216, 0.3));
       transform: translateY(-1px);
       box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
     }
+
     .flow-audio-panel {
       margin-top: 20px;
       display: flex;
@@ -4487,11 +4499,13 @@
       align-items: center;
       flex-wrap: wrap;
     }
+
     .flow-audio-label {
       font-size: 11px;
       color: var(--t3);
       margin-left: 4px;
     }
+
     .flow-audio-btn {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -4505,10 +4519,12 @@
       align-items: center;
       gap: 4px;
     }
+
     .flow-audio-btn:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(255, 255, 255, 0.2);
     }
+
     .flow-audio-btn.active {
       background: rgba(0, 180, 216, 0.2);
       border-color: rgba(0, 180, 216, 0.5);
@@ -4519,8 +4535,8 @@
 
     /* ─── FOCUS PROOF CAMERA PANEL ──────────────────────────────────── */
     .flow-proof-btn {
-      background: linear-gradient(135deg, rgba(0,180,216,.18), rgba(124,58,237,.18));
-      border: 1px solid rgba(0,180,216,.4);
+      background: linear-gradient(135deg, rgba(0, 180, 216, .18), rgba(124, 58, 237, .18));
+      border: 1px solid rgba(0, 180, 216, .4);
       color: var(--sky);
       padding: 9px 18px;
       border-radius: 22px;
@@ -4537,43 +4553,61 @@
       position: relative;
       overflow: hidden;
     }
+
     .flow-proof-btn::before {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(0,180,216,.08), rgba(124,58,237,.08));
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 180, 216, .08), rgba(124, 58, 237, .08));
       opacity: 0;
       transition: opacity .25s;
     }
-    .flow-proof-btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,180,216,.45); }
-    .flow-proof-btn:hover::before { opacity: 1; }
+
+    .flow-proof-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 180, 216, .45);
+    }
+
+    .flow-proof-btn:hover::before {
+      opacity: 1;
+    }
 
     .flow-proof-panel {
-      background: rgba(0,0,0,.45);
+      background: rgba(0, 0, 0, .45);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(0,180,216,.2);
+      border: 1px solid rgba(0, 180, 216, .2);
       border-radius: 20px;
       padding: 20px;
       margin-top: 14px;
       max-width: 420px;
       width: 100%;
-      box-shadow: 0 0 40px rgba(0,180,216,.1), 0 8px 32px rgba(0,0,0,.5);
+      box-shadow: 0 0 40px rgba(0, 180, 216, .1), 0 8px 32px rgba(0, 0, 0, .5);
       animation: fadeIn .35s ease;
     }
+
     .flow-proof-panel-title {
-      font-size: 13px; font-weight: 800;
-      color: var(--sky); letter-spacing: .5px;
-      margin-bottom: 12px; text-align: center;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--sky);
+      letter-spacing: .5px;
+      margin-bottom: 12px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
+
     .flow-proof-video {
       width: 100%;
       max-height: 220px;
       object-fit: cover;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255, 255, 255, .1);
       display: block;
       background: #000;
     }
+
     .flow-proof-snap-btn {
       width: 100%;
       margin-top: 12px;
@@ -4593,43 +4627,71 @@
       justify-content: center;
       gap: 8px;
     }
-    .flow-proof-snap-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(0,180,216,.5); }
-    .flow-proof-snap-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-    .flow-proof-canvas { display: none; }
+
+    .flow-proof-snap-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 180, 216, .5);
+    }
+
+    .flow-proof-snap-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .flow-proof-canvas {
+      display: none;
+    }
 
     .flow-proof-result {
       margin-top: 14px;
       padding: 14px 16px;
-      background: rgba(124,58,237,.08);
-      border: 1px solid rgba(124,58,237,.3);
+      background: rgba(124, 58, 237, .08);
+      border: 1px solid rgba(124, 58, 237, .3);
       border-radius: 14px;
       animation: fadeIn .35s ease;
     }
+
     .flow-proof-verdict {
-      font-size: 14px; font-weight: 800;
-      margin-bottom: 8px; display: flex;
-      align-items: center; gap: 8px;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .flow-proof-verdict.pass { color: #39d353; }
-    .flow-proof-verdict.warn { color: #f59e0b; }
-    .flow-proof-verdict.fail { color: #f43f5e; }
+
+    .flow-proof-verdict.pass {
+      color: #39d353;
+    }
+
+    .flow-proof-verdict.warn {
+      color: #f59e0b;
+    }
+
+    .flow-proof-verdict.fail {
+      color: #f43f5e;
+    }
+
     .flow-proof-analysis {
       font-size: 12px;
       color: var(--t2);
       line-height: 1.7;
     }
+
     .flow-proof-thumb {
       width: 100%;
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255, 255, 255, .1);
       margin-bottom: 10px;
       max-height: 160px;
       object-fit: cover;
     }
+
     .flow-proof-close-btn {
       margin-top: 10px;
       background: transparent;
-      border: 1px solid rgba(255,255,255,.15);
+      border: 1px solid rgba(255, 255, 255, .15);
       color: var(--t3);
       padding: 6px 14px;
       border-radius: 12px;
@@ -4638,7 +4700,11 @@
       font-family: inherit;
       transition: all .2s;
     }
-    .flow-proof-close-btn:hover { background: rgba(255,255,255,.08); color: var(--t2); }
+
+    .flow-proof-close-btn:hover {
+      background: rgba(255, 255, 255, .08);
+      color: var(--t2);
+    }
 
     @media(max-width:700px) {
       .voice-fab {
@@ -6847,9 +6913,9 @@
 
           flowSpaceNode = {
             stop: () => {
-              try { osc1.stop(); } catch(e){}
-              try { osc2.stop(); } catch(e){}
-              try { lfo.stop(); } catch(e){}
+              try { osc1.stop(); } catch (e) { }
+              try { osc2.stop(); } catch (e) { }
+              try { lfo.stop(); } catch (e) { }
             }
           };
         }
@@ -6878,27 +6944,45 @@
       const panel = document.getElementById('flowProofPanel');
       const video = document.getElementById('flowProofVideo');
       const result = document.getElementById('flowProofResult');
+      const snapBtn = document.getElementById('flowProofSnapBtn');
       if (!panel || !video) return;
       panel.style.display = 'block';
       if (result) result.style.display = 'none';
+
+      // Restore default visibility in case of previous failures
+      video.style.display = 'block';
+      if (snapBtn) snapBtn.style.display = 'block';
+
       try {
         _proofStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
         video.srcObject = _proofStream;
       } catch (e) {
-        panel.innerHTML = '<div class="flow-proof-panel-title">⚠️ لا يمكن الوصول للكاميرا</div><p style="font-size:12px;color:var(--t3);text-align:center;">تأكد من السماح للمتصفح باستخدام الكاميرا.</p><button class="flow-proof-close-btn" onclick="closeFocusProof()">إغلاق</button>';
-
+        console.error('Camera access failed:', e);
+        video.style.display = 'none';
+        if (snapBtn) snapBtn.style.display = 'none';
+        if (result) {
+          result.style.display = 'block';
+          result.innerHTML = `
+            <div style="background: rgba(220, 38, 38, 0.15); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 12px; color: #f87171; font-size: 13px; text-align: right; line-height: 1.5; direction: rtl;">
+              <strong>⚠️ عذراً، تعذّر تشغيل الكاميرا المباشرة:</strong><br>
+              نظام أندرويد يمنع المتصفح من طلب إذن الكاميرا بسبب وجود <strong>تطبيقات عائمة</strong> نشطة بالخلفية (مثل فقاعة Messenger، أو مسجل الشاشة، أو تطبيق فلاتر الشاشة).<br><br>
+              <strong>💡 الحل البديل الأسهل:</strong><br>
+              اضغط على زر <strong>"رفع صورة"</strong> بالأسفل، ثم اختر الكاميرا لالتقاط صورة فورية أو اختر صورة من الاستوديو لتخطي القفل ومواصلة التدفق!
+            </div>
+          `;
+        }
       }
     }
 
     function closeFocusProof() {
-      if (_proofStream) { _proofStream.getTracks().forEach(function(t){ t.stop(); }); _proofStream = null; }
+      if (_proofStream) { _proofStream.getTracks().forEach(function (t) { t.stop(); }); _proofStream = null; }
       var video = document.getElementById('flowProofVideo');
       if (video) video.srcObject = null;
       var panel = document.getElementById('flowProofPanel');
       if (panel) panel.style.display = 'none';
     }
 
-        async function captureAndAnalyzeFocus() {
+    async function captureAndAnalyzeFocus() {
       const video = document.getElementById('flowProofVideo');
       const canvas = document.getElementById('flowProofCanvas');
       if (!video || !canvas) return;
@@ -6913,7 +6997,7 @@
       if (!input.files || !input.files[0]) return;
       const file = input.files[0];
       const reader = new FileReader();
-      reader.onload = async function(e) {
+      reader.onload = async function (e) {
         await analyzeFocusImage(e.target.result);
       };
       reader.readAsDataURL(file);
@@ -6937,7 +7021,7 @@
         const response = await puter.ai.chat(prompt, dataUrl, { model: 'gpt-5.4-nano' });
         let respText = typeof response === 'string' ? response :
           (response && response.message && response.message.content ?
-            (Array.isArray(response.message.content) ? response.message.content.map(function(c){ return c.text||''; }).join('') : response.message.content)
+            (Array.isArray(response.message.content) ? response.message.content.map(function (c) { return c.text || ''; }).join('') : response.message.content)
             : (response && response.text ? response.text : String(response)));
 
         let verdict = /حكم:\s*PASS/i.test(respText) ? 'PASS' : /حكم:\s*FAIL/i.test(respText) ? 'FAIL' : 'WARN';
@@ -6955,7 +7039,7 @@
 
         if (verdict === 'PASS') {
           flowLockedByProof = false; // Unlock session
-          
+
           // Re-style panel to show success border
           const panel = document.getElementById('flowProofPanel');
           if (panel) {
@@ -7030,11 +7114,11 @@
             document.getElementById('flowStartBtn').textContent = '🔒 الجلسة مقفلة';
             document.getElementById('flowTimerLabel').textContent = 'برهان التركيز مطلوب! 📸';
             document.getElementById('flowGuard').style.display = 'none';
-            
+
             openFocusProof();
-            
+
             showNotif('📸 برهان التركيز مطلوب!', 'مضى نصف الوقت! يرجى تقديم صورة لإثبات تركيزك لمتابعة الجلسة.');
-            
+
             setTimeout(() => {
               const panel = document.getElementById('flowProofPanel');
               if (panel) {
@@ -7075,7 +7159,7 @@
       document.getElementById('flowGuard').style.display = 'none';
       updateFlowDisplay();
     }
-    
+
     async function onFlowComplete() {
       const el = document.getElementById('flowOverlay');
       if (el) {
@@ -7096,7 +7180,7 @@
       stopFlowAmbientSound();
       // Stop camera stream if Focus Proof was open
       if (typeof _proofStream !== 'undefined' && _proofStream) {
-        _proofStream.getTracks().forEach(function(t){ t.stop(); });
+        _proofStream.getTracks().forEach(function (t) { t.stop(); });
         _proofStream = null;
       }
       const el = document.getElementById('flowOverlay');
