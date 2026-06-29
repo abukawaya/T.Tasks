@@ -6882,7 +6882,7 @@
       panel.style.display = 'block';
       if (result) result.style.display = 'none';
       try {
-        _proofStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+        _proofStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
         video.srcObject = _proofStream;
       } catch (e) {
         panel.innerHTML = '<div class="flow-proof-panel-title">⚠️ لا يمكن الوصول للكاميرا</div><p style="font-size:12px;color:var(--t3);text-align:center;">تأكد من السماح للمتصفح باستخدام الكاميرا.</p><button class="flow-proof-close-btn" onclick="closeFocusProof()">إغلاق</button>';
