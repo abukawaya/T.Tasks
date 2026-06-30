@@ -1830,6 +1830,96 @@
       font-weight: 700
     }
 
+    /* ===== DASHBOARD BOTTOM GRID ===== */
+    .dash-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .dash-bottom-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dash-quote-card {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .dash-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dash-quote-card {
+        grid-column: 1;
+      }
+    }
+
+    .dash-task-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      background: rgba(26, 86, 219, .06);
+      border: 1px solid rgba(0, 180, 216, .1);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .dash-task-row:hover {
+      background: rgba(0, 180, 216, .1);
+      transform: translateX(-2px);
+    }
+
+    .dash-task-row.done {
+      opacity: .5;
+    }
+
+    .dash-habit-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      background: rgba(57, 211, 83, .06);
+      border: 1px solid rgba(57, 211, 83, .12);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .dash-habit-row:hover {
+      background: rgba(57, 211, 83, .12);
+      transform: translateX(-2px);
+    }
+
+    .dash-habit-row.done {
+      background: rgba(57, 211, 83, .15);
+      border-color: rgba(57, 211, 83, .35);
+    }
+
+    .dash-habit-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(57, 211, 83, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+
+    .dash-habit-check.done {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
     .progress-mini {
       width: 50px;
       height: 3px;
@@ -5076,18 +5166,36 @@
           <div class="schedule-empty">انقر "جدولة ذكية" لتوزيع مهامك تلقائياً!</div>
         </div>
       </div>
-      <div class="grid2">
-        <div class="card">
-          <div class="card-title"><i class="ti ti-checklist"></i> مهام اليوم</div>
+      <!-- Beautiful Dashboard Bottom Section -->
+      <div class="dash-bottom-grid">
+        <!-- TODAY TASKS -->
+        <div class="card dash-tasks-card">
+          <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+            <span><i class="ti ti-checklist"></i> مهام اليوم</span>
+            <button class="btn btn-ghost btn-sm" onclick="showPage('tasks',document.querySelectorAll('.nav-item')[1])"
+              style="font-size:11px;padding:4px 8px;">عرض الكل ←</button>
+          </div>
           <div id="todayTasksList">
             <div style="color:var(--t3);font-size:13px;text-align:center;padding:20px;">أضف مهامك الآن!</div>
-          </div><button class="btn btn-ghost btn-sm btn-block" style="margin-top:8px;"
-            onclick="showPage('tasks',document.querySelectorAll('.nav-item')[1])">عرض كل المهام ←</button>
+          </div>
         </div>
-        <div class="card">
+        <!-- TODAY HABITS -->
+        <div class="card dash-habits-card">
+          <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+            <span><i class="ti ti-repeat"></i> عادات اليوم</span>
+            <button class="btn btn-ghost btn-sm" onclick="showPage('habits',document.querySelectorAll('.nav-item')[3])"
+              style="font-size:11px;padding:4px 8px;">عرض الكل ←</button>
+          </div>
+          <div id="dashHabitsList">
+            <div style="color:var(--t3);font-size:13px;text-align:center;padding:20px;">أضف عاداتك لتتبعها هنا!</div>
+          </div>
+        </div>
+        <!-- DAILY QUOTE -->
+        <div class="card dash-quote-card">
           <div class="card-title"><i class="ti ti-book"></i> نصيحة اليوم</div>
-          <div id="bookQuoteBox"></div><button class="btn btn-ghost btn-sm btn-block" onclick="loadNewQuote()">اقتباس
-            جديد 🔄</button>
+          <div id="bookQuoteBox"></div>
+          <button class="btn btn-ghost btn-sm btn-block" onclick="loadNewQuote()" style="margin-top:8px;">اقتباس جديد
+            🔄</button>
         </div>
       </div>
     </div>
@@ -5419,10 +5527,18 @@
       </div>
       <div class="grid2">
         <div class="card">
-          <div class="card-title"><i class="ti ti-messages"></i> المحادثة الذكية</div>
+          <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+            <span><i class="ti ti-messages"></i> المحادثة الذكية</span>
+            <button onclick="clearAiHistory()"
+              style="font-size:10px;padding:4px 8px;background:rgba(244,63,94,.12);color:#f43f5e;border:1px solid rgba(244,63,94,.25);border-radius:8px;cursor:pointer;"
+              title="مسح ذاكرة المحادثة">🧹 مسح الذاكرة</button>
+          </div>
           <div
             style="background:rgba(0,180,216,.07);border:1px dashed rgba(0,180,216,.3);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:11.5px;color:var(--sky);">
             💡 قل لي مثلاً: <em>"عايز أعمل عادة يومية بعد انتهاء عملي الساعة 7 صباحاً"</em></div>
+          <div id="aiMemoryBadge"
+            style="font-size:10px;color:var(--t3);margin-bottom:6px;padding:4px 8px;background:rgba(139,92,246,.08);border-radius:6px;display:none;">
+            🧠 AI يتذكر محادثاتك السابقة</div>
           <div class="ai-messages" id="aiChatMessages">
             <div class="msg ai">
               <div class="msg-avatar">🤖</div>
@@ -5652,6 +5768,22 @@
         <p style="font-size:12px;color:var(--t3);margin-bottom:12px;">سجّل أوقات نومك، جودته، والعوامل المؤثرة لتحصل على
           تحليل إنتاجية دقيق</p>
 
+        <!-- Sleep Schedule & Prep Guide -->
+        <div
+          style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(0,180,216,0.06)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+          <div
+            style="font-size: 12.5px; font-weight: 700; color: #c4b5fd; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+            🕌 بيئة النوم وجدول الاستعداد للراحة
+          </div>
+          <ul
+            style="font-size: 11px; color: var(--t2); padding-right: 18px; line-height: 1.6; display: flex; flex-direction: column; gap: 6px;">
+            <li>🕋 <strong>الوضوء والذكر:</strong> توضأ قبل الذهاب للفراش واقرأ أذكار النوم لتهدئة ذهنك.</li>
+            <li>📵 <strong>إغلاق الهاتف:</strong> أوقف تشغيل هاتفك أو ضعه بعيداً لتقليل الضوء الأزرق المضر.</li>
+            <li>🌡️ <strong>تجهيز الغرفة:</strong> اضبط الغرفة لتكون باردة ومظلمة تماماً وهادئة.</li>
+            <li>⏰ <strong>تثبيت المواعيد:</strong> حاول النوم والاستيقاظ في مواعيد ثابتة يومياً.</li>
+          </ul>
+        </div>
+
         <!-- Sleep Times Inputs -->
         <div class="sleep-inputs-row">
           <div>
@@ -5672,16 +5804,66 @@
           <span class="sleep-duration-badge" id="sleepDurationBadge">0 ساعة</span>
         </div>
 
+        <!-- Dynamic Sleep Stages Chart -->
+        <div id="sleepStagesChartSection" style="margin-bottom: 16px; display: none;">
+          <div style="font-size:12px;color:var(--t2);margin-bottom:8px;">📊 تخطيط مراحل النوم المتوقعة (تقديري):</div>
+          <div
+            style="background:rgba(255,255,255,0.02); border: 1px solid rgba(0,180,216,0.15); border-radius: 12px; padding: 14px;">
+            <!-- Visual Segmented Bar -->
+            <div
+              style="display: flex; height: 18px; border-radius: 9px; overflow: hidden; margin-bottom: 12px; background: rgba(255,255,255,0.05);">
+              <div id="stageDeepBar" style="background: #1e3a8a; height: 100%; transition: width 0.3s;"
+                title="النوم العميق"></div>
+              <div id="stageLightBar" style="background: #3b82f6; height: 100%; transition: width 0.3s;"
+                title="النوم الخفيف"></div>
+              <div id="stageRemBar" style="background: #8b5cf6; height: 100%; transition: width 0.3s;"
+                title="نوم الأحلام (REM)"></div>
+              <div id="stageAwakeBar" style="background: #fbbf24; height: 100%; transition: width 0.3s;"
+                title="الاستيقاظ"></div>
+            </div>
+            <!-- Legends & Details -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; font-size: 11px;">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span
+                  style="width: 10px; height: 10px; background: #1e3a8a; border-radius: 50%; display:inline-block;"></span>
+                <span>💤 نوم عميق (20%): <strong id="stageDeepVal">0 ساعة</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span
+                  style="width: 10px; height: 10px; background: #3b82f6; border-radius: 50%; display:inline-block;"></span>
+                <span>☁️ نوم خفيف (50%): <strong id="stageLightVal">0 ساعة</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span
+                  style="width: 10px; height: 10px; background: #8b5cf6; border-radius: 50%; display:inline-block;"></span>
+                <span>🔮 حركة العين REM (20%): <strong id="stageRemVal">0 ساعة</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span
+                  style="width: 10px; height: 10px; background: #fbbf24; border-radius: 50%; display:inline-block;"></span>
+                <span>👀 استيقاظ مؤقت (10%): <strong id="stageAwakeVal">0 ساعة</strong></span>
+              </div>
+            </div>
+            <div
+              style="font-size: 10px; color: var(--t3); margin-top: 10px; text-align: center; border-top: 1px dashed rgba(255,255,255,0.05); padding-top: 8px;">
+              🔄 دورات النوم المتوقعة: حوالي <span id="sleepCyclesCount">0</span> دورة كاملة (90 دقيقة للدورة)
+            </div>
+          </div>
+        </div>
+
         <!-- Sleep Factors Selection -->
         <div style="margin-bottom:14px;">
-          <div style="font-size:12px;color:var(--t2);margin-bottom:6px;">عوامل ومؤثرات نومك:</div>
+          <div style="font-size:12px;color:var(--t2);margin-bottom:6px;">عوامل ومؤثرات نومك اليوم:</div>
           <div class="sleep-factors-grid" id="sleepFactorsGrid">
             <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'caffeine')">☕ كافيين متأخر</button>
             <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'screens')">📱 شاشات قبل النوم</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'fluids')">💧 سوائل قبل النوم</button>
             <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'reading')">📚 استرخاء / قراءة</button>
             <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'pray')">🕌 قيام الليل / قرآن</button>
             <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'exercise')">🏃 رياضة قوية</button>
             <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'food')">🍔 أكل ثقيل متأخر</button>
+            <button class="sleep-factor-chip" onclick="toggleSleepFactor(this, 'active_early')">⚡ نشيط رغم قلة
+              النوم</button>
           </div>
         </div>
 
@@ -5923,6 +6105,7 @@
       if (name === 'habits') { renderHabits(); loadHabitsTips(); renderHabitsCharts(); }
       if (name === 'prayer') renderPrayerPage();
       if (name === 'spiritual') renderSpiritualPage();
+      if (name === 'ai') { const badge = document.getElementById('aiMemoryBadge'); if (badge) badge.style.display = aiChatHistory.length > 0 ? 'block' : 'none'; }
       window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
     }
     function showPageMobile(name, el) { showPage(name, el); }
@@ -6343,9 +6526,45 @@
     function renderDashboard() {
       updateStats(); updateXPDisplay();
       const todayStr = new Date().toISOString().split('T')[0];
-      const pending = tasks.filter(t => !t.done && (!t.taskDate || t.taskDate === todayStr)).slice(0, 5);
+      const now = new Date(), nowMins = now.getHours() * 60 + now.getMinutes();
+      const pending = tasks.filter(t => !t.done && (!t.taskDate || t.taskDate === todayStr)).slice(0, 6);
       const el = document.getElementById('todayTasksList');
-      el.innerHTML = !pending.length ? `<div style="text-align:center;padding:16px;color:var(--t3);font-size:13px;">🎉 أنجزت كل مهامك اليوم!</div>` : pending.map(t => `<div class="task-item" style="padding:9px 11px;"><div class="task-check ${t.done ? 'checked' : ''}" onclick="toggleTask(${t.id})" style="width:20px;height:20px;"></div><span style="flex:1;font-size:12.5px;">${t.name}</span>${t.taskTime ? `<span style="font-size:10px;color:var(--sky);">⏰ ${t.taskTime}</span>` : ''}<span class="tag ${t.priority}" style="font-size:10px;">${priLabel(t.priority)}</span></div>`).join('');
+      el.innerHTML = !pending.length
+        ? `<div style="text-align:center;padding:16px;color:var(--t3);font-size:13px;">🎉 أنجزت كل مهامك اليوم!</div>`
+        : pending.map(t => {
+          const canComplete = t.done || canCompleteTask(t);
+          const lockStyle = !canComplete ? 'border-color:rgba(251,191,36,.5);cursor:not-allowed;' : '';
+          const lockIcon = !canComplete ? '🔒' : '';
+          const lockClick = !canComplete ? `showFunnyLockMsg(getEarlyCompletionFunnyMsg(),'${t.taskTime}')` : `toggleTask(${t.id})`;
+          return `<div class="dash-task-row ${t.done ? 'done' : ''}">
+            <div class="task-check ${t.done ? 'checked' : ''}" onclick="${lockClick}" style="width:20px;height:20px;${lockStyle}">${t.done ? '<i class="ti ti-check" style="font-size:10px;color:#0f172a;"></i>' : lockIcon}</div>
+            <span style="flex:1;font-size:13px;">${t.name}</span>
+            ${t.taskTime ? `<span style="font-size:10px;color:${canComplete ? 'var(--sky)' : '#fbbf24'};">⏰ ${t.taskTime}</span>` : ''}
+            <span class="tag ${t.priority}" style="font-size:10px;">${priLabel(t.priority)}</span>
+          </div>`;
+        }).join('');
+
+      // Render today habits in dashboard
+      const habitsEl = document.getElementById('dashHabitsList');
+      if (habitsEl) {
+        const todayDay = now.getDay();
+        const allHabits = [...(habits.good || []), ...(habits.bad || [])].filter(h => h.freq === 'daily' || (h.targetDays && h.targetDays.includes(todayDay)));
+        if (!allHabits.length) {
+          habitsEl.innerHTML = `<div style="text-align:center;padding:16px;color:var(--t3);font-size:13px;">أضف عاداتك لتتبعها هنا!</div>`;
+        } else {
+          const todayKey = now.toDateString();
+          habitsEl.innerHTML = allHabits.slice(0, 5).map(h => {
+            const isGood = habits.good.some(g => g.id === h.id);
+            const isDone = h.days && h.days[todayDay];
+            return `<div class="dash-habit-row ${isDone ? 'done' : ''}" onclick="dashToggleHabit('${h.id}','${isGood ? 'good' : 'bad'}')">
+              <span style="font-size:18px;">${h.icon || (isGood ? '🌿' : '🚫')}</span>
+              <span style="flex:1;font-size:13px;">${h.name}</span>
+              <div class="dash-habit-check ${isDone ? 'done' : ''}">${isDone ? '<i class="ti ti-check" style="font-size:10px;color:#0f172a;"></i>' : ''}</div>
+            </div>`;
+          }).join('');
+        }
+      }
+
       renderWeekChart(); updateInsights(); renderTodayStrip(); updateNavPrayerRing();
     }
     function renderTodayStrip() {
@@ -6395,14 +6614,63 @@
       let totalPrayers = 0; Object.values(prayerLogData).forEach(d => totalPrayers += Object.keys(d).length); document.getElementById('sp_total_prayers').textContent = totalPrayers;
       const levelsEl = document.getElementById('spiritualLevels'); if (levelsEl) levelsEl.innerHTML = SPIRITUAL_LEVELS.map(l => { const isActive = score >= l.min; const pct = isActive ? Math.min(100, ((score - l.min) / (l.max - l.min)) * 100) : 0; return `<div class="spiritual-level" style="${isActive ? 'border-color:rgba(139,92,246,.4);' : ''}"><span class="spiritual-level-icon">${l.icon}</span><div class="spiritual-level-info"><div class="spiritual-level-name" style="${isActive ? 'color:#c4b5fd;' : ''}">${l.name}</div><div class="spiritual-level-desc">${l.desc}</div><div class="spiritual-level-bar"><div class="spiritual-level-fill" style="width:${isActive ? pct : 0}%"></div></div></div></div>`; }).join('');
       const detailedEl = document.getElementById('detailedSunanList'); if (detailedEl) { const todaySunan = sunanLog[today] || {}; detailedEl.innerHTML = SUNAN_LIST.map(s => { const isDone = todaySunan[s.id]; return `<div class="task-item ${isDone ? 'done' : ''}"><div class="task-check ${isDone ? 'checked' : ''}" onclick="toggleSunan('${s.id}')">${isDone ? '<i class="ti ti-check" style="font-size:11px;color:#0f172a;"></i>' : ''}</div><span style="font-size:18px;margin-left:4px;">${s.icon}</span><div style="flex:1;"><div class="task-name">${s.name}</div><div style="font-size:11px;color:var(--gold);">${s.reward} — ${s.count}</div></div><span class="task-time-badge prayer-badge">${s.prayer === 'any' ? 'أي وقت' : PRAYER_NAMES[s.prayer] || s.prayer}</span></div>`; }).join(''); }
-      renderSpiritualWeekChart();
     }
-    function renderSpiritualWeekChart() {
-      const ctx = document.getElementById('spiritualWeekChart'); if (!ctx) return;
-      const today = new Date(); const labels = [], prayersData = [], sunanData = [];
-      for (let i = 6; i >= 0; i--) { const d = new Date(today); d.setDate(d.getDate() - i); labels.push(['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()]); const dayKey = d.toDateString(); prayersData.push(Object.keys(prayerLogData[dayKey] || {}).length); sunanData.push(Object.keys(sunanLog[dayKey] || {}).length); }
-      if (spiritualWeekChartInst) spiritualWeekChartInst.destroy();
-      spiritualWeekChartInst = new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ label: 'صلوات', data: prayersData, backgroundColor: 'rgba(245,158,11,.6)', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 4 }, { label: 'سنن', data: sunanData, backgroundColor: 'rgba(139,92,246,.5)', borderColor: '#8b5cf6', borderWidth: 1, borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#8ba8cc', font: { size: 10 }, padding: 8 } } }, scales: { x: { ticks: { color: '#4a6490', font: { size: 10 } }, grid: { display: false } }, y: { ticks: { color: '#4a6490', font: { size: 10 }, stepSize: 1 }, grid: { color: 'rgba(0,180,216,.05)' }, min: 0 } } } });
+
+    // ===== AI CHAT WITH PERSISTENT MEMORY =====
+    let aiChatHistory = JSON.parse(localStorage.getItem('ttasks_ai_history') || '[]');
+
+    function saveAiHistory() {
+      // Keep last 30 exchanges (60 messages) to avoid token overflow
+      if (aiChatHistory.length > 60) aiChatHistory = aiChatHistory.slice(-60);
+      localStorage.setItem('ttasks_ai_history', JSON.stringify(aiChatHistory));
+    }
+
+    function clearAiHistory() {
+      aiChatHistory = [];
+      localStorage.removeItem('ttasks_ai_history');
+      const msgs = document.getElementById('aiChatMessages');
+      msgs.innerHTML = `<div class="msg ai"><div class="msg-avatar">🤖</div><div class="msg-bubble">تم مسح الذاكرة 🧹<br>أنا هنا من جديد، كيف يمكنني مساعدتك؟</div></div>`;
+    }
+
+    async function sendAiMessage() {
+      const input = document.getElementById('aiInput'); const msg = input.value.trim(); if (!msg) return; input.value = '';
+      const msgs = document.getElementById('aiChatMessages');
+      msgs.innerHTML += `<div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">${msg}</div></div>`;
+      msgs.innerHTML += `<div class="msg ai" id="typing"><div class="msg-avatar">🤖</div><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>`;
+      msgs.scrollTop = msgs.scrollHeight;
+      const todayStr = new Date().toISOString().split('T')[0];
+
+      // Build history summary for context
+      const historyText = aiChatHistory.length > 0
+        ? `\n\n--- سياق المحادثات السابقة ---\n` + aiChatHistory.slice(-10).map(m => `${m.role === 'user' ? 'المستخدم' : 'T.AI'}: ${m.content}`).join('\n') + `\n--- نهاية السياق ---\n`
+        : '';
+
+      const context = `أنت T.AI مساعد ذكي ومخلص، مدعوم بـ Puter AI. تذكر دائماً من أنت وتحدث بأسلوب ودي.
+المستخدم: ${settings.name} · XP: ${xpData.total} · الرتبة: ${getCurrentRank().name}
+المهام الحالية: ${tasks.slice(0, 8).map(t => t.name + (t.done ? ' (مكتملة)' : ' (معلقة)')).join('، ') || 'لا توجد'}
+العادات: ${habits.good.map(h => h.name).join('، ') || 'لا توجد'}
+التاريخ: ${todayStr}${historyText}
+الرسالة الجديدة: "${msg}"
+أجب بالعربية بأسلوب ذكي ومتذكر للسياق. إذا طلب إضافة مهام/عادات أضف:
+ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}","priority":"med","category":"personal"},{"type":"habit","name":"اسم","habitType":"good"}]`;
+
+      const response = await callAI(context); document.getElementById('typing')?.remove();
+      let cleanResponse = response, parsedActions = [];
+      const actionsMatch = response.match(/ACTIONS_JSON:\[[\s\S]*?\]/);
+      if (actionsMatch) { try { parsedActions = JSON.parse(actionsMatch[0].replace('ACTIONS_JSON:', '')); cleanResponse = response.replace(actionsMatch[0], '').trim(); } catch (e) { } }
+
+      // Save to history
+      aiChatHistory.push({ role: 'user', content: msg });
+      aiChatHistory.push({ role: 'ai', content: cleanResponse.substring(0, 300) }); // truncate for storage
+      saveAiHistory();
+
+      let previewHTML = '';
+      if (parsedActions.length > 0) {
+        const taskActions = parsedActions.filter(a => a.type === 'task'), habitActions = parsedActions.filter(a => a.type === 'habit');
+        previewHTML = `<div class="chat-parsed-preview"><div style="font-size:11px;color:var(--sky);font-weight:600;margin-bottom:6px;">✨ AI اكتشف ما تريد إضافته:</div>${taskActions.map(a => `<div class="chat-parsed-item"><span>📋</span><span style="flex:1;font-size:12px;">${a.name}${a.time ? ' — ' + a.time : ''}</span></div>`).join('')}${habitActions.map(a => `<div class="chat-parsed-item"><span>${a.habitType === 'good' ? '🌿' : '🚫'}</span><span style="flex:1;font-size:12px;">${a.name}</span></div>`).join('')}<div class="chat-parsed-confirm"><button class="btn btn-primary btn-sm" onclick='confirmChatActions(${JSON.stringify(parsedActions).replace(/'/g, "\\'")})' style="flex:1;font-size:12px;"><i class="ti ti-check"></i> تأكيد</button><button class="btn btn-ghost btn-sm" onclick="this.closest('.chat-parsed-preview').remove()" style="font-size:12px;"><i class="ti ti-x"></i> لا</button></div></div>`;
+      }
+      msgs.innerHTML += `<div class="msg ai"><div class="msg-avatar">🤖</div><div class="msg-bubble">${cleanResponse.replace(/\n/g, '<br>')}${previewHTML}</div></div>`;
+      msgs.scrollTop = msgs.scrollHeight;
     }
     async function getSpiritualAdvice() { const score = getSpiritualScore(); const today = new Date().toDateString(); const prayersDone = PRAYER_KEYS.filter(k => prayerLogData[today]?.[k]).length; const sunanDone = sunanLog[today] ? Object.keys(sunanLog[today]).length : 0; const level = SPIRITUAL_LEVELS.find(l => score >= l.min && score < l.max) || SPIRITUAL_LEVELS[SPIRITUAL_LEVELS.length - 1]; const box = document.getElementById('spiritualAdviceBox'); box.textContent = 'جارٍ تحميل نصيحتك الروحية...'; const r = await callAI(`أنت مستشار روحي إسلامي. ${settings.name} وصل إلى مستوى "${level.name}" روحياً. اليوم: أدّى ${prayersDone} من 5 صلوات و ${sunanDone} سنة. النتيجة: ${score}%. أعطه نصيحة روحية مخصصة ومحفزة (4-5 جمل). أجب بالعربية.`); box.textContent = r; }
 
@@ -6455,6 +6723,21 @@
       if (taskCount > 0) showNotif('📋 تمت إضافة المهام!', taskCount + ' مهمة أُضيفت'); if (habitCount > 0) showNotif('🌿 تمت إضافة العادات!', habitCount + ' عادة أُضيفت');
     }
     function quickAsk(q) { document.getElementById('aiInput').value = q; sendAiMessage(); }
+
+    function dashToggleHabit(id, type) {
+      const list = type === 'good' ? habits.good : habits.bad;
+      const h = list.find(x => String(x.id) === String(id));
+      if (!h) return;
+      const todayDay = new Date().getDay();
+      if (!h.days) h.days = [false, false, false, false, false, false, false];
+      h.days[todayDay] = !h.days[todayDay];
+      if (h.days[todayDay]) {
+        h.streak = (h.streak || 0) + 1; h.totalDone = (h.totalDone || 0) + 1;
+        addXP(h.xpValue || 15, 'عادة: ' + h.name);
+        showNotif('🌿 أحسنت!', 'أتممت عادة: ' + h.name);
+      }
+      saveAll(); renderDashboard(); renderHabits();
+    }
 
     // ===== AI FUNCTIONS =====
     async function analyzeAllTasks() { const box = document.getElementById('analyzeResult'); box.innerHTML = '<i class="ti ti-robot"></i> جارٍ التحليل...'; box.classList.add('show'); const list = tasks.map(t => `- ${t.name} (${priLabel(t.priority)}, ${t.done ? 'مكتملة' : 'معلقة'}, ${t.progress}%)`).join('\n'); const r = await callAI(`خبير إنتاجية يحلل مهام ${settings.name}:\n${list || 'لا توجد مهام'}\nأعطِ تحليلاً موجزاً بالعربية.`); box.innerHTML = r.replace(/\n/g, '<br>'); }
@@ -7493,12 +7776,44 @@
       setTimeout(() => renderSleepData(), 200);
     }
 
+    function updateSleepStagesChart(hours) {
+      const chartSection = document.getElementById('sleepStagesChartSection');
+      if (!hours || hours <= 0) {
+        if (chartSection) chartSection.style.display = 'none';
+        return;
+      }
+      if (chartSection) chartSection.style.display = 'block';
+
+      // Deep Sleep: 20%, Light Sleep: 50%, REM: 20%, Awake: 10%
+      const deep = hours * 0.20;
+      const light = hours * 0.50;
+      const rem = hours * 0.20;
+      const awake = hours * 0.10;
+      const cycles = (hours / 1.5).toFixed(1);
+
+      document.getElementById('stageDeepVal').textContent = `${deep.toFixed(1)} ساعة`;
+      document.getElementById('stageLightVal').textContent = `${light.toFixed(1)} ساعة`;
+      document.getElementById('stageRemVal').textContent = `${rem.toFixed(1)} ساعة`;
+      document.getElementById('stageAwakeVal').textContent = `${awake.toFixed(1)} ساعة`;
+      document.getElementById('sleepCyclesCount').textContent = cycles;
+
+      // Update segmented bar visual widths
+      document.getElementById('stageDeepBar').style.width = '20%';
+      document.getElementById('stageLightBar').style.width = '50%';
+      document.getElementById('stageRemBar').style.width = '20%';
+      document.getElementById('stageAwakeBar').style.width = '10%';
+    }
+
     function calculateSleepHours() {
       const bedtime = document.getElementById('sleepBedtimeInput').value;
       const waketime = document.getElementById('sleepWaketimeInput').value;
       const box = document.getElementById('sleepSummaryBox');
       const badge = document.getElementById('sleepDurationBadge');
-      if (!bedtime || !waketime) { if (box) box.style.display = 'none'; return null; }
+      if (!bedtime || !waketime) {
+        if (box) box.style.display = 'none';
+        updateSleepStagesChart(0);
+        return null;
+      }
 
       const [bh, bm] = bedtime.split(':').map(Number);
       const [wh, wm] = waketime.split(':').map(Number);
@@ -7517,6 +7832,7 @@
           badge.className = 'sleep-duration-badge bad';
         }
       }
+      updateSleepStagesChart(hours);
       return hours;
     }
 
@@ -7536,7 +7852,6 @@
       });
     }
 
-    // Keep rateSleep for voice AI or simple actions
     async function rateSleep(val) {
       selectSleepRating(val);
       await saveDetailedSleep();
@@ -7563,7 +7878,7 @@
       localStorage.setItem('ttasks_sleep', JSON.stringify(sleepData));
       showNotif('🌙 تم الحفظ بنجاح!', 'تم تسجيل تقرير نومك وربطه بإنتاجيتك.');
       renderSleepData();
-      if (Object.keys(sleepData).length >= 3) {
+      if (Object.keys(sleepData).length >= 1) {
         await analyzeSleepCorrelation();
       }
     }
@@ -7576,8 +7891,8 @@
 
       const maxTasks = Math.max(...entries.map(([, v]) => v.tasksDone || 0), 1);
       const emojis = ['', '😴', '😑', '😊', '😄', '🤩'];
-      const factorIcons = { caffeine: '☕', screens: '📱', reading: '📚', pray: '🕌', exercise: '🏃', food: '🍔' };
-      const factorNames = { caffeine: 'كافيين متأخر', screens: 'شاشات قبل النوم', reading: 'استرخاء/قراءة', pray: 'قيام ليل/قرآن', exercise: 'رياضة قوية', food: 'أكل متأخر' };
+      const factorIcons = { caffeine: '☕', screens: '📱', fluids: '💧', reading: '📚', pray: '🕌', exercise: '🏃', food: '🍔', active_early: '⚡' };
+      const factorNames = { caffeine: 'كافيين متأخر', screens: 'شاشات قبل النوم', fluids: 'سوائل قبل النوم', reading: 'استرخاء/قراءة', pray: 'قيام ليل/قرآن', exercise: 'رياضة قوية', food: 'أكل متأخر', active_early: 'نشيط رغم قلة النوم' };
 
       corChart.innerHTML = `<div class="sleep-correlation">${entries.map(([date, v]) => {
         const d = new Date(date); const dayLabel = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()];
@@ -7620,6 +7935,7 @@
         document.getElementById('sleepWaketimeInput').value = '';
         const sBox = document.getElementById('sleepSummaryBox');
         if (sBox) sBox.style.display = 'none';
+        updateSleepStagesChart(0);
         currentSleepRating = 0;
         document.querySelectorAll('#sleepRating .sleep-star').forEach(b => b.classList.remove('selected'));
         selectedSleepFactors = [];
@@ -7630,6 +7946,8 @@
     async function analyzeSleepCorrelation() {
       const insightEl = document.getElementById('sleepAIInsight');
       if (!insightEl) return;
+      insightEl.innerHTML = `<div style="text-align:center;padding:12px;color:var(--t3);"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:6px;font-size:12px;">جاري تحليل جودة نومك بالذكاء الاصطناعي وربطه بإنتاجيتك...</div></div>`;
+
       const entries = Object.entries(sleepData).slice(-7);
       const avg = entries.reduce((s, [, v]) => s + v.rating, 0) / entries.length;
       const avgTasks = entries.reduce((s, [, v]) => s + (v.tasksDone || 0), 0) / entries.length;
@@ -7646,18 +7964,43 @@
       });
       const factorsText = Object.entries(factorsSummary).map(([f, count]) => `${f}: ${count} مرات`).join(', ');
 
-      const prompt = `محلل نوم وإنتاجية ذكي. بيانات المستخدم خلال الأيام السابقة:
-- متوسط جودة النوم العام: ${avg.toFixed(1)}/5
-- متوسط المهام اليومية المنجزة: ${avgTasks.toFixed(1)}
-- أيام النوم الممتاز (4-5 نجوم): ${highSleepDays.length} يوم، ومتوسط إنجازها: ${highSleepAvgTasks.toFixed(1)} مهمة.
-- العوامل المسجلة: [${factorsText || 'لا توجد عوامل مسجلة'}].
-(ملاحظة العوامل: caffeine = كافيين متأخر، screens = شاشات قبل النوم، reading = قراءة/استرخاء، pray = قيام ليل، exercise = رياضة، food = أكل متأخر).
+      const today = new Date().toISOString().split('T')[0];
+      const todayReport = sleepData[today] || {};
+      const todayHours = todayReport.duration || 0;
+      const todayFactors = todayReport.factors || [];
 
-اكتب تحليلاً دقيقاً ومقنعاً جداً يربط العوامل (خصوصاً السلبية كالشاشات والكافيين أو الإيجابية كقيام الليل والقراءة) بجودة النوم والإنتاجية مع نصيحة واحدة ذهبية لتحسين نومهم وإنتاجيتهم غداً. (موجز ومؤثر وبالعربية).`;
+      const prompt = `أنت طبيب ومحلل نوم رائد ومتحدث باللغة العربية (خبير مستند لنصائح كتاب "لماذا ننام" لـ ماثيو ووكر).
+قم بتحليل بيانات نوم المستخدم واكتب تقريراً طبياً توعوياً ذكياً وموجزاً جداً ومتوسط الطول (بين 120 إلى 150 كلمة فقط كحد أقصى، بشكل نقاط مركزة لتجنب الإطالة والانقطاع).
+البيانات:
+- متوسط جودة النوم العام: ${avg.toFixed(1)}/5
+- متوسط المهام المنجزة: ${avgTasks.toFixed(1)}
+- مدة النوم المسجلة لليوم: ${todayHours} ساعة.
+- العوامل المسجلة لليوم: [${todayFactors.join(', ') || 'لا توجد عوامل'}].
+(ملاحظة العوامل: caffeine = كافيين متأخر، screens = استخدام الهاتف/شاشات قبل النوم، fluids = شرب سوائل قبل النوم، active_early = نشيط رغم قلة النوم، pray = قيام ليل، exercise = رياضة، food = أكل متأخر).
+
+ركز تحليلك في نقاط قصيرة جداً (سطرين لكل نقطة) على العوامل التي سجلها المستخدم اليوم فقط:
+1. لو سجل (screens): قل له باختصار أن الضوء الأزرق للهاتف يمنع إفراز هرمون الميلاتونين (رسول الليل ومفتاح النوم) مما يعطل الساعة البيولوجية.
+2. لو سجل (caffeine): وضح له باختصار أنه يحجب مستقبلات الأدينوزين (مثال: كوضع قطعة خشب أسفل فرامل السيارة لتعطيلها)، وحين يزول الكافيين يحدث انهيار مفاجئ (Crash).
+3. لو سجل (fluids): وضّح له باختصار أن السوائل قبل النوم تنشط الكلى ليلاً وتسبب كثرة الاستيقاظ للحمام مما يقطع دورات النوم الطبيعية.
+4. جدول نوم ثابت: قدم له نصيحة قصيرة جداً بتهيئة البيئة (باردة، مظلمة، هادئة) والالتزام بجدول نوم والاستعداد بالوضوء وقراءة الأذكار وإغلاق هاتفه.
+5. آلية الطوارئ البيولوجية: إذا نام أقل من 5 ساعات (اليوم نام: ${todayHours} ساعة) وقال إنه نشط (سجل active_early): وضّح له فوراً وبإيجاز أن هذا ليس نشاطاً حقيقياً بل "يقظة كاذبة" تفرضها آلية الطوارئ البيولوجية (تدفق الأدرينالين والكورتيزول)، وهو قرض بفوائد مدمرة ترفع ضغط الدم وتنهك القلب وتدمر المناعة.
+
+اكتب التحليل بأسلوب طبي مشوق ومباشر جداً، بدون مقدمات طويلة وبدون خاتمة طويلة، مقسم إلى نقاط منسقة برموز تعبيرية. أجب باللغة العربية واجعل الكلمات الإجمالية أقل من 150 كلمة.`;
+
       try {
         const resp = await callAI(prompt);
-        insightEl.innerHTML = `<div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:12px;font-size:12.5px;color:var(--t2);line-height:1.7;"><span style="color:#c4b5fd;font-weight:700;">🧠 تحليل النوم التفاعلي AI:</span> ${resp}</div>`;
-      } catch (e) { }
+        insightEl.innerHTML = `
+          <div style="background: rgba(13, 27, 62, 0.8); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 14px; padding: 14px; font-size: 12.5px; color: var(--t1); line-height: 1.6; box-shadow: 0 4px 20px rgba(0,0,0,0.3); backdrop-filter: blur(8px);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;">
+              <span style="font-size: 16px;">🧠</span>
+              <strong style="color: #c4b5fd; font-size: 13px; font-family: var(--font-display);">تقرير الاستشارة الطبية لتحليل النوم (T.AI)</strong>
+            </div>
+            <div class="sleep-ai-text" style="color:var(--t2); text-align:justify;">${resp.replace(/\n/g, '<br>')}</div>
+          </div>
+        `;
+      } catch (e) {
+        insightEl.innerHTML = `<div style="color:var(--t3);font-size:12px;padding:12px;">تعذر الاتصال بالخادم لتحليل النوم. يرجى المحاولة لاحقاً.</div>`;
+      }
     }
 
 
@@ -7879,19 +8222,19 @@
         let isOverdue = false;
         if (!t.done && t.taskTime) { const [h, m] = t.taskTime.split(':').map(Number); if (nowMins > h * 60 + m + 30 && (!t.taskDate || t.taskDate === todayStr)) isOverdue = true; }
         const canComplete = t.done || canCompleteTask(t);
-        const timeBadge = t.taskTime ? `<span class="task-time-badge ${isOverdue ? 'overdue-badge' : ''} ${t.isPrayer ? 'prayer-badge' : ''}"><i class="ti ti-clock" style="font-size:9px;"></i> ${t.taskTime}${t.taskDate && t.taskDate !== todayStr ? ' — ' + t.taskDate : ''}</span>` : '';
+        const timeBadge = t.taskTime ? `<span class="task-time-badge ${isOverdue ? 'overdue-badge' : ''} ${t.isPrayer ? 'prayer-badge' : ''}"><i class="ti ti-clock" style="font-size:9px;"></i> ${t.taskTime}${t.taskDate && t.taskDate !== todayStr ? ' \u2014 ' + t.taskDate : ''}</span>` : '';
         const xpBadge = !t.done ? `<span class="task-xp-badge">+${xpMap[t.priority] || 20} XP</span>` : '';
+        const lockBadge = !canComplete && !t.done ? `<span style="font-size:10px;color:#fbbf24;">\uD83D\uDD12 \u0627\u0646\u062A\u0638\u0631 \u0648\u0642\u062A\u0647\u0627</span>` : '';
         return `<div class="task-item ${t.done ? 'done' : ''} ${isOverdue ? 'overdue' : ''} ${t.isPrayer ? 'prayer-task' : ''}" id="ti-${t.id}">
-      <div class="task-check ${t.done ? 'checked' : ''}" onclick="toggleTask(${t.id})" style="${!canComplete && !t.done ? 'border-color:rgba(251,191,36,.5);cursor:not-allowed;' : ''}" title="${!canComplete && !t.done ? 'ابدأ في وقتها!' : ''}">${t.done ? '<i class="ti ti-check" style="font-size:11px;color:#0f172a;"></i>' : !canComplete ? '🔒' : ''}</div>
+      <div class="task-check ${t.done ? 'checked' : ''}" onclick="${canComplete ? `toggleTask(${t.id})` : `showFunnyLockMsg(getEarlyCompletionFunnyMsg(),'${t.taskTime}')`}" style="${!canComplete && !t.done ? 'border-color:rgba(251,191,36,.5);cursor:not-allowed;' : ''}" title="${!canComplete && !t.done ? '\u0627\u0628\u062F\u0623 \u0641\u064A \u0648\u0642\u062A\u0647\u0627!' : ''}">${t.done ? '<i class="ti ti-check" style="font-size:11px;color:#0f172a;"></i>' : !canComplete ? '\uD83D\uDD12' : ''}</div>
       <div style="flex:1;min-width:0;"><div class="task-name">${t.name}</div>
-      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><div class="progress-mini"><div class="progress-mini-fill" style="width:${t.progress}%"></div></div><span class="task-pct-span" style="font-size:10px;color:var(--t3);">${t.progress}%</span><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}</div></div>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:3px;flex-wrap:wrap;"><span style="font-size:11px;">${catEmoji(t.category)}</span>${timeBadge}${xpBadge}${lockBadge}</div></div>
       <div class="task-meta"><span class="tag ${t.priority}">${priLabel(t.priority)}</span></div>
       <div class="task-actions">
-        <button class="icon-btn" onclick="accelerateTask(${t.id})" title="مسرّع AI" style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(0,180,216,.1));color:#c4b5fd;border:1px solid rgba(124,58,237,.25);"><i class="ti ti-bolt"></i></button>
-        <button class="icon-btn" onclick="handleLightningClick(${t.id})" title="حارب التسويف" style="background:rgba(245,158,11,.13);color:#f59e0b;"><i class="ti ti-flame"></i></button>
+        <button class="icon-btn" onclick="accelerateTask(${t.id})" title="\u0645\u0633\u0631\u02BC\u0639 AI" style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(0,180,216,.1));color:#c4b5fd;border:1px solid rgba(124,58,237,.25);"><i class="ti ti-bolt"></i></button>
+        <button class="icon-btn" onclick="handleLightningClick(${t.id})" title="\u062D\u0627\u0631\u0628 \u0627\u0644\u062A\u0633\u0648\u064A\u0641" style="background:rgba(245,158,11,.13);color:#f59e0b;"><i class="ti ti-flame"></i></button>
         <button class="icon-btn del" onclick="deleteTask(${t.id})"><i class="ti ti-trash"></i></button>
       </div>
-      <input type="range" min="0" max="100" value="${t.progress}" class="task-range" oninput="updateProgress(${t.id},this.value)">
     </div>`;
       }).join('');
     };
