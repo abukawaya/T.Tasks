@@ -3471,6 +3471,8 @@
       background: radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, .08) 0%, transparent 60%),
         radial-gradient(ellipse at 70% 60%, rgba(0, 180, 216, .06) 0%, transparent 50%);
       animation: ambientFloat 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes ambientFloat {
@@ -4588,6 +4590,8 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
     }
 
     .flow-audio-label {
@@ -4673,6 +4677,8 @@
       width: 100%;
       box-shadow: 0 0 40px rgba(0, 180, 216, .1), 0 8px 32px rgba(0, 0, 0, .5);
       animation: fadeIn .35s ease;
+      position: relative;
+      z-index: 10;
     }
 
     .flow-proof-panel-title {
@@ -5329,6 +5335,20 @@
           <button class="btn btn-ghost btn-sm" onclick="aiStrengths()">نقاط القوة ⭐</button>
         </div>
         <div id="analyticsAiResult" style="font-size:13px;color:var(--t3);min-height:60px;line-height:1.7;"></div>
+      </div>
+
+      <!-- FOCUS ANALYTICS SECTION -->
+      <div class="card" style="margin-top:14px;">
+        <div class="card-title" style="justify-content:space-between;display:flex;width:100%;align-items:center;">
+          <span><i class="ti ti-eye" style="color:#c4b5fd;"></i> 🧬 تحليل مستوى التركيز والنوم</span>
+          <span style="font-size:10px;color:var(--t3);">يؤثر على XP</span>
+        </div>
+        <p style="font-size:11.5px;color:var(--t3);margin-bottom:12px;">بيانات جلسات برهان التركيز AI وجودة نومك — كل ذلك يؤثر على مضاعف نقاط XP لديك.</p>
+        <div id="focusAnalyticsSection">
+          <div style="text-align:center;color:var(--t3);font-size:12px;padding:16px;">
+            ابدأ جلسات التدفق وسجّل نومك لرؤية تحليل تركيزك هنا!
+          </div>
+        </div>
       </div>
     </div>
 
@@ -6645,13 +6665,21 @@
         ? `\n\n--- سياق المحادثات السابقة ---\n` + aiChatHistory.slice(-10).map(m => `${m.role === 'user' ? 'المستخدم' : 'T.AI'}: ${m.content}`).join('\n') + `\n--- نهاية السياق ---\n`
         : '';
 
+      // Get sleep data for AI context
+      const sleepDataForAI = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+      const sleepEntries = Object.entries(sleepDataForAI).slice(-3);
+      const sleepSummary = sleepEntries.length > 0 ? sleepEntries.map(([d,v]) => `${d}: جودة ${v.rating||'?'}/5${v.duration ? ', ' + v.duration + ' ساعة' : ''}${v.factors && v.factors.length ? ', عوامل: ' + v.factors.join('/') : ''}`).join(' | ') : 'لا توجد بيانات نوم';
+      const focusStatsForAI = typeof getFocusStats === 'function' ? getFocusStats() : { focusRate: 0, passed: 0, failed: 0, total: 0 };
+
       const context = `أنت T.AI مساعد ذكي ومخلص، مدعوم بـ Puter AI. تذكر دائماً من أنت وتحدث بأسلوب ودي.
 المستخدم: ${settings.name} · XP: ${xpData.total} · الرتبة: ${getCurrentRank().name}
 المهام الحالية: ${tasks.slice(0, 8).map(t => t.name + (t.done ? ' (مكتملة)' : ' (معلقة)')).join('، ') || 'لا توجد'}
 العادات: ${habits.good.map(h => h.name).join('، ') || 'لا توجد'}
+بيانات النوم (آخر 3 أيام): ${sleepSummary}
+إحصائيات التركيز: معدل ${focusStatsForAI.focusRate}% (${focusStatsForAI.passed} مركّز / ${focusStatsForAI.failed} متشتت من ${focusStatsForAI.total} جلسة)
 التاريخ: ${todayStr}${historyText}
 الرسالة الجديدة: "${msg}"
-أجب بالعربية بأسلوب ذكي ومتذكر للسياق. إذا طلب إضافة مهام/عادات أضف:
+أجب بالعربية بأسلوب ذكي ومتذكر للسياق. يمكنك الإشارة لبيانات النوم والتركيز عند الحاجة. إذا طلب إضافة مهام/عادات أضف:
 ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}","priority":"med","category":"personal"},{"type":"habit","name":"اسم","habitType":"good"}]`;
 
       const response = await callAI(context); document.getElementById('typing')?.remove();
@@ -6679,6 +6707,57 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
       const total = tasks.length, done = tasks.filter(t => t.done).length;
       document.getElementById('a_completion').textContent = total > 0 ? Math.round(done / total * 100) + '%' : '0%'; document.getElementById('a_today').textContent = done; document.getElementById('a_avg').textContent = total > 0 ? Math.max(1, Math.round(total / 7)) : 0; document.getElementById('a_streak').textContent = streak;
       renderLineChart(); renderDoughnut(); renderPriorityChart(); renderStatusChart();
+      renderFocusAnalytics();
+    }
+
+    function renderFocusAnalytics() {
+      const focusEl = document.getElementById('focusAnalyticsSection');
+      if (!focusEl) return;
+      const stats = getFocusStats();
+      const sleepData = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+      const sleepEntries = Object.entries(sleepData).slice(-7);
+      const avgSleep = sleepEntries.length > 0 ? (sleepEntries.reduce((s,[,v]) => s + (v.rating||0), 0) / sleepEntries.length).toFixed(1) : 'N/A';
+      const avgSleepHours = sleepEntries.filter(([,v])=>v.duration).length > 0 ? (sleepEntries.filter(([,v])=>v.duration).reduce((s,[,v]) => s + (v.duration||0), 0) / sleepEntries.filter(([,v])=>v.duration).length).toFixed(1) : 'N/A';
+      
+      // XP penalty/bonus based on focus rate
+      const focusRate = stats.focusRate;
+      const focusColor = focusRate >= 70 ? '#39d353' : focusRate >= 40 ? '#fbbf24' : '#f43f5e';
+      const focusLabel = focusRate >= 70 ? 'ممتاز 🔥' : focusRate >= 40 ? 'متوسط ⚡' : 'ضعيف ⚠️';
+      const xpMultiplier = focusRate >= 70 ? '×1.5' : focusRate >= 40 ? '×1.0' : '×0.7';
+      const sleepColor = parseFloat(avgSleep) >= 4 ? '#39d353' : parseFloat(avgSleep) >= 3 ? '#fbbf24' : '#f43f5e';
+
+      focusEl.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+          <div style="background:rgba(7,15,31,0.7);border:1px solid rgba(0,180,216,0.2);border-radius:12px;padding:12px;text-align:center;">
+            <div style="font-size:26px;font-weight:800;color:${focusColor};font-family:var(--font-display);">${focusRate}%</div>
+            <div style="font-size:10px;color:var(--t3);margin-top:2px;">معدل التركيز</div>
+            <div style="font-size:11px;color:${focusColor};margin-top:4px;font-weight:700;">${focusLabel}</div>
+          </div>
+          <div style="background:rgba(7,15,31,0.7);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:12px;text-align:center;">
+            <div style="font-size:26px;font-weight:800;color:#c4b5fd;font-family:var(--font-display);">${xpMultiplier}</div>
+            <div style="font-size:10px;color:var(--t3);margin-top:2px;">مضاعف XP للتركيز</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:4px;">${stats.total} جلسة محللة</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+          <div style="background:rgba(57,211,83,0.08);border:1px solid rgba(57,211,83,0.2);border-radius:10px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:#39d353;">${stats.passed}</div>
+            <div style="font-size:9px;color:var(--t3);">مركّز ✅</div>
+          </div>
+          <div style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2);border-radius:10px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:#f43f5e;">${stats.failed}</div>
+            <div style="font-size:9px;color:var(--t3);">متشتت ❌</div>
+          </div>
+          <div style="background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.2);border-radius:10px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:${sleepColor};">${avgSleep !== 'N/A' ? avgSleep + '/5' : 'N/A'}</div>
+            <div style="font-size:9px;color:var(--t3);">جودة النوم 😴</div>
+          </div>
+        </div>
+        <div style="background:rgba(13,27,62,0.6);border:1px solid rgba(0,180,216,0.15);border-radius:10px;padding:10px 12px;">
+          <div style="font-size:11px;color:var(--t3);margin-bottom:4px;">📊 ساعات النوم المتوسطة: <strong style="color:${sleepColor};">${avgSleepHours !== 'N/A' ? avgSleepHours + ' ساعة' : 'غير مسجلة'}</strong></div>
+          <div style="font-size:11px;color:var(--t3);">🧠 كلما ارتفع معدل تركيزك، كلما ارتفع مضاعف XP وتسارع نمو مستواك.</div>
+        </div>
+      `;
     }
     function renderLineChart() { const ctx = document.getElementById('lineChart'); if (!ctx) return; const today = new Date(); const labels = [], data = []; for (let i = 6; i >= 0; i--) { const d = new Date(today); d.setDate(d.getDate() - i); labels.push(['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'][d.getDay()]); const ds = d.toISOString().split('T')[0]; data.push(tasks.filter(t => t.done && t.createdAt?.startsWith(ds)).length); } if (lineChartInst) lineChartInst.destroy(); lineChartInst = new Chart(ctx, { type: 'line', data: { labels, datasets: [{ data, borderColor: '#00b4d8', backgroundColor: 'rgba(0,180,216,.08)', fill: true, tension: .4, pointBackgroundColor: '#00b4d8', pointRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#4a6490', font: { size: 10 } }, grid: { display: false } }, y: { ticks: { color: '#4a6490', font: { size: 10 }, stepSize: 1 }, grid: { color: 'rgba(0,180,216,.05)' }, min: 0 } } } }); }
     function renderDoughnut() { const ctx = document.getElementById('doughnutChart'); if (!ctx) return; const cats = { work: 0, study: 0, personal: 0, health: 0 }; tasks.forEach(t => { if (cats[t.category] !== undefined) cats[t.category]++; }); const vals = Object.values(cats), total = vals.reduce((a, b) => a + b, 0); if (doughnutInst) doughnutInst.destroy(); if (!total) { document.getElementById('doughnutChart').parentElement.innerHTML = '<div style="text-align:center;color:var(--t3);font-size:13px;padding:60px 0;">لا توجد بيانات</div>'; return; } doughnutInst = new Chart(ctx, { type: 'doughnut', data: { labels: ['عمل', 'دراسة', 'شخصي', 'صحة'], datasets: [{ data: vals, backgroundColor: ['rgba(26,86,219,.75)', 'rgba(0,180,216,.75)', 'rgba(57,211,83,.65)', 'rgba(244,63,94,.65)'], borderWidth: 2, borderColor: 'rgba(7,15,31,.8)' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#8ba8cc', font: { size: 11 }, padding: 10 } } } } }); }
@@ -6744,7 +6823,25 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
     async function analyzeOneTask(id) { const task = tasks.find(t => t.id === id); if (!task) return; const box = document.getElementById('analyzeResult'); box.innerHTML = 'جارٍ تحليل المهمة...'; box.classList.add('show'); const r = await callAI(`المهمة: "${task.name}" (${priLabel(task.priority)}, ${task.progress}%)\nكيف أنجزها؟ أجب بالعربية.`); box.innerHTML = r.replace(/\n/g, '<br>'); box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
     async function splitHardTasks() { const hard = tasks.filter(t => t.priority === 'high' && !t.done); if (!hard.length) { showNotif('💡', 'لا توجد مهام صعبة معلقة'); return; } const box = document.getElementById('analyzeResult'); box.innerHTML = 'جارٍ التحليل...'; box.classList.add('show'); const r = await callAI(`المهام الصعبة: ${hard.map(t => t.name).join(', ')}\nاقترح خطوات عملية. أجب بالعربية.`); box.innerHTML = r.replace(/\n/g, '<br>'); }
     async function askAiReward() { const done = tasks.filter(t => t.done).length; const box = document.getElementById('analyzeResult'); box.innerHTML = 'جارٍ الاقتراح...'; box.classList.add('show'); const r = await callAI(`أنجز المستخدم ${done} مهمة. اقترح 3 مكافآت. أجب بالعربية.`); box.innerHTML = r.replace(/\n/g, '<br>'); }
-    async function deepAnalyze() { const el = document.getElementById('analyticsAiResult'); el.innerHTML = '<span style="color:var(--sky);">🔍 جارٍ التحليل...</span>'; const r = await callAI(`حلل أداء ${settings.name}: ${tasks.filter(t => t.done).length}/${tasks.length} مهام منجزة، ${streak} أيام متواصلة، ${xpData.total} XP، رتبة ${getCurrentRank().name}. تحليل شامل بالعربية.`); el.innerHTML = r.replace(/\n/g, '<br>'); }
+    async function deepAnalyze() {
+      const el = document.getElementById('analyticsAiResult');
+      el.innerHTML = '<span style="color:var(--sky);">🔍 جارٍ التحليل الشامل...</span>';
+      const focusS = typeof getFocusStats === 'function' ? getFocusStats() : { focusRate: 0, passed: 0, failed: 0, total: 0 };
+      const sleepD = JSON.parse(localStorage.getItem('ttasks_sleep') || '{}');
+      const sleepE = Object.entries(sleepD).slice(-7);
+      const avgSlpRating = sleepE.length > 0 ? (sleepE.reduce((s,[,v]) => s + (v.rating||0), 0) / sleepE.length).toFixed(1) : 'غير مسجل';
+      const avgSlpHrs = sleepE.filter(([,v])=>v.duration).length > 0 ? (sleepE.filter(([,v])=>v.duration).reduce((s,[,v]) => s + (v.duration||0), 0) / sleepE.filter(([,v])=>v.duration).length).toFixed(1) : 'غير مسجل';
+      const prompt = `أنت محلل إنتاجية متكامل. قدّم تحليلاً شاملاً ومخصصاً لـ ${settings.name} بناءً على:
+- المهام: ${tasks.filter(t => t.done).length} مكتملة من ${tasks.length} (معدل ${tasks.length > 0 ? Math.round(tasks.filter(t=>t.done).length/tasks.length*100) : 0}%)
+- الإنجاز المتواصل: ${streak} يوم
+- XP الكلي: ${xpData.total} · الرتبة: ${getCurrentRank().name}
+- التركيز (برهان AI): ${focusS.focusRate}% (${focusS.passed} مركّز، ${focusS.failed} متشتت من ${focusS.total} جلسة)
+- جودة النوم (متوسط 7 أيام): ${avgSlpRating}/5 · متوسط ساعات: ${avgSlpHrs} ساعة
+- العادات النشطة: ${habits.good.length + habits.bad.length}
+قدّم تحليلاً بالعربية يتناول: نقاط قوة، نقاط ضعف، تأثير النوم على التركيز والإنتاجية، توصيات قابلة للتطبيق. (6-8 جمل مختصرة وعملية)`;
+      const r = await callAI(prompt);
+      el.innerHTML = r.replace(/\n/g, '<br>');
+    }
     async function aiWeakPoints() { const el = document.getElementById('analyticsAiResult'); el.innerHTML = '<span style="color:var(--warn);">⚠️ جارٍ التحليل...</span>'; const r = await callAI(`نقاط الضعف وكيف يتجاوزها ${settings.name}؟ أجب بالعربية.`); el.innerHTML = r.replace(/\n/g, '<br>'); }
     async function aiStrengths() { const el = document.getElementById('analyticsAiResult'); el.innerHTML = '<span style="color:var(--green);">🌟 جارٍ التحليل...</span>'; const r = await callAI(`نقاط قوة ${settings.name}: ${tasks.filter(t => t.done).length} مهمة منجزة، ${xpData.total} XP. حفزه. أجب بالعربية.`); el.innerHTML = r.replace(/\n/g, '<br>'); }
     async function analyzeHabitDifficulty() { const val = document.getElementById('difficultyInput').value.trim(); if (!val) return; const box = document.getElementById('habitAnalysis'); box.innerHTML = 'جارٍ التحليل...'; box.classList.add('show'); const r = await callAI(`${settings.name} يجد صعوبة في: "${val}". من كتاب العادات الذرية، كيف يتجاوزها؟ أجب بالعربية.`); box.innerHTML = r.replace(/\n/g, '<br>'); document.getElementById('difficultyInput').value = ''; }
@@ -7074,8 +7171,8 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
         <div class="flow-audio-panel">
           <span class="flow-audio-label">🎵 بيئة التركيز الصوتية:</span>
           <button class="flow-audio-btn active" id="fa-silent" onclick="setFlowAudio('silent')">🔇 صامت</button>
-          <button class="flow-audio-btn" id="fa-rain" onclick="setFlowAudio('rain')">🌧️ مطر مطور</button>
-          <button class="flow-audio-btn" id="fa-space" onclick="setFlowAudio('space')">🌌 سديم عميق</button>
+          <button class="flow-audio-btn" id="fa-rain" onclick="setFlowAudio('rain')">🌧️ مطر هادئ</button>
+          <button class="flow-audio-btn" id="fa-handpan" onclick="setFlowAudio('handpan')">🪘 هاند بان</button>
         </div>
 
         <div class="flow-controls" style="margin-top:20px;">
@@ -7116,7 +7213,7 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
 
     let flowAudioCtx = null;
     let flowRainNode = null;
-    let flowSpaceNode = null;
+    let flowHandpanAudio = null;
 
     function setFlowAudio(type) {
       document.querySelectorAll('.flow-audio-btn').forEach(btn => btn.classList.remove('active'));
@@ -7135,75 +7232,56 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
         }
 
         if (type === 'rain') {
-          // Synthesize Rain sound using White Noise & Lowpass Filter
+          // Improved rain: pink noise (warmer, robust and highly compatible)
           const bufferSize = 2 * flowAudioCtx.sampleRate;
-          const noiseBuffer = flowAudioCtx.createBuffer(1, bufferSize, flowAudioCtx.sampleRate);
-          const output = noiseBuffer.getChannelData(0);
-          for (let i = 0; i < bufferSize; i++) {
-            output[i] = Math.random() * 2 - 1;
+          const noiseBuffer = flowAudioCtx.createBuffer(2, bufferSize, flowAudioCtx.sampleRate);
+          for (let ch = 0; ch < 2; ch++) {
+            const output = noiseBuffer.getChannelData(ch);
+            let b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0;
+            for (let i = 0; i < bufferSize; i++) {
+              const white = Math.random() * 2 - 1;
+              b0 = 0.99886*b0 + white*0.0555179;
+              b1 = 0.99332*b1 + white*0.0750759;
+              b2 = 0.96900*b2 + white*0.1538520;
+              b3 = 0.86650*b3 + white*0.3104856;
+              b4 = 0.55000*b4 + white*0.5329522;
+              b5 = -0.7616*b5 - white*0.0168980;
+              output[i] = (b0+b1+b2+b3+b4+b5+b6+white*0.5362) * 0.11;
+              b6 = white*0.115926;
+            }
           }
-          const whiteNoise = flowAudioCtx.createBufferSource();
-          whiteNoise.buffer = noiseBuffer;
-          whiteNoise.loop = true;
+          const pinkNoise = flowAudioCtx.createBufferSource();
+          pinkNoise.buffer = noiseBuffer;
+          pinkNoise.loop = true;
 
-          const filter = flowAudioCtx.createBiquadFilter();
-          filter.type = 'lowpass';
-          filter.frequency.value = 850;
+          const lpFilter = flowAudioCtx.createBiquadFilter();
+          lpFilter.type = 'lowpass';
+          lpFilter.frequency.value = 1000;
 
           const gain = flowAudioCtx.createGain();
-          gain.gain.value = 0.08;
+          gain.gain.value = 0.18;
 
-          whiteNoise.connect(filter);
-          filter.connect(gain);
+          pinkNoise.connect(lpFilter);
+          lpFilter.connect(gain);
           gain.connect(flowAudioCtx.destination);
 
-          whiteNoise.start();
-          flowRainNode = whiteNoise;
-        } else if (type === 'space') {
-          // Deep cosmic drone
-          const osc1 = flowAudioCtx.createOscillator();
-          const osc2 = flowAudioCtx.createOscillator();
-          const filter = flowAudioCtx.createBiquadFilter();
+          pinkNoise.start(0);
+          flowRainNode = pinkNoise;
 
-          osc1.type = 'sawtooth';
-          osc1.frequency.value = 60;
-          osc2.type = 'triangle';
-          osc2.frequency.value = 60.3;
-
-          filter.type = 'lowpass';
-          filter.frequency.value = 180;
-
-          const lfo = flowAudioCtx.createOscillator();
-          lfo.type = 'sine';
-          lfo.frequency.value = 0.1;
-          const lfoGain = flowAudioCtx.createGain();
-          lfoGain.gain.value = 0.04;
-
-          const mainGain = flowAudioCtx.createGain();
-          mainGain.gain.value = 0.15;
-
-          lfo.connect(lfoGain);
-          lfoGain.connect(mainGain.gain);
-
-          osc1.connect(filter);
-          osc2.connect(filter);
-          filter.connect(mainGain);
-          mainGain.connect(flowAudioCtx.destination);
-
-          osc1.start();
-          osc2.start();
-          lfo.start();
-
-          flowSpaceNode = {
-            stop: () => {
-              try { osc1.stop(); } catch (e) { }
-              try { osc2.stop(); } catch (e) { }
-              try { lfo.stop(); } catch (e) { }
-            }
-          };
+        } else if (type === 'handpan') {
+          // Play local handpan.mp3
+          if (!flowHandpanAudio) {
+            flowHandpanAudio = new Audio('handpan.mp3');
+            flowHandpanAudio.loop = true;
+          }
+          flowHandpanAudio.volume = 0.5; // Good volume for ambient sound
+          flowHandpanAudio.play().catch(e => {
+            console.error('Failed to play handpan.mp3:', e);
+            showNotif('⚠️ عذراً', 'تعذر تشغيل ملف الهاند بان. تأكد من وجود ملف handpan.mp3 في المجلد الرئيسي.');
+          });
         }
       } catch (e) {
-        console.error('Failed to play ambient synth:', e);
+        console.error('Failed to play ambient sound:', e);
         showNotif('⚠️ عذراً', 'لا يمكن تشغيل الصوت المحيطي في متصفحك حالياً.');
       }
     }
@@ -7213,9 +7291,11 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
         try { flowRainNode.stop(); } catch (e) { }
         flowRainNode = null;
       }
-      if (flowSpaceNode) {
-        try { flowSpaceNode.stop(); } catch (e) { }
-        flowSpaceNode = null;
+      if (flowHandpanAudio) {
+        try {
+          flowHandpanAudio.pause();
+          flowHandpanAudio.currentTime = 0;
+        } catch (e) { }
       }
     }
 
@@ -7286,6 +7366,22 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
       reader.readAsDataURL(file);
     }
 
+    // Focus proof session tracking
+    let focusProofSessions = JSON.parse(localStorage.getItem('ttasks_focus_proof') || '[]');
+    function saveFocusProofSession(verdict, taskName) {
+      focusProofSessions.push({ date: new Date().toISOString(), verdict, taskName });
+      if (focusProofSessions.length > 100) focusProofSessions = focusProofSessions.slice(-100);
+      localStorage.setItem('ttasks_focus_proof', JSON.stringify(focusProofSessions));
+    }
+    function getFocusStats() {
+      const recent = focusProofSessions.slice(-20);
+      const total = recent.length;
+      const passed = recent.filter(s => s.verdict === 'PASS').length;
+      const failed = recent.filter(s => s.verdict === 'FAIL').length;
+      const focusRate = total > 0 ? Math.round((passed / total) * 100) : 0;
+      return { total, passed, failed, focusRate };
+    }
+
     async function analyzeFocusImage(dataUrl) {
       const snapBtn = document.getElementById('flowProofSnapBtn');
       const resultEl = document.getElementById('flowProofResult');
@@ -7309,37 +7405,93 @@ ACTIONS_JSON:[{"type":"task","name":"اسم","time":"07:00","date":"${todayStr}"
 
         let verdict = /حكم:\s*PASS/i.test(respText) ? 'PASS' : /حكم:\s*FAIL/i.test(respText) ? 'FAIL' : 'WARN';
         const vcMap = {
-          PASS: { label: '✅ تركيزك مثبت!', cls: 'pass', xp: 10 },
-          WARN: { label: '⚠️ غير مؤكد', cls: 'warn', xp: 0 },
+          PASS: { label: '✅ تركيزك مثبت!', cls: 'pass', xp: 15 },
+          WARN: { label: '⚠️ غير مؤكد — حاول مجدداً', cls: 'warn', xp: 3 },
           FAIL: { label: '❌ لست على مهمتك!', cls: 'fail', xp: 0 }
         };
         const vc = vcMap[verdict];
         const cleanResp = respText.replace(/حكم:\s*(PASS|WARN|FAIL)\s*/i, '').trim();
 
-        resultEl.innerHTML = '<img src="' + dataUrl + '" class="flow-proof-thumb" alt="">' +
-          '<div class="flow-proof-verdict ' + vc.cls + '">' + vc.label + '</div>' +
-          '<div class="flow-proof-analysis">' + cleanResp.replace(/\n/g, '<br>') + '</div>';
+        // Save session
+        saveFocusProofSession(verdict, flowTaskName);
 
         if (verdict === 'PASS') {
-          flowLockedByProof = false; // Unlock session
-
-          // Re-style panel to show success border
+          flowLockedByProof = false;
           const panel = document.getElementById('flowProofPanel');
           if (panel) {
             panel.style.border = '2px solid #39d353';
-            panel.style.boxShadow = '0 0 25px rgba(57,211,83,0.5)';
+            panel.style.boxShadow = '0 0 30px rgba(57,211,83,0.6)';
           }
-
-          // Restore timer UI to normal
           const startBtn = document.getElementById('flowStartBtn');
           if (startBtn) startBtn.textContent = '▶ استأنف الجلسة';
           const labelEl = document.getElementById('flowTimerLabel');
           if (labelEl) labelEl.textContent = 'تم إثبات التركيز! 🎉';
 
-          addXP(vc.xp, 'أثبتت تركيزك! 📸');
-          showNotif('📸 تم فتح القفل!', 'AI رأى أنك تعمل على: ' + flowTaskName);
-        } else if (verdict === 'FAIL') {
-          showNotif('⚠️ تنبيه!', 'AI لم يرك تعمل على مهمتك!');
+          // Get motivational message from AI
+          const motivMsg = document.createElement('div');
+          motivMsg.style.cssText = 'margin-top:10px;background:linear-gradient(135deg,rgba(57,211,83,0.15),rgba(0,180,216,0.1));border:1px solid rgba(57,211,83,0.4);border-radius:10px;padding:10px 12px;font-size:12px;color:#6ee7b7;line-height:1.6;';
+          motivMsg.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+          resultEl.innerHTML = '<img src="' + dataUrl + '" class="flow-proof-thumb" alt="">' +
+            '<div class="flow-proof-verdict ' + vc.cls + '">' + vc.label + ' <span style="font-size:12px;">+' + vc.xp + ' XP</span></div>' +
+            '<div class="flow-proof-analysis">' + cleanResp.replace(/\n/g, '<br>') + '</div>';
+          resultEl.appendChild(motivMsg);
+
+          addXP(vc.xp, 'أثبتت تركيزك في جلسة التدفق! 📸🔥');
+          showNotif('🏆 تركيز مثبت! +' + vc.xp + ' XP', 'AI رأى أنك تعمل بكل جدية على: ' + flowTaskName);
+
+          try {
+            const focusStats = getFocusStats();
+            const motivPrompt = `المستخدم ${settings.name} أثبت تركيزه عبر برهان التركيز بالذكاء الاصطناعي!
+إحصائياته: ${focusStats.passed} جلسة تركيز ناجحة من ${focusStats.total} إجمالاً (معدل ${focusStats.focusRate}% تركيز).
+المهمة الحالية: "${flowTaskName}".
+أعطه رسالة تحفيزية قصيرة جداً وقوية (سطر واحد فقط، لا يتجاوز 12 كلمة) تُشعل حماسه للاستمرار! باللغة العربية فقط.`;
+            const motivResp = await callAI(motivPrompt);
+            motivMsg.textContent = '🔥 ' + motivResp;
+          } catch(e) {
+            motivMsg.textContent = '🚀 رائع! استمر بهذا الزخم وستُكمل المهمة بتفوق!';
+          }
+
+        } else if (verdict === 'FAIL' || verdict === 'WARN') {
+          const panel = document.getElementById('flowProofPanel');
+          if (panel) {
+            panel.style.border = '2px solid rgba(244,63,94,0.6)';
+            panel.style.boxShadow = '0 0 25px rgba(244,63,94,0.4)';
+          }
+
+          resultEl.innerHTML = '<img src="' + dataUrl + '" class="flow-proof-thumb" alt="">' +
+            '<div class="flow-proof-verdict ' + vc.cls + '">' + vc.label + '</div>' +
+            '<div class="flow-proof-analysis">' + cleanResp.replace(/\n/g, '<br>') + '</div>';
+
+          // AI asks about distraction reason
+          const distractBox = document.createElement('div');
+          distractBox.style.cssText = 'margin-top:12px;background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.3);border-radius:12px;padding:12px;';
+          distractBox.innerHTML = '<div style="font-size:12px;color:#f87171;margin-bottom:8px;">🤔 لماذا تشتتت؟ أخبر المساعد:</div><div class="typing-dots" id="distractAILoading"><span></span><span></span><span></span></div>';
+          resultEl.appendChild(distractBox);
+
+          showNotif('⚠️ تنبيه التركيز!', 'AI لاحظ تشتتاً — سيتم إعادة ضبط المؤقت!');
+
+          // Ask AI about distraction
+          try {
+            const focusStats = getFocusStats();
+            const distractPrompt = `المستخدم ${settings.name} تشتّت عن مهمته "${flowTaskName}" أثناء جلسة التدفق.
+معدل تركيزه الإجمالي: ${focusStats.focusRate}% (${focusStats.passed} ناجحة، ${focusStats.failed} فاشلة من أصل ${focusStats.total}).
+اسأله بأسلوب ودي ذكي عن سبب تشتته (جملة استفهامية واحدة مختصرة تحفزه للعودة، لا تتجاوز 15 كلمة). باللغة العربية.`;
+            const distractResp = await callAI(distractPrompt);
+            const loadingEl = document.getElementById('distractAILoading');
+            if (loadingEl) loadingEl.innerHTML = `<div style="font-size:12px;color:var(--t2);line-height:1.6;">🤖 ${distractResp}</div>`;
+          } catch(e) {
+            const loadingEl = document.getElementById('distractAILoading');
+            if (loadingEl) loadingEl.innerHTML = `<div style="font-size:12px;color:var(--t2);">🤖 ما الذي شتت انتباهك عن مهمتك؟ عُد إليها الآن!</div>`;
+          }
+
+          // Auto-reset timer after 4 seconds
+          setTimeout(() => {
+            closeFocusProof();
+            resetFlowTimer();
+            const labelEl = document.getElementById('flowTimerLabel');
+            if (labelEl) labelEl.textContent = '🔄 تمت إعادة الضبط — ابدأ من جديد!';
+            showNotif('🔄 تمت إعادة الضبط', 'المؤقت عاد للبداية — ركّز هذه المرة!');
+          }, 4500);
         }
       } catch (e) {
         resultEl.innerHTML = '<div class="flow-proof-analysis" style="color:var(--t3);">⚠️ تعذّر تحليل الصورة — تأكد من الاتصال بالإنترنت.</div>';
